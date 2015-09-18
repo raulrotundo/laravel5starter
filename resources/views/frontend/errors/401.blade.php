@@ -1,0 +1,1 @@
+This request requires user authentication default
