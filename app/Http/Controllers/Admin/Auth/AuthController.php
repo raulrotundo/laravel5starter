@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
 use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Models\Admin\Role;
 
 
 class AuthController extends Controller
@@ -46,7 +47,8 @@ class AuthController extends Controller
     }
 
     public function getRegister() {
-        return view('frontend.register.register');
+        $roles   = Role::all();
+        return view('frontend.register.register',compact('roles'));
     }
 
     /**
@@ -73,13 +75,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $User = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'country_id' => 1,
             'active' => 1,
         ]);
+        return $User->assignRole($data['role_id']);
     }
 
     /**
@@ -121,15 +125,17 @@ class AuthController extends Controller
      */
     private function findOrCreateUser($userData,$provider)
     {
+        $socialname = explode(' ', $userData->name);
         $user = User::where('email', '=', $userData->email)->first();
         if(!$user) {
-            $user = User::create([
-                'first_name' => $userData->user['first_name'],
-                'last_name' => $userData->user['last_name'],
+            /*$user = User::create([
+                'first_name' => $socialname[0],
+                'last_name' => $socialname[1],
                 'email' => $userData->email,
-                'password' => bcrypt('secret'),
+                'password' => bcrypt(str_random(6)),
+                'country_id' => 1, //at the moment we can assign Argentina as Default
                 'active' => 1,
-            ]);
+            ]);*/
         }
 
         $this->checkIfUserNeedsUpdating($userData, $user);
@@ -137,10 +143,11 @@ class AuthController extends Controller
     }
 
     public function checkIfUserNeedsUpdating($userData, $user) {
+        $socialname = explode(' ', $userData->name);
         $socialData = [
             'email' => $userData->email,
-            'first_name' => $userData->user['first_name'],
-            'last_name' => $userData->user['last_name'],
+            'first_name' => $socialname[0],
+            'last_name' => $socialname[1],
         ];
         $dbData = [
             'email' => $user->email,

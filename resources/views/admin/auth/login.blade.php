@@ -45,9 +45,9 @@
         </form>
         <div class="social-auth-links text-center">
           <p>- OR Sign in using -</p>
-          <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>Facebook</a>
-          <a href="#" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i>Twitter</a>
-          <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google+</a>
+          <a href="{!! url('login/facebook') !!}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>Facebook</a>
+          <a href="{!! url('login/twitter') !!}" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i>Twitter</a>
+          <a href="{!! url('login/google') !!}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google+</a>
         </div>
         <a href="/password/email">I forgot my password</a><br>
         <a href="register" class="text-center">Register a new membership</a>
