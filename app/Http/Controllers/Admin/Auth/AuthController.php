@@ -10,6 +10,8 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use App\Models\Admin\Role;
+use Input;
+use Session;
 
 
 class AuthController extends Controller
@@ -92,9 +94,10 @@ class AuthController extends Controller
      * @param string $provider
      * @return Response
      */
-    public function getSocialAuth($provider=null)
+    public function getSocialAuth($provider=null,$role=null)
     {
        if(!config("services.$provider")) abort('404'); //just to handle providers that doesn't exist
+       Session::flash('role', Input::get('role'));
        return $this->socialite->with($provider)->redirect();
     }
 
@@ -110,7 +113,7 @@ class AuthController extends Controller
             return 'Something went wrong';
         }
 
-        $authUser = $this->findOrCreateUser($user,$provider);
+        $authUser = $this->findOrCreateUser($user,$provider,Session::get('role'));
 
         Auth::login($authUser, true);
 
@@ -123,19 +126,24 @@ class AuthController extends Controller
      * @param $githubUser
      * @return User
      */
-    private function findOrCreateUser($userData,$provider)
+    private function findOrCreateUser($userData,$provider,$role)
     {
         $socialname = explode(' ', $userData->name);
         $user = User::where('email', '=', $userData->email)->first();
         if(!$user) {
-            /*$user = User::create([
-                'first_name' => $socialname[0],
-                'last_name' => $socialname[1],
-                'email' => $userData->email,
-                'password' => bcrypt(str_random(6)),
-                'country_id' => 1, //at the moment we can assign Argentina as Default
-                'active' => 1,
-            ]);*/
+            $role_id = Role::where('role_slug', '=', $role)->first();
+            //Create user auth except admin role
+            if ($role_id and $role_id->id<>1) {
+                $user = User::create([
+                    'first_name' => $socialname[0],
+                    'last_name' => $socialname[1],
+                    'email' => $userData->email,
+                    'password' => bcrypt(str_random(6)),
+                    'country_id' => 1, //at the moment we can assign Argentina as Default
+                    'active' => 1,
+                ]);
+                $user->assignRole($role_id);    
+            }            
         }
 
         $this->checkIfUserNeedsUpdating($userData, $user);
