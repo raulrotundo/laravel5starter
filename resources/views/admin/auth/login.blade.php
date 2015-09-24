@@ -49,7 +49,7 @@
           <a href="#" class="btn btn-block btn-social btn-twitter btn-flat"><i class="fa fa-twitter"></i>Twitter</a>
           <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google+</a>
         </div>
-        <a href="/password/email">I forgot my password</a><br>
+        <a href="password/email">I forgot my password</a><br>
         <a href="register" class="text-center">Register a new membership</a>
     </div>
 </div>
