@@ -4,5 +4,4 @@
 	<script src="{{ asset("public/assets/frontend/template/js/classie.js")}}"></script>
 	<script src="{{ asset("public/assets/frontend/template/js/cbpAnimatedHeader.js")}}"></script>
 	<script src="{{ asset("public/assets/frontend/template/js/jqBootstrapValidation.js")}}"></script>
-	<script src="{{ asset("public/assets/frontend/template/js/contact_me.js")}}"></script>
 	<script src="{{ asset("public/assets/frontend/template/js/agency.js")}}"></script>

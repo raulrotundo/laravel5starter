@@ -43,7 +43,7 @@
 				</div>
 			</div>
 		{!! Form::close() !!}
-		<div class="social-auth-links text-center">
+		<!--div class="social-auth-links text-center">
 			<p>Or Sign in as:</p>
 			<div class="row">
 				<div class="col-sm-6">
@@ -57,7 +57,7 @@
 					<a href="{!! url('login/google?role=company') !!}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google</a>
 				</div>
 			</div>
-		</div>
+		</div-->
 		<a href="/password/email">I forgot my password</a><br>
 		<a href="register" class="text-center">Register a new membership</a>
 	</div>

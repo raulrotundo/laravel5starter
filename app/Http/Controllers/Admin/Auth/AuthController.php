@@ -12,6 +12,7 @@ use Laravel\Socialite\Contracts\Factory as Socialite;
 use App\Models\Admin\Role;
 use Input;
 use Session;
+use Request;
 
 
 class AuthController extends Controller
@@ -48,9 +49,36 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
+    /**
+    * Show the application registration form.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function getRegister() {
         $roles   = Role::all();
         return view('frontend.register.register',compact('roles'));
+    }
+
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function postRegister(Request $request) {
+        echo '<pre>'; print_r($request); exit;
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException($request, $validator);
+        }
+
+        Auth::login($this->create($request->all()));
+
+        $role_id = Role::where('role_slug', '=', Input::get('role'))->first();
+        User::assignRole($role_id);   
+
+        return redirect($this->redirectPath());
     }
 
     /**
@@ -94,10 +122,9 @@ class AuthController extends Controller
      * @param string $provider
      * @return Response
      */
-    public function getSocialAuth($provider=null,$role=null)
+    public function getSocialAuth($provider=null)
     {
        if(!config("services.$provider")) abort('404'); //just to handle providers that doesn't exist
-       Session::flash('role', Input::get('role'));
        return $this->socialite->with($provider)->redirect();
     }
 
@@ -113,11 +140,9 @@ class AuthController extends Controller
             return 'Something went wrong';
         }
 
-        $authUser = $this->findOrCreateUser($user,$provider,Session::get('role'));
-
-        Auth::login($authUser, true);
-
-        return redirect($this->redirectPath);
+        Session::flash('socialdata', $user);
+        Session::flash('provider', $provider);
+        return redirect('register/client');
     }
 
     /**
@@ -126,7 +151,7 @@ class AuthController extends Controller
      * @param $githubUser
      * @return User
      */
-    private function findOrCreateUser($userData,$provider,$role)
+    /*private function findOrCreateUser($userData,$provider,$role)
     {
         $socialname = explode(' ', $userData->name);
         $user = User::where('email', '=', $userData->email)->first();
@@ -169,5 +194,5 @@ class AuthController extends Controller
             $user->last_name = $userData->last_name;
             $user->save();
         }
-    }
+    }*/
 }

@@ -1,0 +1,1 @@
+405 Error. Method not allowed. The method specified in the Request Line is not allowed for the resource identified by the request. Please ensure that you have the proper MIME type set up for the resource you are requesting.
