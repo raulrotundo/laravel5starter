@@ -9,6 +9,10 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
 use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Models\Admin\Role;
+use Input;
+use Session;
+use Request;
 
 
 class AuthController extends Controller
@@ -45,8 +49,36 @@ class AuthController extends Controller
         return view('admin.auth.login');
     }
 
+    /**
+    * Show the application registration form.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function getRegister() {
-        return view('frontend.register.register');
+        $roles   = Role::all();
+        return view('frontend.register.register',compact('roles'));
+    }
+
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
+    public function postRegister(Request $request) {
+        echo '<pre>'; print_r($request); exit;
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException($request, $validator);
+        }
+
+        Auth::login($this->create($request->all()));
+
+        $role_id = Role::where('role_slug', '=', Input::get('role'))->first();
+        User::assignRole($role_id);   
+
+        return redirect($this->redirectPath());
     }
 
     /**
@@ -73,13 +105,15 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $User = User::create([
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'country_id' => 1,
             'active' => 1,
         ]);
+        return $User->assignRole($data['role_id']);
     }
 
     /**
@@ -106,11 +140,9 @@ class AuthController extends Controller
             return 'Something went wrong';
         }
 
-        $authUser = $this->findOrCreateUser($user,$provider);
-
-        Auth::login($authUser, true);
-
-        return redirect($this->redirectPath);
+        Session::flash('socialdata', $user);
+        Session::flash('provider', $provider);
+        return redirect('register/client');
     }
 
     /**
@@ -119,17 +151,24 @@ class AuthController extends Controller
      * @param $githubUser
      * @return User
      */
-    private function findOrCreateUser($userData,$provider)
+    /*private function findOrCreateUser($userData,$provider,$role)
     {
+        $socialname = explode(' ', $userData->name);
         $user = User::where('email', '=', $userData->email)->first();
         if(!$user) {
-            $user = User::create([
-                'first_name' => $userData->user['first_name'],
-                'last_name' => $userData->user['last_name'],
-                'email' => $userData->email,
-                'password' => bcrypt('secret'),
-                'active' => 1,
-            ]);
+            $role_id = Role::where('role_slug', '=', $role)->first();
+            //Create user auth except admin role
+            if ($role_id and $role_id->id<>1) {
+                $user = User::create([
+                    'first_name' => $socialname[0],
+                    'last_name' => $socialname[1],
+                    'email' => $userData->email,
+                    'password' => bcrypt(str_random(6)),
+                    'country_id' => 1, //at the moment we can assign Argentina as Default
+                    'active' => 1,
+                ]);
+                $user->assignRole($role_id);    
+            }            
         }
 
         $this->checkIfUserNeedsUpdating($userData, $user);
@@ -137,10 +176,11 @@ class AuthController extends Controller
     }
 
     public function checkIfUserNeedsUpdating($userData, $user) {
+        $socialname = explode(' ', $userData->name);
         $socialData = [
             'email' => $userData->email,
-            'first_name' => $userData->user['first_name'],
-            'last_name' => $userData->user['last_name'],
+            'first_name' => $socialname[0],
+            'last_name' => $socialname[1],
         ];
         $dbData = [
             'email' => $user->email,
@@ -154,5 +194,5 @@ class AuthController extends Controller
             $user->last_name = $userData->last_name;
             $user->save();
         }
-    }
+    }*/
 }

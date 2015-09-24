@@ -1,1 +1,1 @@
-The server has not found anything matching the Request Admin Template
+The server has not found anything matching the Request frontend Template

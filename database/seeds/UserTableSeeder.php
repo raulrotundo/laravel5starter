@@ -13,8 +13,7 @@ class UserTableSeeder extends Seeder
     {
         DB::table('users')->insert([
 		    [	
-		    	'first_name' => 'Raul',
-		    	'last_name' => 'Rotundo', 
+		    	'name' => 'Raul Rotundo',
 		    	'email'=>'rrotundo@albortech.com',
 		    	'address'=>'San Martin 991',
 		    	'phone'=>'1537711976',
@@ -28,8 +27,7 @@ class UserTableSeeder extends Seeder
             	'updated_at' => new \Carbon\Carbon(),
 	    	],
 			[	
-		    	'first_name' => 'Leonardo',
-		    	'last_name' => 'Rotundo', 
+		    	'name' => 'Leonardo Rotundo',
 		    	'email'=>'lrotundo@albortech.com',
 		    	'address'=>'San Martin 991',
 		    	'phone'=>'1537711976',
@@ -43,8 +41,7 @@ class UserTableSeeder extends Seeder
             	'updated_at' => new \Carbon\Carbon(),
 	    	],
 	    	[	
-		    	'first_name' => 'Marcos',
-		    	'last_name' => 'Colina', 
+		    	'name' => 'Marcos Colina',
 		    	'email'=>'mcolina@albortech.com',
 		    	'address'=>'San Martin 991',
 		    	'phone'=>'1537711976',
