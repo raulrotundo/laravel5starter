@@ -58,7 +58,7 @@
 				</div>
 			</div>
 		</div-->
-		<a href="/password/email">I forgot my password</a><br>
+		<a href="password/email">I forgot my password</a><br>
 		<a href="register" class="text-center">Register a new membership</a>
 	</div>
 </div>
