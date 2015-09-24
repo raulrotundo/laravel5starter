@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')	
+@extends('frontend.layouts.masterhome')	
 
 @include ('frontend.partials.header')		 
 

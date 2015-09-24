@@ -15,25 +15,25 @@
 					<a href="#page-top"></a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('/') !!}#services">Services</a>
+					<a class="page-scroll" href="#services">Services</a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('/') !!}#about">About</a>
+					<a class="page-scroll" href="#about">About</a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('/') !!}#team">Team</a>
+					<a class="page-scroll" href="#team">Team</a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('/') !!}#clients">Clients</a>
+					<a class="page-scroll" href="#clients">Clients</a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('/') !!}#contact">Contact</a>
+					<a class="page-scroll" href="#contact">Contact</a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('register') !!}">Register</a>
+					<a class="page-scroll" href="register">Register</a>
 				</li>
 				<li>
-					<a class="page-scroll" href="{!! url('login') !!}">Login</a>
+					<a class="page-scroll" href="login">Login</a>
 				</li>						
 			</ul>
 		</div>
