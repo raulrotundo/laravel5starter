@@ -154,7 +154,7 @@ class AuthController extends Controller
                 $Company = Companies::create($DataCompany);
 
                 //Assign a company to a user
-                $Company->assignUserCompany($User->id);
+                $User->assignCompany($Company->id);
             }
         }
         return $User;
