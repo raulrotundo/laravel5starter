@@ -31,6 +31,7 @@ class HomeController extends Controller
     }
 
     public function registerCompanyForm(){
-    	return view('frontend.register.company');
+    	$countries = Countries::all();
+        return view('frontend.register.company',compact('countries'));
     }
 }

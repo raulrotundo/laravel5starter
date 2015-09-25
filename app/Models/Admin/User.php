@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password', 'country_id'];
+    protected $fillable = ['name', 'avatar', 'email', 'password', 'country_id'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -96,6 +96,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\Models\Admin\Role');
     }
 
+    /**
+     * Many-To-Many Relationship Method for accessing the User->companies
+     *
+     * @return QueryBuilder Object
+     */
+    public function companies()
+    {
+        return $this->belongsToMany('App\Models\Admin\Companies');
+    }
+
     public function hasRole($name)
     {
         foreach($this->roles as $role)
@@ -107,6 +117,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function assignRole($role)
     {
         return $this->roles()->attach($role);
+    }
+
+    public function assignCompany($company)
+    {
+        return $this->companies()->attach($company);
     }
  
     public function removeRole($role)

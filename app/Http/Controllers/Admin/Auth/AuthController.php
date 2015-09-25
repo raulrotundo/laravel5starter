@@ -10,9 +10,11 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Auth;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use App\Models\Admin\Role;
+use App\Models\Admin\SocialData;
+use App\Models\Admin\Companies;
 use Input;
 use Session;
-use Request;
+use App\Http\Requests\AuthRequest;
 
 
 class AuthController extends Controller
@@ -65,18 +67,14 @@ class AuthController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function postRegister(Request $request) {
-        echo '<pre>'; print_r($request); exit;
+    public function postRegister(AuthRequest $request) {
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
             $this->throwValidationException($request, $validator);
         }
 
-        Auth::login($this->create($request->all()));
-
-        $role_id = Role::where('role_slug', '=', Input::get('role'))->first();
-        User::assignRole($role_id);   
+        Auth::login($this->create($request->all()));         
 
         return redirect($this->redirectPath());
     }
@@ -105,15 +103,61 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $User = User::create([
-            'name'       => $data['name'],
-            'email'      => $data['email'],
-            'password'   => bcrypt($data['password']),
-            'country_id' => $data['country_id'],
-            'active'     => 1,
-        ]);
-        //return $User->assignRole($data['role_id']);
-        return $User->assignRole(3);
+        $role_id = Role::where('role_slug', '=', $data['role'])->first();
+        //Create user auth except admin role
+        if ($role_id and $role_id->id<>1) {
+            $socialdata = Session::get('socialdata'); 
+            $provider   = Session::get('provider');
+
+            $DataUser = [
+                'name'       => $data['name'],                
+                'email'      => $data['email'],
+                'password'   => bcrypt($data['password']),
+                'country_id' => $data['country_id'],
+                'active'     => 1,
+            ];
+
+            //Add social avatar to the user
+            if (isset($socialdata->avatar)){
+                $DataUser['avatar'] = $socialdata->avatar;
+            }            
+
+            //User create
+            $User = User::create($DataUser);            
+
+            //User assign role
+            $User->assignRole($role_id);            
+
+            //Save social data if is present
+            if ($socialdata and $provider){
+                SocialData::create([
+                    'user_id'     => $User->id,
+                    'provider'    => $provider,
+                    'social_data' => serialize($socialdata)
+                ]);    
+            }
+
+            //Company user role
+            if ($role_id == '2'){
+                $DataCompany = [
+                    'name'       => $data['company_name'],
+                    'address'    => $data['company_address'],
+                    'phone'      => $data['company_phone'],
+                    'zipcode'    => $data['company_zipcode'],
+                    'email'      => $data['company_email'],
+                    'website'    => $data['company_website'],
+                    'city'       => $data['company_city'],
+                    'country_id' => $data['company_country_id']
+                ];
+
+                //Company create
+                $Company = Companies::create($DataCompany);
+
+                //Assign a company to a user
+                $Company->assignUserCompany($User->id);
+            }
+        }
+        return $User;
     }
 
     /**
@@ -144,55 +188,4 @@ class AuthController extends Controller
         Session::flash('provider', $provider);
         return redirect('register/client');
     }
-
-    /**
-     * Return user if exists; create and return if doesn't
-     *
-     * @param $githubUser
-     * @return User
-     */
-    /*private function findOrCreateUser($userData,$provider,$role)
-    {
-        $socialname = explode(' ', $userData->name);
-        $user = User::where('email', '=', $userData->email)->first();
-        if(!$user) {
-            $role_id = Role::where('role_slug', '=', $role)->first();
-            //Create user auth except admin role
-            if ($role_id and $role_id->id<>1) {
-                $user = User::create([
-                    'first_name' => $socialname[0],
-                    'last_name' => $socialname[1],
-                    'email' => $userData->email,
-                    'password' => bcrypt(str_random(6)),
-                    'country_id' => 1, //at the moment we can assign Argentina as Default
-                    'active' => 1,
-                ]);
-                $user->assignRole($role_id);    
-            }            
-        }
-
-        $this->checkIfUserNeedsUpdating($userData, $user);
-        return $user;
-    }
-
-    public function checkIfUserNeedsUpdating($userData, $user) {
-        $socialname = explode(' ', $userData->name);
-        $socialData = [
-            'email' => $userData->email,
-            'first_name' => $socialname[0],
-            'last_name' => $socialname[1],
-        ];
-        $dbData = [
-            'email' => $user->email,
-            'first_name' => $user->first_name,
-            'last_name' => $user->last_name,
-        ];
-
-        if (!empty(array_diff($socialData, $dbData))) {
-            $user->email = $userData->email;
-            $user->first_name = $userData->first_name;
-            $user->last_name = $userData->last_name;
-            $user->save();
-        }
-    }*/
 }

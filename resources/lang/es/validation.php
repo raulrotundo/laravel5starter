@@ -87,8 +87,8 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'country_id' => [
+            'required' => 'El campo país es requerido.',
         ],
     ],
 
