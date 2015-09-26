@@ -1,10 +1,11 @@
 $(document).ready(function(){
 	var oTable = null;
-	var table = $('#permissions_table');
+	var ajxtable = $('[data-ajxtable]').attr('data-ajxtable');
+	var table = $('#'+ ajxtable +'_table');
 	
 	oTable = $(table).dataTable({
 		"processing": true,        
-		"ajax" : 'permissions_show',
+		"ajax" : ajxtable +'_show',
 		"lenghtMenu" : [[5, 10, 15, -1],[5, 10, 15, 'All']]
 	});	
  

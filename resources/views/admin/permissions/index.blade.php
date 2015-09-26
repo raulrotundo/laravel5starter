@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 @section('title', 'Permissions')
 @section('content')
-	<div class="box-body">		
+	<div class="box-body" data-ajxtable="permissions">		
 		<table id="permissions_table" class="table table-striped table-bordered dt-responsive nowrap">
 			<thead>
 				<tr>
@@ -17,5 +17,5 @@
 	@include('admin.partials.master.deletemodal')
 @endsection
 @section('javascript')
-    <script src="{{ asset ("public/assets/admin/js/permissions.js") }}"></script>
+    <script src="{{ asset ("public/assets/admin/js/table.grid.js") }}"></script>
 @endsection
