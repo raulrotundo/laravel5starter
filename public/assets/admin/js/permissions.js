@@ -1,10 +1,10 @@
 $(document).ready(function(){
 	var oTable = null;
-	var table = $('#roles_table');
+	var table = $('#permissions_table');
 	
 	oTable = $(table).dataTable({
 		"processing": true,        
-		"ajax" : 'roles_show',
+		"ajax" : 'permissions_show',
 		"lenghtMenu" : [[5, 10, 15, -1],[5, 10, 15, 'All']]
 	});	
  
