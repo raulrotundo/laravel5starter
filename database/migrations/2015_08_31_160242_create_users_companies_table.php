@@ -12,13 +12,13 @@ class CreateUsersCompaniesTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_companies', function(Blueprint $table)
+        Schema::create('companies_user', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('company_id')->unsigned()->index();
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->integer('companies_id')->unsigned()->index();
+            $table->foreign('companies_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();
         });
     }

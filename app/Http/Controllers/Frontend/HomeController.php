@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Countries;
+use Input;
+use Response;
+use DB;
 
 class HomeController extends Controller
 {
@@ -33,5 +36,21 @@ class HomeController extends Controller
     public function registerCompanyForm(){
     	$countries = Countries::all();
         return view('frontend.register.company',compact('countries'));
+    }
+
+    public function searchcompany(){
+        $term = Input::get('term');
+        
+        $results = array();
+        
+        $queries = DB::table('companies')
+        ->where('name', 'LIKE', '%'.$term.'%')
+        ->take(5)->get();
+        
+        foreach ($queries as $query)
+        {
+            $results[] = [ 'id' => $query->id, 'value' => $query->name ];
+        }
+        return Response::json($results);
     }
 }

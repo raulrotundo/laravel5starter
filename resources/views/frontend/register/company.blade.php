@@ -48,7 +48,7 @@
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
-							<input type="passsword" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="{{ trans('register.confirm_password') }}" required="" data-validation-required-message="Please enter your {{ trans('register.confirm_password') }}.">
+							<input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="{{ trans('register.confirm_password') }}" required="" data-validation-required-message="Please enter your {{ trans('register.confirm_password') }}.">
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
@@ -72,7 +72,7 @@
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="company_phone" id="company_phone" placeholder="{{ trans('register.company_phone') }}" required="" data-validation-required-message="Please enter your {{ trans('register.company_phone') }}.">
+							<input type="text" class="form-control" name="company_phone" id="company_phone" placeholder="{{ trans('register.company_phone') }}">
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
@@ -84,7 +84,7 @@
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
-							<input type="text" class="form-control" name="company_website" id="company_website" placeholder="{{ trans('register.company_website') }}" required="" data-validation-required-message="Please enter your {{ trans('register.company_website') }}.">
+							<input type="text" class="form-control" name="company_website" id="company_website" placeholder="{{ trans('register.company_website') }}">
 							<p class="help-block text-danger"></p>
 						</div>
 						<div class="form-group">
@@ -100,15 +100,20 @@
 							</select>
 							<p class="help-block text-danger"></p>
 						</div>
-						<div class="form-group text-center">
-							<div class="checkbox icheck">
-								<label>
-									<input type="checkbox"> I agree to the <a href="#">terms</a>
-								</label>
-							</div>						
+						<div class="form-group">
+							<div class="col-md-4">
+								<div class="checkbox icheck">
+									<label>
+										<input type="checkbox"> I agree to the <a href="#">terms</a>
+									</label>
+								</div>
+							</div>
+							<div class="col-md-8 text-right">
+								{!! Form::submit(trans('register.register_button'), array('class' => 'btn btn-xl')) !!}			
+							</div>
 						</div>
 					</fieldset>
-					{!! Form::submit(trans('register.register_button'), array('class' => 'btn btn-xl')) !!}
+					
 				</div>
 			</div>
 		{!! Form::close() !!}
