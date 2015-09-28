@@ -1,5 +1,5 @@
-	<script src="{{ asset("public/assets/frontend/jquery/jquery.js")}}"></script>
-	<script src="{{ asset("public/assets/frontend/jquery/jquery-ui.min.js")}}"></script>
+	<script src="{{ asset("public/assets/common/jquery/jquery.js")}}"></script>
+	<script src="{{ asset("public/assets/common/jquery/jquery-ui.min.js")}}"></script>
 	<script src="{{ asset("public/assets/frontend/template/js/bootstrap.min.js")}}"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="{{ asset("public/assets/frontend/template/js/classie.js")}}"></script>

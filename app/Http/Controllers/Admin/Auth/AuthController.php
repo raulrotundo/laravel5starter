@@ -12,6 +12,7 @@ use Laravel\Socialite\Contracts\Factory as Socialite;
 use App\Models\Admin\Role;
 use App\Models\Admin\SocialData;
 use App\Models\Admin\Companies;
+use App\Models\Admin\Countries;
 use Input;
 use Session;
 use App\Http\Requests\AuthRequest;
@@ -57,8 +58,8 @@ class AuthController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function getRegister() {
-        $roles   = Role::all();
-        return view('frontend.register.register',compact('roles'));
+        $countries = Countries::all();
+        return view('frontend.register.index',compact('countries'));
     }
 
     /**
@@ -86,25 +87,13 @@ class AuthController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
-    {
-        $DataValidator = [
+    {        
+        return Validator::make($data, [
             'name'       => 'required|max:255',
             'email'      => 'required|email|max:255|unique:users',
             'password'   => 'required|confirmed|min:6',
             'country_id' => 'required',
-        ];
-        
-        if ($data['role']=='company'){
-            $DataValidator = array_merge($DataValidator,[
-                'company_name'       => 'required|max:255|unique:companies,name',
-                'company_address'    => 'required|max:255',
-                'company_zipcode'    => 'required|max:10',
-                'company_email'      => 'required|email|max:255',
-                'company_city'       => 'required|max:255',
-                'company_country_id' => 'required'
-            ]);
-        }
-        return Validator::make($data, $DataValidator);
+        ]);
     }
 
     /**
@@ -115,57 +104,36 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        $role_id = Role::where('role_slug', '=', $data['role'])->first();
         //Create user auth except admin role
-        if ($role_id and $role_id->id<>1) {
-            $socialdata = Session::get('socialdata'); 
-            $provider   = Session::get('provider');
+        $socialdata = Session::get('socialdata'); 
+        $provider   = Session::get('provider');
 
-            $DataUser = [
-                'name'       => $data['name'],                
-                'email'      => $data['email'],
-                'password'   => bcrypt($data['password']),
-                'country_id' => $data['country_id'],
-                'active'     => 1,
-            ];
+        $DataUser = [
+            'name'       => $data['name'],                
+            'email'      => $data['email'],
+            'password'   => bcrypt($data['password']),
+            'country_id' => $data['country_id'],
+            'active'     => 1,
+        ];
 
-            //Add social avatar to the user
-            if (isset($socialdata->avatar)){
-                $DataUser['avatar'] = $socialdata->avatar;
-            }            
+        //Add social avatar to the user
+        if (isset($socialdata->avatar)){
+            $DataUser['avatar'] = $socialdata->avatar;
+        }            
 
-            //User create
-            $User = User::create($DataUser);            
+        //User create
+        $User = User::create($DataUser);            
 
-            //User assign role
-            $User->assignRole($role_id);            
+        //Client role by default
+        $User->assignRole(3);            
 
-            //Save social data if is present
-            if ($socialdata and $provider){
-                SocialData::create([
-                    'user_id'     => $User->id,
-                    'provider'    => $provider,
-                    'social_data' => serialize($socialdata)
-                ]);    
-            }
-
-            //Company user role
-            if ($role_id->id == 2){
-                //Company create
-                $Company = Companies::create([
-                    'name'       => $data['company_name'],
-                    'address'    => $data['company_address'],
-                    'phone'      => $data['company_phone'],
-                    'zipcode'    => $data['company_zipcode'],
-                    'email'      => $data['company_email'],
-                    'website'    => $data['company_website'],
-                    'city'       => $data['company_city'],
-                    'country_id' => $data['company_country_id']
-                ]);
-
-                //Assign a company to a user
-                $User->assignCompany($Company->id);
-            }
+        //Save social data if is present
+        if ($socialdata and $provider){
+            SocialData::create([
+                'user_id'     => $User->id,
+                'provider'    => $provider,
+                'social_data' => serialize($socialdata)
+            ]);    
         }
         return $User;
     }
@@ -196,6 +164,6 @@ class AuthController extends Controller
 
         Session::flash('socialdata', $user);
         Session::flash('provider', $provider);
-        return redirect('register/client');
+        return redirect('register');
     }
 }
