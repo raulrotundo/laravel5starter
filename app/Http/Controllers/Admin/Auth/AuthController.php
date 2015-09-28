@@ -87,12 +87,24 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $DataValidator = [
             'name'       => 'required|max:255',
             'email'      => 'required|email|max:255|unique:users',
             'password'   => 'required|confirmed|min:6',
             'country_id' => 'required',
-        ]);
+        ];
+        
+        if ($data['role']=='company'){
+            $DataValidator = array_merge($DataValidator,[
+                'company_name'       => 'required|max:255|unique:companies,name',
+                'company_address'    => 'required|max:255',
+                'company_zipcode'    => 'required|max:10',
+                'company_email'      => 'required|email|max:255',
+                'company_city'       => 'required|max:255',
+                'company_country_id' => 'required'
+            ]);
+        }
+        return Validator::make($data, $DataValidator);
     }
 
     /**
@@ -138,8 +150,9 @@ class AuthController extends Controller
             }
 
             //Company user role
-            if ($role_id == '2'){
-                $DataCompany = [
+            if ($role_id->id == 2){
+                //Company create
+                $Company = Companies::create([
                     'name'       => $data['company_name'],
                     'address'    => $data['company_address'],
                     'phone'      => $data['company_phone'],
@@ -148,10 +161,7 @@ class AuthController extends Controller
                     'website'    => $data['company_website'],
                     'city'       => $data['company_city'],
                     'country_id' => $data['company_country_id']
-                ];
-
-                //Company create
-                $Company = Companies::create($DataCompany);
+                ]);
 
                 //Assign a company to a user
                 $User->assignCompany($Company->id);

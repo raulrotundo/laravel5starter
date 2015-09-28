@@ -33,12 +33,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
-    /*
-    |--------------------------------------------------------------------------
-    | ACL Methods
-    |--------------------------------------------------------------------------
-    */
-
     /**
      * Checks a Permission
      *
@@ -79,12 +73,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return array_fetch($permission, 'permission_slug');
         }, $permissions)));
     }
-
-    /*
-    |--------------------------------------------------------------------------
-    | Relationship Methods
-    |--------------------------------------------------------------------------
-    */
    
     /**
      * Many-To-Many Relationship Method for accessing the User->roles

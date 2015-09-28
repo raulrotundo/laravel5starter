@@ -5,6 +5,7 @@ Route::group(['namespace' => 'Frontend'], function(){
 	Route::get('register', 'HomeController@registerPage');
 	Route::get('register/client', 'HomeController@registerClientForm');
 	Route::get('register/company', 'HomeController@registerCompanyForm');
+	Route::get('register/searchcompany', 'HomeController@searchcompany');
 });
 
 //Redirect Login route

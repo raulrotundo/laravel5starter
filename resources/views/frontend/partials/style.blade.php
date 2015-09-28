@@ -1,4 +1,6 @@
-
+		<!-- JQuery UI -->
+		<link href="{{ asset("public/assets/frontend/jquery/jquery-ui.min.css")}}" rel="stylesheet">		
+		
 		<!-- Bootstrap Core CSS -->
 		<link href="{{ asset("public/assets/frontend/template/css/bootstrap.min.css")}}" rel="stylesheet">
 
