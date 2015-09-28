@@ -24,4 +24,5 @@
 {!! Form::close() !!}
 @section('javascript')
     <script src="{{ asset ("public/assets/admin/js/permissions.js") }}"></script>
+    <script src="{{ asset ("public/assets/admin/js/table.grid.js") }}"></script>
 @endsection
