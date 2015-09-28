@@ -35,7 +35,20 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		            'destroy' => 'admin.roles.destroy',
 		        ],
 		    ]);
-		    Route::get('show', array('as' => 'show', 'uses' => 'RoleController@show'));
+		    Route::get('roles_show', array('as' => 'show', 'uses' => 'RoleController@show'));
+			//permissions routes
+			Route::resource('permissions', 'PermissionController', [
+		        'names' => [
+		            'index' => 'admin.permissions.index',
+		            'create' => 'admin.permissions.create',
+		            'store' => 'admin.permissions.store',
+		            'show' => 'admin.permissions.show',
+		            'update' => 'admin.permissions.update',
+		            'edit' => 'admin.permissions.edit',
+		            'destroy' => 'admin.permissions.destroy',
+		        ],
+		    ]);
+		    Route::get('permissions_show', array('as' => 'show', 'uses' => 'PermissionController@show'));
 	    });
 	});
 });

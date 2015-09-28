@@ -13,6 +13,19 @@ class Permission extends Model
      */
     protected $table = 'permissions';
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['permission_title','permission_slug','permission_description'];
+
+    /**
+    * Timestamps fields settings, use true if you need updated_at and create_at
+    * @var string
+    */
+    public $timestamps = false;
+
     /*
     |--------------------------------------------------------------------------
     | Relationship Methods

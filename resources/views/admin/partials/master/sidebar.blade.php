@@ -32,7 +32,13 @@
                             <li><a href="{!! route('admin.roles.index') !!}"><i class="fa fa-circle-o"></i>Show</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-lock"></i>Permissions</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-lock"></i>Permissions<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{!! route('admin.permissions.create') !!}"><i class="fa fa-circle-o"></i>Create</a></li>
+                            <li><a href="{!! route('admin.permissions.index') !!}"><i class="fa fa-circle-o"></i>Show</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#"><i class="fa fa-user-plus"></i>Assign Permissions</a></li>
                 </ul>
             </li>
