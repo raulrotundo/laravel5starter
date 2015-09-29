@@ -1,4 +1,4 @@
-    <script src="{{ asset ("public/assets/admin/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js") }}"></script>
+    <script src="{{ asset ("public/assets/common/jquery/jquery.js") }}"></script>
     <script src="{{ asset ("public/assets/admin/admin-lte/bootstrap/js/bootstrap.min.js") }}"></script>
     <script src="{{ asset ("public/assets/admin/admin-lte/plugins/iCheck/icheck.min.js") }}"></script>
     <script>
