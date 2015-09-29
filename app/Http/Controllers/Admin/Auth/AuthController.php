@@ -133,8 +133,9 @@ class AuthController extends Controller
                 'user_id'     => $User->id,
                 'provider'    => $provider,
                 'social_data' => serialize($socialdata)
-            ]);    
+            ]);
         }
+        
         return $User;
     }
 
