@@ -1,12 +1,12 @@
 @extends('admin.layouts.master')
-@section('title', 'Roles')
+@section('title', 'Permissions')
 @section('content')
-	<div class="box-body" data-ajxtable="roles">		
-		<table id="roles_table" class="table table-striped table-bordered dt-responsive nowrap">
+	<div class="box-body" data-ajxtable="permissions">		
+		<table id="permissions_table" class="table table-striped table-bordered dt-responsive nowrap">
 			<thead>
 				<tr>
 					<th>Id</th>
-					<th>Role</th>
+					<th>Permission</th>
 					<th>Slug</th>
 					<th>Actions</th>
 				</tr>
