@@ -6,7 +6,7 @@
 
 <div class="login-box">
 	<div class="login-logo">
-		<a href="#"><b>Admin</b>LTE</a>
+		{!! link_to('/', $title = 'AdminLTE') !!}
 	</div>
 	<div class="login-box-body">
 		<p class="login-box-msg">Sign in to start your session</p>
