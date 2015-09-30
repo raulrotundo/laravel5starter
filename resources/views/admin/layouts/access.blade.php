@@ -9,5 +9,6 @@
 <body class="hold-transition login-page">
     @yield('content')    
     @include('admin.partials.access.script')
+    @yield('javascript')
 </body>
 </html>

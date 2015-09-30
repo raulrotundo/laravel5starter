@@ -58,8 +58,9 @@ class AuthController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function getRegister() {
-        $countries = Countries::all();
-        return view('frontend.register.index',compact('countries'));
+        $countries = ['0'=>'Select a Country'];
+        $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
+        return view('admin.auth.register',compact('countries'));
     }
 
     /**
@@ -93,6 +94,7 @@ class AuthController extends Controller
             'email'      => 'required|email|max:255|unique:users',
             'password'   => 'required|confirmed|min:6',
             'country_id' => 'required',
+            'agree'      => 'required'
         ]);
     }
 
