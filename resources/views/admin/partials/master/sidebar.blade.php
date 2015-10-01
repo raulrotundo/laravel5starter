@@ -5,14 +5,10 @@
     <section class="sidebar">
 
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">            
+        <div class="user-panel">
             <div class="pull-left image">
-            @if (Auth::user()->avatar)
-                <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="{{ Auth::user()->name }}" />
-                @else 
-                &nbsp;
-            @endif
-            </div>            
+                <img src="{{ asset("/public/assets/admin/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+            </div>
             <div class="pull-left info">
                 <p>{!! Auth::user()->name !!}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
@@ -43,7 +39,13 @@
                             <li><a href="{!! route('admin.permissions.index') !!}"><i class="fa fa-circle-o"></i>Show</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-user-plus"></i>Assign Permissions</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-user-plus"></i>Assign Permissions<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{!! route('admin.permissionroles.create') !!}"><i class="fa fa-circle-o"></i>Create</a></li>
+                            <li><a href="{!! route('admin.permissionroles.index') !!}"><i class="fa fa-circle-o"></i>Show</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
         </ul>
