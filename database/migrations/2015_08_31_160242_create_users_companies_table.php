@@ -30,6 +30,6 @@ class CreateUsersCompaniesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users_companies');
+        Schema::drop('companies_user');
     }
 }

@@ -28,7 +28,14 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu menu-open" style="display: block;">
-                    <li><a href="#"><i class="fa fa-user"></i>Users</a></li>
+                    <li>
+                        <a href="#"><i class="fa fa-user"></i>Users<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+                            <li><a href="{!! route('admin.users.create') !!}"><i class="fa fa-circle-o"></i>Create</a></li>
+                            <li><a href="{!! route('admin.users.index') !!}"><i class="fa fa-circle-o"></i>Show</a></li>
+                        </ul>
+                    </li>
+                    <li>
                     <li>
                         <a href="#"><i class="fa fa-users"></i>Roles<i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">

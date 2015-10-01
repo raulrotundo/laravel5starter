@@ -46,6 +46,19 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		        ],
 		    ]);
 		    Route::get('permissions_show', array('as' => 'show', 'uses' => 'PermissionController@show'));
+		    //User routes
+			Route::resource('users', 'UserController', [
+		        'names' => [
+		            'index' => 'admin.users.index',
+		            'create' => 'admin.users.create',
+		            'store' => 'admin.users.store',
+		            'show' => 'admin.users.show',
+		            'update' => 'admin.users.update',
+		            'edit' => 'admin.users.edit',
+		            'destroy' => 'admin.users.destroy',
+		        ],
+		    ]);
+		    Route::get('users_show', array('as' => 'show', 'uses' => 'UserController@show'));
 	    });
 	});
 });
