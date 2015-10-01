@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Countries;
 
 class HomeController extends Controller
 {
@@ -19,18 +18,5 @@ class HomeController extends Controller
     public function index()
     {
         return view('frontend.home');
-    }
-
-    public function registerPage(){
-    	return view('frontend.register.index');
-    }
-
-    public function registerClientForm(){
-        $countries = Countries::all();
-        return view('frontend.register.client',compact('countries'));
-    }
-
-    public function registerCompanyForm(){
-    	return view('frontend.register.company');
     }
 }

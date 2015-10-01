@@ -2,9 +2,6 @@
 //Home Front-end route
 Route::group(['namespace' => 'Frontend'], function(){
 	Route::get('/', ['uses' => 'HomeController@index']);
-	Route::get('register', 'HomeController@registerPage');
-	Route::get('register/client', 'HomeController@registerClientForm');
-	Route::get('register/company', 'HomeController@registerCompanyForm');
 });
 
 //Redirect Login route
@@ -56,7 +53,8 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 Route::group(['namespace' => 'Admin\Auth'], function(){
 
 	// Registration routes	
-	Route::post('register/registration', 'AuthController@postRegister');
+	Route::get('register', 'AuthController@getRegister');
+	Route::post('register', 'AuthController@postRegister');
 
 	// Authentication routes
 	Route::get('login', 'AuthController@getLogin');
