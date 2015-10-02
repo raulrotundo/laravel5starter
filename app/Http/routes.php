@@ -2,9 +2,6 @@
 //Home Front-end route
 Route::group(['namespace' => 'Frontend'], function(){
 	Route::get('/', ['uses' => 'HomeController@index']);
-	Route::get('register', 'HomeController@registerPage');
-	Route::get('register/client', 'HomeController@registerClientForm');
-	Route::get('register/company', 'HomeController@registerCompanyForm');
 });
 
 //Redirect Login route
@@ -49,19 +46,6 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		        ],
 		    ]);
 		    Route::get('permissions_show', array('as' => 'show', 'uses' => 'PermissionController@show'));
-			//permissionroles routes
-			Route::resource('permissionroles', 'PermissionRoleController', [
-		        'names' => [
-		            'index' => 'admin.permissionroles.index',
-		            'create' => 'admin.permissionroles.create',
-		            'store' => 'admin.permissionroles.store',
-		            'show' => 'admin.permissionroles.show',
-		            'update' => 'admin.permissionroles.update',
-		            'edit' => 'admin.permissionroles.edit',
-		            'destroy' => 'admin.permissionroles.destroy',
-		        ],
-		    ]);
-		    Route::get('permissionroles_show', array('as' => 'show', 'uses' => 'PermissionRoleController@show'));
 	    });
 	});
 });
@@ -69,7 +53,8 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 Route::group(['namespace' => 'Admin\Auth'], function(){
 
 	// Registration routes	
-	Route::post('register/registration', 'AuthController@postRegister');
+	Route::get('register', 'AuthController@getRegister');
+	Route::post('register', 'AuthController@postRegister');
 
 	// Authentication routes
 	Route::get('login', 'AuthController@getLogin');
