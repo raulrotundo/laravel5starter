@@ -86,6 +86,41 @@ class PermissionsTableSeeder extends Seeder
 		    	'permission_title' => 'Delete Permissions',
 		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionController@destroy', 
 		    	'permission_description'=>'Delete Permissions',
+	    	],
+	    	[
+		    	'permission_title' => 'Index Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@index', 
+		    	'permission_description'=>'List all records',
+	    	],
+	    	[
+		    	'permission_title' => 'Create Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@create', 
+		    	'permission_description'=>'Create Users',
+	    	],
+	    	[
+		    	'permission_title' => 'Save Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@store', 
+		    	'permission_description'=>'Save Users',
+	    	],
+	    	[
+		    	'permission_title' => 'Show Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@show', 
+		    	'permission_description'=>'Show Users',
+	    	],
+	    	[
+		    	'permission_title' => 'Edit Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@edit', 
+		    	'permission_description'=>'Edit Users',
+	    	],
+	    	[
+		    	'permission_title' => 'Update Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@update', 
+		    	'permission_description'=>'Update Users',
+	    	],
+	    	[
+		    	'permission_title' => 'Delete Users',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@destroy', 
+		    	'permission_description'=>'Delete Users',
 	    	]
     	]);
     }

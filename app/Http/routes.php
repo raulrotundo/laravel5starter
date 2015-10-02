@@ -33,6 +33,7 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		        ],
 		    ]);
 		    Route::get('roles_show', array('as' => 'show', 'uses' => 'RoleController@show'));
+		    
 			//permissions routes
 			Route::resource('permissions', 'PermissionController', [
 		        'names' => [
@@ -46,6 +47,7 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		        ],
 		    ]);
 		    Route::get('permissions_show', array('as' => 'show', 'uses' => 'PermissionController@show'));
+
 			//permissions assignment routes
 			Route::resource('permissionroles', 'PermissionRoleController', [
 		        'names' => [
@@ -59,6 +61,20 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		        ],
 		    ]);
 		    Route::get('permissionroles_show', array('as' => 'show', 'uses' => 'PermissionRoleController@show'));
+
+		    //User routes
+			Route::resource('users', 'UserController', [
+		        'names' => [
+		            'index' => 'admin.users.index',
+		            'create' => 'admin.users.create',
+		            'store' => 'admin.users.store',
+		            'show' => 'admin.users.show',
+		            'update' => 'admin.users.update',
+		            'edit' => 'admin.users.edit',
+		            'destroy' => 'admin.users.destroy',
+		        ],
+		    ]);
+		    Route::get('users_show', array('as' => 'show', 'uses' => 'UserController@show'));
 	    });
 	});
 });
