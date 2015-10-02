@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Permission assignments')
+@section('title', 'Permission assignment')
 @section('content')
 	<div class="box-body" data-ajxtable="permissionroles">		
 		<table id="permissionroles_table" class="table table-striped table-bordered dt-responsive nowrap">

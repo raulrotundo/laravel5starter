@@ -88,6 +88,41 @@ class PermissionsTableSeeder extends Seeder
 		    	'permission_description'=>'Delete Permissions',
 	    	],
 	    	[
+		    	'permission_title' => 'Index Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@index', 
+		    	'permission_description'=>'List all records',
+	    	],
+	    	[
+		    	'permission_title' => 'Create Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@create', 
+		    	'permission_description'=>'Create Permissions assignment',
+	    	],
+	    	[
+		    	'permission_title' => 'Save Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@store', 
+		    	'permission_description'=>'Save Permissions assignment',
+	    	],
+	    	[
+		    	'permission_title' => 'Show Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@show', 
+		    	'permission_description'=>'Show Permissions assignment',
+	    	],
+	    	[
+		    	'permission_title' => 'Edit Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@edit', 
+		    	'permission_description'=>'Edit Permissions assignment',
+	    	],
+	    	[
+		    	'permission_title' => 'Update Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@update', 
+		    	'permission_description'=>'Update Permissions assignment',
+	    	],
+	    	[
+		    	'permission_title' => 'Delete Permissions assignment',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\PermissionRoleController@destroy', 
+		    	'permission_description'=>'Delete Permissions assignment',
+	    	],
+	    	[
 		    	'permission_title' => 'Index Users',
 		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@index', 
 		    	'permission_description'=>'List all records',
