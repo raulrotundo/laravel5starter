@@ -3,6 +3,8 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Admin\Role;
+use App\Models\Admin\Permission;
 
 class PermissionRole extends Model
 {
@@ -39,11 +41,20 @@ class PermissionRole extends Model
      */
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Admin\Role', $this->table);
+        return $this->belongsToMany('App\Models\Admin\Role', $this->table, 'id');
     }
 
     public function permissions()
     {
-        return $this->belongsToMany('App\Models\Admin\Permission');
+        return $this->belongsToMany('App\Models\Admin\Permission', $this->table, 'id');
+    }
+
+    public function listPermissions()
+    {
+        return ['' => 'Select permission'] + Permission::lists('permission_title', 'id')->toArray();
+    }
+    public function listRoles()
+    {
+        return ['' => 'Select role'] + Role::lists('role_title', 'id')->toArray();
     }
 }

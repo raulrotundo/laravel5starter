@@ -31,9 +31,11 @@ class PermissionRoleController extends Controller
      */
     public function create()
     {
-        $permission_role   = new PermissionRole;
-        $route  = 'admin.permissionroles.store';
-        return View('admin.permissionroles.create')->with(compact('permission_role', 'route'));
+        $permission_role = new PermissionRole;
+        $list_roles = $permission_role->listRoles();
+        $list_permissions = $permission_role->listPermissions();
+        $route = 'admin.permissionroles.store';
+        return View('admin.permissionroles.create')->with(compact('permission_role','list_roles','list_permissions','route'));
     }
 
     /**
@@ -60,11 +62,12 @@ class PermissionRoleController extends Controller
     public function show()
     {       
         $permission_role = PermissionRole::all();
-        //return var_dump($permission_role);exit();
         return Datatable::collection($permission_role)
         ->showColumns('id', 'role_id', 'permission_id')
         ->searchColumns('id', 'role_id', 'permission_id')
         ->orderColumns('id', 'role_id', 'permission_id')
+        ->addColumn('role_id',function($model){ return $model->roles[0]->role_title; })
+        ->addColumn('permission_id',function($model){ return $model->permissions[0]->permission_title; })
         ->addColumn('Actions',function($model){
             return '<a href="permissionroles/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> Edit</a>&nbsp;&nbsp;
                     <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> Delete</a>';
@@ -81,8 +84,10 @@ class PermissionRoleController extends Controller
     public function edit($id)
     {
         $permission_role   = PermissionRole::find($id);
+        $list_roles = $permission_role->listRoles();
+        $list_permissions = $permission_role->listPermissions();
         $action = 'admin.permissionroles.update';
-        return View('admin.permissionroles.edit', compact('permission_role','action'));
+        return View('admin.permissionroles.edit', compact('permission_role','list_roles','list_permissions','action'));
     }
 
     /**

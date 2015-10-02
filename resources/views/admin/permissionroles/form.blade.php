@@ -7,11 +7,11 @@
 	<div class="box-body">
 		<div class="form-group">
 			{!! Form::label('role_id', 'Role:', ['class' => 'control-label']) !!}
-			{!! Form::text('role_id', null, ['class' => 'form-control','placeholder' => 'Enter Role']) !!}
+			{!! Form::select('role_id', $list_roles, $permission_role->role_id, ['class' => 'form-control']) !!}
 		</div>
 		<div class="form-group">
 			{!! Form::label('permission_id', 'Permission:', ['class' => 'control-label']) !!}
-			{!! Form::text('permission_id', null, ['class' => 'form-control','placeholder' => 'Enter Permission']) !!}
+			{!! Form::select('permission_id', $list_permissions, $permission_role->permission_id, ['class' => 'form-control']) !!}
 		</div>
 	</div>
 	<div class="box-footer">
