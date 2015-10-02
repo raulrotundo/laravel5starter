@@ -23,6 +23,5 @@
 	</div>
 {!! Form::close() !!}
 @section('javascript')
-    <script src="{{ asset ("public/assets/admin/js/roles.js") }}"></script>
     <script src="{{ asset ("public/assets/admin/js/table.grid.js") }}"></script>
 @endsection
