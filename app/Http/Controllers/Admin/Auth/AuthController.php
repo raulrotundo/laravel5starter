@@ -124,7 +124,7 @@ class AuthController extends Controller
         }            
 
         //User create
-        $User = User::create($DataUser);            
+        $User = User::create($DataUser);
 
         //Client role by default
         $User->assignRole(3);            
