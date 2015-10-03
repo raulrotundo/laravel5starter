@@ -11,6 +11,7 @@ use App\Models\Admin\Countries;
 use Session;
 use Datatable;
 use URL;
+use Image;
 
 class UserController extends Controller
 {
@@ -51,9 +52,28 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $input = $request->all();
+        $input = $request->all();        
         $user  = User::create($input); //Create user
-        $user->roles()->sync($input['roles']); //Assign roles to user
+        
+        if (isset($input['roles']))
+            $user->roles()->sync($input['roles']); //Assign roles to user
+
+        //Upload avatar picture
+        if (isset($input['avatar'])) {
+            $file = $input['avatar'];
+            $filename = '';
+            
+            $upload_dir = Config::get('images.paths.input');
+
+            // Get the width and the height of the chosen size from the Config file.
+            $images_sizes = Config::get('images.sizes.'.'small');
+            $width = $images_sizes['width'];
+            $height = $images_sizes['height'];
+
+            $file->move($upload_dir, $file->getClientOriginalName());
+
+            $image = Image::make(sprintf($upload_dir.'/%s', $file->getClientOriginalName()))->resize($width, $height)->save();
+        }
         Session::flash('flash_message', 'User successfully added!');
         return redirect()->back();
     }
