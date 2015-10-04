@@ -26,13 +26,14 @@ class UserRequest extends Request
         $user_id = $this->route()->getParameter('users');
 
         //PUT refer to the update operation and POST to create
-        $password_rule = ($this->method() == 'PUT' ? '' : 'required|min:6');
+        $password_rule = ($this->method() == 'PUT' ? 'min:6' : 'required|min:6');
 
         return [
             'name'       => 'required|max:255',
             'email'      => 'required|max:255|email|unique:users,id,'.$user_id,
             'password'   => $password_rule,
-            'country_id' => 'required',
+            'country_id' => 'required|not_in:0',
+            'avatar'     => 'mimes:jpeg,jpg,png'
         ];
     }
 }

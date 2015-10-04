@@ -3954,4 +3954,7 @@ table.text-center, table.text-center td, table.text-center th {
     border:solid 1px black;
     background-color:#3c8dbc;
     margin: 10px;
-}  
+}
+.avatar_input{
+    cursor:pointer;
+}
