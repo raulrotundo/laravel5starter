@@ -12,7 +12,7 @@ class PermissionRoleTableSeeder extends Seeder
     public function run()
     {
         //Admin Role Permissions
-        foreach(range(1, 22) as $index) {
+        foreach(range(1, 29) as $index) {
             DB::table('permission_role')->insert([
                 'permission_id' => $index,
                 'role_id' => 1, 
