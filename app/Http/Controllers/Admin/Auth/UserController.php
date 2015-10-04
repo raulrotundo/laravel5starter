@@ -12,6 +12,7 @@ use Session;
 use Datatable;
 use URL;
 use Image;
+use File;
 
 class UserController extends Controller
 {
@@ -35,7 +36,7 @@ class UserController extends Controller
     {
         $user      = new User;
         $route     = 'admin.users.store';
-        $countries = [''=>'Select a Country'];
+        $countries = ['0'=>'Select a Country'];
         $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
         $roles     = Role::all()->toArray();
         $role_user = array();
@@ -55,24 +56,18 @@ class UserController extends Controller
         $input = $request->all();        
         $user  = User::create($input); //Create user
         
-        if (isset($input['roles']))
-            $user->roles()->sync($input['roles']); //Assign roles to user
+        //Assign roles to user
+        if (isset($input['roles'])){
+            $user->roles()->sync($input['roles']);
+        }
 
-        //Upload avatar picture
+        //Upload avatar picture functionality
         if (isset($input['avatar'])) {
-            $file = $input['avatar'];
-            $filename = '';
-            
-            $upload_dir = Config::get('images.paths.input');
-
-            // Get the width and the height of the chosen size from the Config file.
-            $images_sizes = Config::get('images.sizes.'.'small');
-            $width = $images_sizes['width'];
-            $height = $images_sizes['height'];
-
-            $file->move($upload_dir, $file->getClientOriginalName());
-
-            $image = Image::make(sprintf($upload_dir.'/%s', $file->getClientOriginalName()))->resize($width, $height)->save();
+            $avatar_path = $this->avatar_upload($input['avatar'],uniqid());
+            if ($avatar_path){
+                //Updating picture path
+                $user->update(['avatar'=>url($avatar_path)]);    
+            }            
         }
         Session::flash('flash_message', 'User successfully added!');
         return redirect()->back();
@@ -111,16 +106,20 @@ class UserController extends Controller
     {
         $user      = User::find($id);
         $action    = 'admin.users.update';
-        $countries = [''=>'Select a Country'];
+        $countries = ['0'=>'Select a Country'];
         $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());        
         $roles     = Role::all()->toArray();
         $role_user_array = $user->roles->toArray();
         $col_md = (count($roles) >= 4 ? '3' : '4'); //Number of columns depending of roles
         
-        //Save only the user role id
-        foreach ($role_user_array as $key => $value) {
-            $role_user[] = $value['id'];
-        }
+        if ($role_user_array){
+            //Save only the user role id
+            foreach ($role_user_array as $key => $value) {
+                $role_user[] = $value['id'];
+            }
+        } else {
+            $role_user = array();
+        }        
 
         return View('admin.users.edit', compact('user','action','countries', 'roles', 'role_user', 'col_md'));
     }
@@ -136,10 +135,38 @@ class UserController extends Controller
     {
         $user   = User::find($id);
         $input  = $request->all();
+        
         //If active is not present, then disable to the user
         if (!isset($input['active'])){
             $input['active'] = 0;
         }
+
+        //Upload avatar picture functionality
+        if (isset($input['avatar'])) {
+            //if there is a previous avatar, then first remove it
+            if ($user->avatar){
+                $this->avatar_remove($user->avatar);
+            }
+            $avatar_path = $this->avatar_upload($input['avatar'],uniqid());
+            if ($avatar_path){
+                //Updating picture path
+                $input['avatar'] = url($avatar_path);
+            }            
+        }
+
+        if (isset($input['avatar_remove'])){
+            //Remove avatar picture is exist
+            if ($user->avatar){
+                $this->avatar_remove($user->avatar);
+                //Updating picture path
+                $input['avatar'] = '';
+            }
+        }
+
+        if (isset($input['password'])){
+            $input['password'] = bcrypt($input['password']);
+        }
+
         $user->update($input);
         $user->roles()->sync($input['roles']); //Assign roles to user
         Session::flash('flash_message', 'User successfully updated!');
@@ -154,7 +181,55 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        $user = User::find($id);
+        
+        //Remove avatar picture is exist
+        if ($user->avatar){
+            $this->avatar_remove($user->avatar);
+        }
+
+        //Remove user record
+        $user->delete();
+
         Session::flash('flash_message', 'Role successfully deleted!');
+    }
+
+    /**
+     * Upload a avatar image
+     * @param obj $file
+     * @param str $filename
+    */
+    public function avatar_upload($file,$filename)
+    {
+        if($file){
+            $newfilename = $filename.'.'.$file->getClientOriginalExtension();
+            
+            $upload_dir = config('assets.images.paths.input');
+
+            //Get the width and the height of the chosen size from the Config file.
+            $images_sizes = config('assets.images.sizes.'.'small');
+            $width = $images_sizes['width'];
+            $height = $images_sizes['height'];
+
+            //Uploading picture to the directory
+            $file->move($upload_dir, $newfilename);
+
+            //Resizing picture
+            $image = Image::make(sprintf($upload_dir.'/%s', $newfilename))->resize($width, $height)->save();
+
+            $avatar_path = $upload_dir.'/'.$newfilename;
+
+            return $avatar_path;
+        }
+    }
+
+    /**
+    * Remove a avatar image
+    * @param str $avatar
+    */
+    public function avatar_remove($avatar)
+    {
+        $avatar_url = explode(url().'/', $avatar);
+        File::delete(base_path($avatar_url[1]));
     }
 }

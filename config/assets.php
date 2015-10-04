@@ -2,12 +2,12 @@
 return [
     'images' => [
         'paths' => [
-            'input' => 'public/img/avatars',
+            'input' => 'public/img/avatars'
         ],
         'sizes' => [
             'small' => [
-                'width' => 160,
-                'height' => 160
+                'width' => '160',
+                'height' => '160'
             ]
         ]
     ],

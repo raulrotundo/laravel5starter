@@ -88,7 +88,8 @@ return [
 
     'custom' => [
         'country_id' => [
-            'required' => 'El campo país es requerido.',
+            'required'  => 'El campo país es requerido.',
+            'not_in'    => 'El campo país es requerido.'
         ],
         'agree' => [
             'required' => 'Debes aceptar los términos y condiciones para usar el servicio.',

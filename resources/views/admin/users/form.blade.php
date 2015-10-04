@@ -13,20 +13,18 @@
 				</div>
 				<div class="form-group">
 					{!! Form::label('avatar', 'Avatar:', ['class' => 'control-label']) !!}
-					{!! Form::file('avatar', ['class' => 'form-control']) !!}
-				</div>
-				<div class="form-group">
-					{!! Form::label('address', 'Address:', ['class' => 'control-label']) !!}
-					{!! Form::text('address', null, ['class' => 'form-control','placeholder' => 'Enter an Address']) !!}
-				</div>
-				<div class="form-group">
-					{!! Form::label('zipcode', 'Zipcode:', ['class' => 'control-label']) !!}
-					{!! Form::text('zipcode', null, ['class' => 'form-control','placeholder' => 'Enter a Zipcode']) !!}
-				</div>
-				<div class="form-group">
-					{!! Form::label('country_id', 'Country:', ['class' => 'control-label']) !!}
-					{!! Form::select('country_id', $countries, old('country_id'), ['class'=>'form-control select2 select2-hidden-accessible']) !!}
-				</div>					
+					{!! Form::file('avatar', ['class' => 'form-control', 'style' => '', 'id' => 'avatar_input']) !!}
+					<br />
+					<div class="text-center">
+						@if ($user->avatar)
+						<img src="{{$user->avatar}}" class="img-circle avatar_input">
+						{!! Form::label('avatar_remove', 'Remove') !!}
+						{!!Form::checkbox('avatar_remove', '1')!!}
+						@else 
+						<img src="{{asset("/public/img/avatars/noavatar.jpg")}}" class="img-circle avatar_input">					
+						@endif
+					</div>					
+				</div>								
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
@@ -44,6 +42,24 @@
 				<div class="form-group">
 					{!! Form::label('password', 'Password:', ['class' => 'control-label']) !!}
 					{!! Form::password('password', ['class' => 'form-control','placeholder' => 'Enter a Password']) !!}
+				</div>				
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! Form::label('address', 'Address:', ['class' => 'control-label']) !!}
+					{!! Form::text('address', null, ['class' => 'form-control','placeholder' => 'Enter an Address']) !!}
+				</div>				
+				<div class="form-group">
+					{!! Form::label('country_id', 'Country:', ['class' => 'control-label']) !!}
+					{!! Form::select('country_id', $countries, old('country_id'), ['class'=>'form-control select2 select2-hidden-accessible']) !!}
+				</div>	
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! Form::label('zipcode', 'Zipcode:', ['class' => 'control-label']) !!}
+					{!! Form::text('zipcode', null, ['class' => 'form-control','placeholder' => 'Enter a Zipcode']) !!}
 				</div>
 				<div class="form-group">
 					{!! Form::label('active', 'Status:', ['class' => 'control-label']) !!}<br />
@@ -76,4 +92,5 @@
 @section('javascript')
     <script src="{{ asset ("public/assets/admin/js/table.grid.js") }}"></script>
     <script src="{{ asset ("public/assets/admin/js/common.js") }}"></script>
+    <script src="{{ asset ("public/assets/admin/js/users.js") }}"></script>
 @endsection
