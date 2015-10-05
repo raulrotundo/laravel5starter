@@ -15,28 +15,20 @@
                     <h1>
                         @yield('title', 'Page Title')
                     </h1>
-                    <!--ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                        <li class="active">Here</li>
-                    </ol-->
-                    <ol class="breadcrumb"> 
-                        <li> 
-                            <i class="fa fa-dashboard"></i> 
-                            <a href="{!! url('admin') !!}">Home</a> 
-                            <i class="fa fa-angle-right"></i> 
-                        </li> 
+                    <ol class="breadcrumb">                        
+                        <i class="fa fa-dashboard"></i> 
+                        <a href="{!! url('admin') !!}">Home</a> 
+                        <i class="fa fa-angle-right"></i>                        
                         <?php $link = url('admin'); ?> 
                         @for($i = 1; $i <= count(Request::segments()); $i++)                             
                                 @if($i < count(Request::segments()) & $i > 0)
-                                    @if(Request::segment($i) <> config('admin.prefix'))
-                                        <li> 
-                                            <?php $link .= "/" . Request::segment($i); ?> 
-                                            <a href="<?= $link ?>">{{Request::segment($i)}}</a> 
-                                            {!!'<i class="fa fa-angle-right"></i>'!!} 
-                                        </li> 
+                                    @if((Request::segment($i) <> config('admin.prefix')) and !is_numeric(Request::segment($i)))                                        
+                                        <?php $link .= "/" . Request::segment($i); ?> 
+                                        {!! link_to($link, $title = ucfirst(Request::segment($i))) !!}
+                                        {!!'<i class="fa fa-angle-right"></i>'!!}                                        
                                     @endif
                                 @else 
-                                    {{Request::segment($i)}} 
+                                    {{ucfirst(Request::segment($i))}}
                                 @endif                             
                         @endfor 
                     </ol>
