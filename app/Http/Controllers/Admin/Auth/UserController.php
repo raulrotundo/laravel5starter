@@ -167,7 +167,7 @@ class UserController extends Controller
             $input['password'] = bcrypt($input['password']);
         } else {
             unset($input['password']);
-        }
+        } 
 
         $user->update($input);
         $user->roles()->sync($input['roles']); //Assign roles to user
