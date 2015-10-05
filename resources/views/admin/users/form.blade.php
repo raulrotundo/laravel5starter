@@ -21,7 +21,7 @@
 						{!! Form::label('avatar_remove', 'Remove') !!}
 						{!!Form::checkbox('avatar_remove', '1')!!}
 						@else 
-						<img src="{{asset("/public/img/avatars/noavatar.jpg")}}" class="img-circle avatar_input">					
+						<img src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}" class="img-circle avatar_input">					
 						@endif
 					</div>					
 				</div>								

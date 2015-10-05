@@ -2,7 +2,7 @@
 return [
     'images' => [
         'paths' => [
-            'input' => 'public/img/avatars'
+            'input' => 'public/assets/admin/img/avatars'
         ],
         'sizes' => [
             'small' => [
