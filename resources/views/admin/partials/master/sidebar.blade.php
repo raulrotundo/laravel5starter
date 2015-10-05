@@ -1,10 +1,5 @@
-<!-- Left side column. contains the sidebar -->
 <aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
-        <!-- Sidebar user panel (optional) -->
         <div class="user-panel">            
             <div class="pull-left image">
             @if (Auth::user()->avatar)
@@ -12,16 +7,15 @@
                 @else 
                 &nbsp;
             @endif
-            </div>            
+            </div>                 
             <div class="pull-left info">
                 <p>{!! Auth::user()->name !!}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-
-        <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="active"><a href="{!! url('admin') !!}"><span>Dashboard</span></a></li>
+            @if(Auth::user()->roles->toArray()[0]['role_slug']=='admin')
             <li class="treeview active">
                 <a href="#">
                     <i class="fa fa-cogs"></i> <span>Administration</span>
@@ -59,6 +53,7 @@
                     </li>
                 </ul>
             </li>
+            @endif
         </ul>
     </section>
 </aside>
