@@ -4,11 +4,6 @@ Route::group(['namespace' => 'Frontend'], function(){
 	Route::get('/', ['uses' => 'HomeController@index']);
 });
 
-//Redirect Login route
-Route::get(config('admin.prefix'), function () {
-    return redirect('login');
-});
-
 // Backend routes
 Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], function() {
 	Route::group(['namespace' => 'Admin\Auth'], function(){
