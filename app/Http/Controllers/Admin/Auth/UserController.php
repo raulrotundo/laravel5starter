@@ -170,7 +170,11 @@ class UserController extends Controller
         } 
 
         $user->update($input);
-        $user->roles()->sync($input['roles']); //Assign roles to user
+
+        if (isset($input['roles'])){
+            $user->roles()->sync($input['roles']); //Assign roles to user    
+        }
+        
         Session::flash('flash_message', 'User successfully updated!');
         return redirect()->back();
     }
