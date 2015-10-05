@@ -20,6 +20,7 @@ Laravel Framework 5 Bootstrap 3 Starter Site is a basic application with Back-En
 ##Requirements
 
 	PHP >= 5.5.9
+	PHP GD library
 	SQL server(for example MySQL)
 	Composer
 
