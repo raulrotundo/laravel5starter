@@ -16,52 +16,21 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 
 		Route::group(['namespace' => 'Auth'], function(){
 			//Roles routes
-			Route::resource('roles', 'RoleController', [
-		        'names' => [
-		            'index' => 'admin.roles.index',
-		            'create' => 'admin.roles.create',
-		            'store' => 'admin.roles.store',
-		            'show' => 'admin.roles.show',
-		            'update' => 'admin.roles.update',
-		            'edit' => 'admin.roles.edit',
-		            'destroy' => 'admin.roles.destroy',
-		        ],
-		    ]);
+		    Route::resource('roles', 'RoleController');
 		    Route::get('roles_show', array('as' => 'show', 'uses' => 'RoleController@show'));
 		    
 			//permissions routes
-			Route::resource('permissions', 'PermissionController', [
-		        'names' => [
-		            'index' => 'admin.permissions.index',
-		            'create' => 'admin.permissions.create',
-		            'store' => 'admin.permissions.store',
-		            'show' => 'admin.permissions.show',
-		            'update' => 'admin.permissions.update',
-		            'edit' => 'admin.permissions.edit',
-		            'destroy' => 'admin.permissions.destroy',
-		        ],
-		    ]);
+		    Route::resource('permissions', 'PermissionController');
 		    Route::get('permissions_show', array('as' => 'show', 'uses' => 'PermissionController@show'));
 
 		    //User routes
-			Route::resource('users', 'UserController', [
-		        'names' => [
-		            'index' => 'admin.users.index',
-		            'create' => 'admin.users.create',
-		            'store' => 'admin.users.store',
-		            'show' => 'admin.users.show',
-		            'update' => 'admin.users.update',
-		            'edit' => 'admin.users.edit',
-		            'destroy' => 'admin.users.destroy',
-		        ],
-		    ]);
+		    Route::resource('users', 'UserController');
 		    Route::get('users_show', array('as' => 'show', 'uses' => 'UserController@show'));
 	    });
 	});
 });
 
 Route::group(['namespace' => 'Admin\Auth'], function(){
-
 	// Registration routes	
 	Route::get('register', 'AuthController@getRegister');
 	Route::post('register', 'AuthController@postRegister');
