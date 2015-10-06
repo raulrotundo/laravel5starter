@@ -43,20 +43,6 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		    ]);
 		    Route::get('permissions_show', array('as' => 'show', 'uses' => 'PermissionController@show'));
 
-			//permissions assignment routes
-			Route::resource('permissionroles', 'PermissionRoleController', [
-		        'names' => [
-		            'index' => 'admin.permissionroles.index',
-		            'create' => 'admin.permissionroles.create',
-		            'store' => 'admin.permissionroles.store',
-		            'show' => 'admin.permissionroles.show',
-		            'update' => 'admin.permissionroles.update',
-		            'edit' => 'admin.permissionroles.edit',
-		            'destroy' => 'admin.permissionroles.destroy',
-		        ],
-		    ]);
-		    Route::get('permissionroles_show', array('as' => 'show', 'uses' => 'PermissionRoleController@show'));
-
 		    //User routes
 			Route::resource('users', 'UserController', [
 		        'names' => [
