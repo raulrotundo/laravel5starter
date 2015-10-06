@@ -32,8 +32,10 @@ class RoleController extends Controller
     public function create()
     {
         $role   = new Role;
+        $list_permissions = $role->listPermissions();
+        $assg_permissions = $role->listPermissionsAssigned();
         $route  = 'admin.roles.store';
-        return View('admin.roles.create')->with(compact('role', 'route'));
+        return View('admin.roles.create')->with(compact('role', 'list_permissions', 'assg_permissions', 'route'));
     }
 
     /**
@@ -45,8 +47,13 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $input = $request->all();
+        $role = Role::create($input);
 
-        Role::create($input);
+        //Assign permissions to roles
+        if (isset($input['permissions_assg'])){
+            $role->permissions()->sync($input['permissions_assg']);
+        }
+
         Session::flash('flash_message', 'Role successfully added!');
         return redirect()->back();
     }
@@ -80,8 +87,10 @@ class RoleController extends Controller
     public function edit($id)
     {
         $role   = Role::find($id);
+        $list_permissions = $role->listPermissions();
+        $assg_permissions = $role->listPermissionsAssigned();
         $action = 'admin.roles.update';
-        return View('admin.roles.edit', compact('role','action'));
+        return View('admin.roles.edit', compact('role','list_permissions','assg_permissions','action'));
     }
 
     /**
@@ -96,6 +105,14 @@ class RoleController extends Controller
         $input  = $request->all();
         $role   = Role::find($id);
         $role->update($input);
+
+        //Assign permissions to roles
+        if (isset($input['permissions_assg'])){
+            $role->permissions()->sync($input['permissions_assg']);
+        }else{
+            $role->permissions()->sync([]);
+        }
+
         Session::flash('flash_message', 'Role successfully updated!');
         return redirect()->back();
     }

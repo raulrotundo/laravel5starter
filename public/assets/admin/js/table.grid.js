@@ -33,3 +33,12 @@ $(document).ready(function(){
 	    $(".alert-success").fadeTo(1500, 0).slideUp(500, function(){$(this).remove();});
 	}, 5000);
 });
+
+jQuery(document).ready(function($) {
+	$('#search').multiselect({
+		search: {
+			left: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
+			right: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
+		}
+	});
+});
