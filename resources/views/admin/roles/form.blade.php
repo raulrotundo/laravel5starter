@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="row">
-		<div class="text-center"><h2 class="page-header">Assign Permissions Section</h2></div>
+		<div class="text-center"><h2 class="page-header">Permission assignment's Section</h2></div>
     	<div class="col-xs-5">
     		{!! Form::select('permissions_list[]', $list_permissions, null, ['id' => 'search', 'class' => 'form-control', 'size' => '8', 'multiple' => 'multiple']) !!}
     	</div>

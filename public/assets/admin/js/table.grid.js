@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function($){
 	var oTable = null;
 	var ajxtable = $('[data-ajxtable]').attr('data-ajxtable');
 	var table = $('#'+ ajxtable +'_table');
@@ -32,9 +32,8 @@ $(document).ready(function(){
 	window.setTimeout(function() {
 	    $(".alert-success").fadeTo(1500, 0).slideUp(500, function(){$(this).remove();});
 	}, 5000);
-});
 
-jQuery(document).ready(function($) {
+	//bootstrap multiselect
 	$('#search').multiselect({
 		search: {
 			left: '<input type="text" name="q" class="form-control" placeholder="Search..." />',

@@ -32,8 +32,10 @@ class PermissionController extends Controller
     public function create()
     {
         $permission   = new Permission;
+        $list_roles = $permission->listRoles();
+        $assg_roles = $permission->listRolesAssigned();
         $route  = 'admin.permissions.store';
-        return View('admin.permissions.create')->with(compact('permission', 'route'));
+        return View('admin.permissions.create')->with(compact('permission', 'list_roles', 'assg_roles', 'route'));
     }
 
     /**
@@ -45,8 +47,13 @@ class PermissionController extends Controller
     public function store(PermissionRequest $request)
     {
         $input = $request->all();
+        $permission = Permission::create($input);
 
-        Permission::create($input);
+        //Assign permissions to roles
+        if (isset($input['roles_assg'])){
+            $permission->roles()->sync($input['roles_assg']);
+        }
+
         Session::flash('flash_message', 'Permission successfully added!');
         return redirect()->back();
     }
@@ -80,8 +87,10 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permission   = Permission::find($id);
+        $list_roles = $permission->listRoles();
+        $assg_roles = $permission->listRolesAssigned();
         $action = 'admin.permissions.update';
-        return View('admin.permissions.edit', compact('permission','action'));
+        return View('admin.permissions.edit', compact('permission','list_roles','assg_roles','action'));
     }
 
     /**
@@ -93,9 +102,17 @@ class PermissionController extends Controller
      */
     public function update(PermissionRequest $request, $id)
     {
-        $input  = $request->all();
-        $permission   = Permission::find($id);
+        $input = $request->all();
+        $permission = Permission::find($id);
         $permission->update($input);
+
+        //Assign permissions to roles
+        if (isset($input['roles_assg'])){
+            $permission->roles()->sync($input['roles_assg']);
+        }else{
+            $permission->roles()->sync([]);
+        }
+
         Session::flash('flash_message', 'Permission successfully updated!');
         return redirect()->back();
     }
