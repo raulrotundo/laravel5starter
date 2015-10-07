@@ -90,7 +90,6 @@
 	</div>
 {!! Form::close() !!}
 @section('javascript')
-    <script src="{{ asset ("public/assets/admin/js/table.grid.js") }}"></script>
     <script src="{{ asset ("public/assets/admin/js/common.js") }}"></script>
     <script src="{{ asset ("public/assets/admin/js/users.js") }}"></script>
 @endsection
