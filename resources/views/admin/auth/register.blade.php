@@ -9,7 +9,7 @@
 		{!! link_to('/', $title = 'AdminLTE') !!}
 	</div>
 	<div class="register-box-body">
-		<p class="login-box-msg">Sign in to start your session</p>
+		<p class="login-box-msg">{!! trans('register.signin_title') !!}</p>
 		@if(Session::has('socialdata'))
 			<?php
 				//Receive
@@ -24,7 +24,7 @@
 		@endif
 		@if (count($errors) > 0)
 		<div class="alert alert-danger">
-			<strong>Whoops! </strong> There were some problems with your input. <br> <br>
+			{!! trans('register.msg_errors') !!}
 			<ul>
 				@foreach ($errors->all() as $error)
 				<li>{{ $error }} </li>
@@ -33,7 +33,7 @@
 		</div>
 		@endif
 		{!! Form::open(['url' => 'register', 'id' => 'register_form']) !!}
-			<input type="hidden" name="_token" value="{{ csrf_token() }}">			
+			{!! csrf_field() !!}
 			<div class="form-group has-feedback">
 				{!! Form::text('name', isset($name) ? $name : old('name'), ['id'=>'name', 'required', isset($socialdata) ? 'readonly' : '', 'class'=>'form-control', 'placeholder'=>trans('register.name')]) !!}
 				<span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -44,12 +44,12 @@
 			</div>
 			@if(Session::has('socialdata'))
 			<div class="form-group text-center">
-				<h4>Your {!!  $provider !!} account has been linked!</h4>
+				<h4>{!! trans('register.social_linked_msg', ['provider' => ucfirst($provider)]) !!}</h4>
 				{!!  $socialdata->name !!}
 				@if($socialdata->avatar)
 				<img src="{!!  $socialdata->avatar !!}" class="avatar">
 				@endif
-				<button type="button" class="btn btn-primary btn-block btn-flat" id="socialdata_edit">Edit Personal Information</button>
+				<button type="button" class="btn btn-primary btn-block btn-flat" id="socialdata_edit">{!! trans('register.edit_personal_info') !!}</button>
 			</div>
 			@endif
 			<div class="form-group has-feedback">
@@ -68,7 +68,7 @@
 					<div class="checkbox icheck">
 						<label>
 							{!! Form::checkbox('agree', 'check', false) !!}
-							I agree to the <a href="#">terms</a>
+							{!! link_to('#', $title = trans('register.agree_terms')) !!}
 						</label>
 					</div>
 				</div>
@@ -78,9 +78,9 @@
 			</div>
 		{!! Form::close() !!}
 		<div class="social-auth-links text-center">
-			<p>You can also register with:</p>
-			<a href="{!! url('login/facebook') !!}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>Facebook</a>
-			<a href="{!! url('login/google') !!}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>Google</a>
+			<p>{!! trans('register.also_register') !!}</p>
+			<a href="{!! url('login/facebook') !!}" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i>{!! trans('register.social_network.facebook') !!}</a>
+			<a href="{!! url('login/google') !!}" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i>{!! trans('register.social_network.google') !!}</a>
 		</div>
 	</div>
 </div>
