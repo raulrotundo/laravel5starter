@@ -27,17 +27,4 @@ $(document).ready(function($){
 	        }
 		});
 	});
-
-	//Bootstrap Alert Auto Close
-	window.setTimeout(function() {
-	    $(".alert-success").fadeTo(1500, 0).slideUp(500, function(){$(this).remove();});
-	}, 5000);
-
-	//bootstrap multiselect
-	$('#search').multiselect({
-		search: {
-			left: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
-			right: '<input type="text" name="q" class="form-control" placeholder="Search..." />',
-		}
-	});
 });
