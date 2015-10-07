@@ -1,11 +1,13 @@
 <?php
-
+	
 return [
-    'signin' 			=> 'Sign In',
-    'signin_subtitle'   => 'Connect with Your Social Accounts',
-    'email' 			=> 'Email',
-    'password' 			=> 'Password',
-    'forgot_password' 	=> 'Forgot Password?',
-    'login_button' 		=> 'Login',
-    'signup_email_link' => 'Sign Up With Email'
+	'signin_title'      => 'Sign in to start your session',
+	'signin_subtitle'   => 'Connect with Your Social Accounts',
+	'email'             => 'Email',
+	'password'          => 'Password',
+	'forgot_password'   => 'I forgot my password',
+	'register_link'     => 'Register a new membership',
+	'login_button'      => 'Login',
+	'msg_errors'        => 'Oops, something was not right:',
+	'remember_me'       => 'Remember me'
 ];
