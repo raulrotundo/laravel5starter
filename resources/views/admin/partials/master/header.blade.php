@@ -116,7 +116,7 @@
                             @endif
                         @endforeach
                     </ul>
-                </li>
+                </li> 
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
