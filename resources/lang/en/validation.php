@@ -88,7 +88,7 @@ return [
 
     'custom' => [
         'country_id' => [
-            'required' => 'The country field is required.',
+            'required' => 'The country is required.',
         ],
     ],
 

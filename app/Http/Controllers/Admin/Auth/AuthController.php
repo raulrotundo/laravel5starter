@@ -58,7 +58,7 @@ class AuthController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function getRegister() {
-        $countries = ['0'=>'Select a Country'];
+        $countries = ['0'=>trans('register.country')];
         $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
         return view('admin.auth.register',compact('countries'));
     }
@@ -93,7 +93,7 @@ class AuthController extends Controller
             'name'       => 'required|max:255',
             'email'      => 'required|email|max:255|unique:users',
             'password'   => 'required|confirmed|min:6',
-            'country_id' => 'required',
+            'country_id' => 'required|not_in:0',
             'agree'      => 'required'
         ]);
     }
@@ -162,7 +162,7 @@ class AuthController extends Controller
     public function getSocialAuthCallback($provider=null)
     {
         if(!$user = $this->socialite->with($provider)->user()){
-            return 'Something went wrong';
+            return trans('register.social_callback_error');
         }
 
         Session::flash('socialdata', $user);
