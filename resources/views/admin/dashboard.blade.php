@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Dashboard')
+@section('title', trans('admin/dashboard.menu.dashboard'))
 @section('content')
-	Welcome {!! $name !!}!
+	{{ trans('admin/dashboard.welcome', ['user'=>$name]) }}
 @endsection

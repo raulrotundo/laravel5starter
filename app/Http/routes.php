@@ -4,6 +4,8 @@ Route::group(['namespace' => 'Frontend'], function(){
 	Route::get('/', ['uses' => 'HomeController@index']);
 });
 
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+
 // Backend routes
 Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], function() {
 	Route::group(['namespace' => 'Admin\Auth'], function(){

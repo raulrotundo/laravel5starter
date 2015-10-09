@@ -103,6 +103,20 @@
                         </li>
                     </ul>
                 </li>
+                <!-- Language -->
+                <li class="dropdown tasks-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-globe fa-lg"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">{{ trans('admin/dashboard.select_lang') }}</li>
+                        @foreach (config('languages') as $key => $value)
+                            @if (Lang::locale()<>$key)
+                            <li><a href="{!! url('lang/'.$key) !!}">{{$value}}</a></li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </li>
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
@@ -122,28 +136,16 @@
                             @endif
                             <p>
                                 {!! Auth::user()->name !!}
-                                <small>Member since {!! Auth::user()->created_at->format('M, Y') !!}</small>
+                                <small>{{ trans('admin/dashboard.member_since', ['member_date' => Auth::user()->created_at->format('M, Y')]) }}</small>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Followers</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Sales</a>
-                            </div>
-                            <div class="col-xs-4 text-center">
-                                <a href="#">Friends</a>
-                            </div>
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="#" class="btn btn-default btn-flat">{{ trans('admin/dashboard.profile') }}</a>
                             </div>
                             <div class="pull-right">
-                                <a href="{!! route('admin.logout') !!}" class="btn btn-default btn-flat">Sign out</a>
+                                <a href="{!! route('admin.logout') !!}" class="btn btn-default btn-flat">{{ trans('admin/dashboard.logout') }}</a>
                             </div>
                         </li>
                     </ul>
