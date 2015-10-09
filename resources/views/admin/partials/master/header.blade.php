@@ -112,7 +112,7 @@
                         <li class="header">{{ trans('admin/dashboard.select_lang') }}</li>
                         @foreach (config('languages') as $key => $value)
                             @if (Lang::locale()<>$key)
-                            <li><a href="{!! url('lang/'.$key) !!}">{{$value}}</a></li>
+                            <li><a href="{!! url('lang/'.$key) !!}" class="text-light-blue">{{$value}}</a></li>
                             @endif
                         @endforeach
                     </ul>
@@ -122,8 +122,9 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         @if (Auth::user()->avatar)
-                        <!-- The user image in the navbar-->
                         <img src="{{ Auth::user()->avatar }}" class="user-image" alt="{{ Auth::user()->name }}" />
+                        @else
+                        <i class="fa fa-user "></i>
                         @endif
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
                         <span class="hidden-xs">{!! Auth::user()->name !!}</span>
