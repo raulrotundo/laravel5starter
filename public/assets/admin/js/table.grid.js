@@ -4,6 +4,9 @@ $(document).ready(function($){
 	var table = $('#'+ ajxtable +'_table');
 	
 	oTable = $(table).dataTable({
+		"language": {
+            "url": "../datatable_lang"
+        },
 		"processing": true,        
 		"ajax" : ajxtable +'_show',
 		"lenghtMenu" : [[5, 10, 15, -1],[5, 10, 15, 'All']]

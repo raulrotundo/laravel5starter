@@ -7,6 +7,7 @@ use Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Lang;
 
 class LanguageController extends Controller {
 
@@ -16,5 +17,10 @@ class LanguageController extends Controller {
 			Session::set('applocale', $lang);
 		}
 		return Redirect::back();
+	}
+
+	public function DataTableLang()
+	{
+		return Lang::get('admin/datatable');
 	}
 }

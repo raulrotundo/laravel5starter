@@ -4,7 +4,10 @@ Route::group(['namespace' => 'Frontend'], function(){
 	Route::get('/', ['uses' => 'HomeController@index']);
 });
 
+#Switch Language
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+#Datatables Language
+Route::get('datatable_lang', ['as'=>'lang.datatable', 'uses'=>'LanguageController@DataTableLang']);
 
 // Backend routes
 Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], function() {

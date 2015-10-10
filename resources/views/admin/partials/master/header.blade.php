@@ -108,11 +108,11 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-globe fa-lg"></i>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu f16">
                         <li class="header">{{ trans('admin/dashboard.select_lang') }}</li>
                         @foreach (config('languages') as $key => $value)
                             @if (Lang::locale()<>$key)
-                            <li><a href="{!! url('lang/'.$key) !!}" class="text-light-blue">{{$value}}</a></li>
+                            <li><a href="{!! url('lang/'.$key) !!}" class="text-light-blue"><i class="flag {{$key}}"></i> {{$value}}</a></li>
                             @endif
                         @endforeach
                     </ul>
