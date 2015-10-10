@@ -72,7 +72,7 @@
                 <li class="dropdown tasks-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-flag-o"></i>
+                        <i class="fa fa-tasks"></i>
                         <span class="label label-danger">9</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -106,7 +106,7 @@
                 <!-- Language -->
                 <li class="dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-globe fa-lg"></i>
+                        <i class="fa fa-flag"></i>
                     </a>
                     <ul class="dropdown-menu f16">
                         <li class="header">{{ trans('admin/dashboard.select_lang') }}</li>
