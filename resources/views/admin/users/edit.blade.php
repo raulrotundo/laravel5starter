@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', 'Edit User')
+@section('title', trans('admin/users.title_page.update'))
 @section('content')
 	@include('admin.users.form')			
 @endsection

@@ -36,7 +36,7 @@ class UserController extends Controller
     {
         $user      = new User;
         $route     = 'admin.users.store';
-        $countries = ['0'=>'Select a Country'];
+        $countries = ['0'=>trans('admin/users.form.country.placeholder')];
         $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
         $roles     = Role::all()->toArray();
         $role_user = array();
@@ -87,11 +87,11 @@ class UserController extends Controller
         ->searchColumns('id','name','email','active')
         ->orderColumns('id','name','email','active')
         ->addColumn('active',function($model){
-            return ($model->active == 1 ? '<p class="text-green">Enable</p>' : '<p class="text-red">Disable</p>');
+            return ($model->active == 1 ? '<p class="text-green">'.trans('admin/users.show.status.enable').'</p>' : '<p class="text-red">'.trans('admin/users.show.status.disable').'</p>');
         })
         ->addColumn('Actions',function($model){
-            return '<a href="users/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> Edit</a>&nbsp;&nbsp;
-                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> Delete</a>';
+            return '<a href="users/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> '.trans('admin/users.show.edit').'</a>&nbsp;&nbsp;
+                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> '.trans('admin/users.show.delete').'</a>';
         })
         ->make();
     }
@@ -106,7 +106,7 @@ class UserController extends Controller
     {
         $user      = User::find($id);
         $action    = 'admin.users.update';
-        $countries = ['0'=>'Select a Country'];
+        $countries = ['0'=>trans('admin/users.form.country.placeholder')];
         $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());        
         $roles     = Role::all()->toArray();
         $role_user_array = $user->roles->toArray();

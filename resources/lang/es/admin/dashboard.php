@@ -11,9 +11,9 @@ return [
             'permissions' => 'Permisos',            
         ]
     ],
-    'welcome' => 'Bienvenido :user!',
-    'profile' => 'Ver mi Perfil',
-    'logout' => 'Cerrar Sesión',
+    'welcome'      => 'Bienvenido :user!',
+    'profile'      => 'Ver mi Perfil',
+    'logout'       => 'Cerrar Sesión',
     'member_since' => 'Miembro desde :member_date',
-    'select_lang' => 'Cambie su idioma:'
+    'select_lang'  => 'Cambie su idioma:'
 ];
