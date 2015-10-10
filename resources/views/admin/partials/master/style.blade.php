@@ -7,3 +7,4 @@
     <link href="{{ asset("public/assets/admin/admin-lte/dist/css/skins/skin-yellow.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/assets/admin/datatables/css/datatables.min.css")}}" rel="stylesheet" type="text/css" />
     <link href="{{ asset("public/assets/admin/admin-lte/plugins/iCheck/all.css")}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset("public/assets/admin/flags16/flags16.min.css")}}" rel="stylesheet" type="text/css" />
