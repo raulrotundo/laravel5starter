@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration {
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('avatar');
+            $table->string('avatar')->nullable();
             $table->string('address');
             $table->string('phone');
             $table->string('zipcode');
@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration {
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');            
             $table->string('password');            
             $table->rememberToken();
-            $table->string('activation_code');
+            $table->string('activation_code')->nullable();
             $table->integer('active')->default(0);
             $table->timestamps();
         });
