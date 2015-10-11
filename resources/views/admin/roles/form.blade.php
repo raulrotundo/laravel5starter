@@ -6,21 +6,21 @@
 @endif 
 	<div class="box-body">
 		<div class="form-group">
-			{!! Form::label('role_title', 'Role:', ['class' => 'control-label']) !!}
-			{!! Form::text('role_title', null, ['class' => 'form-control','placeholder' => 'Enter Title']) !!}
+			{!! Form::label('role_title', trans('admin/roles.form.role.title'), ['class' => 'control-label']) !!}
+			{!! Form::text('role_title', null, ['class' => 'form-control','placeholder' => trans('admin/roles.form.role.placeholder')]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('role_slug', 'Slug:', ['class' => 'control-label']) !!}
-			{!! Form::text('role_slug', null, ['class' => 'form-control','placeholder' => 'Enter Slug']) !!}
+			{!! Form::label('role_slug', trans('admin/roles.form.slug.title'), ['class' => 'control-label']) !!}
+			{!! Form::text('role_slug', null, ['class' => 'form-control','placeholder' => trans('admin/roles.form.slug.placeholder')]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('description', 'Description:', ['class' => 'control-label']) !!}
-			{!! Form::text('description', null, ['class' => 'form-control','placeholder' => 'Enter Description']) !!}
+			{!! Form::label('description', trans('admin/roles.form.description.title'), ['class' => 'control-label']) !!}
+			{!! Form::text('description', null, ['class' => 'form-control','placeholder' => trans('admin/roles.form.description.placeholder')]) !!}
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="text-center"><h2 class="page-header">Permission assignment's Section</h2></div>
+		<div class="text-center"><h2 class="page-header">{{trans('admin/roles.form.assign_roles_section')}}</h2></div>
     	<div class="col-xs-5">
     		{!! Form::select('permissions_list[]', $list_permissions, null, ['id' => 'search', 'class' => 'form-control', 'size' => '8', 'multiple' => 'multiple']) !!}
     	</div>
@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="box-footer">
-		{!! Form::submit('Submit', array('class' => 'btn btn-primary')) !!}
+		{!! Form::submit(trans('admin/roles.form.submit'), array('class' => 'btn btn-primary')) !!}
 	</div>
 {!! Form::close() !!}
 @section('javascript')

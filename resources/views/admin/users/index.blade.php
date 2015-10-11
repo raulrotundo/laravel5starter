@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', trans('admin/users.title_page.users'))
+@section('title', trans('admin/users.title_page.index'))
 @section('content')
 	<div class="box-body" data-ajxtable="users">		
 		<table id="users_table" class="table table-striped table-bordered dt-responsive nowrap">

@@ -1,7 +1,7 @@
 <?php
 return [
 	'title_page' => [
-		'users'  => 'Usuarios',
+		'index'  => 'Usuarios',
 		'create' => 'Crear Usuario',
 		'update' => 'Actualizar Usuario'
 	],
