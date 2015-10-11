@@ -1,14 +1,14 @@
 @extends('admin.layouts.master')
-@section('title', 'Roles')
+@section('title', trans('admin/roles.title_page.index'))
 @section('content')
 	<div class="box-body" data-ajxtable="roles">		
 		<table id="roles_table" class="table table-striped table-bordered dt-responsive nowrap">
 			<thead>
 				<tr>
-					<th>Id</th>
-					<th>Role</th>
-					<th>Slug</th>
-					<th>Actions</th>
+					<th>{{trans('admin/roles.show.id')}}</th>
+					<th>{{trans('admin/roles.show.role')}}</th>
+					<th>{{trans('admin/roles.show.slug')}}</th>
+					<th>{{trans('admin/roles.show.actions')}}</th>
 				</tr>
 			</thead>
 			<tbody></tbody>

@@ -1,9 +1,9 @@
 <?php
 return [    
     'menu' => [
-        'dashboard'      => 'Dashboard',
-        'create'         => 'Create',
-        'show'           => 'Show',
+		'dashboard' => 'Dashboard',
+		'create'    => 'Create',
+		'show'      => 'Show',
         'administration' => [
             'main_title'  => 'Administration',
             'users'       => 'Users',
@@ -11,9 +11,9 @@ return [
             'permissions' => 'Permissions',            
         ]
     ],
-    'welcome' => 'Welcome :user!',
-    'profile' => 'Profile',
-    'logout' => 'Sign out',
-    'member_since' => 'Member since :member_date',
-    'select_lang' => 'Change your language:'
+	'welcome'      => 'Welcome :user!',
+	'profile'      => 'Profile',
+	'logout'       => 'Sign out',
+	'member_since' => 'Member since :member_date',
+	'select_lang'  => 'Change your language:'
 ];
