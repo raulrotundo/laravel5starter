@@ -31,6 +31,9 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		    //User routes
 		    Route::resource('users', 'UserController');
 		    Route::get('users_show', array('as' => 'show', 'uses' => 'UserController@show'));
+
+		    //Profile routes
+		    Route::resource('profile', 'ProfileController');
 	    });
 	});
 });

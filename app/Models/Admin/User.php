@@ -94,6 +94,16 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->belongsToMany('App\Models\Admin\Companies');
     }
 
+    /**
+     * one-To-one Relationship Method for accessing the User->companies
+     *
+     * @return QueryBuilder Object
+     */
+    public function Countries()
+    {
+        return $this->belongsTo('App\Models\Admin\Countries', 'country_id');
+    }
+
     public function hasRole($name)
     {
         foreach($this->roles as $role)

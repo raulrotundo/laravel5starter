@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "61035a2828b286635854c0f2b26f9533",
+    "hash": "197fb83c11d9a5d5268efa390ffa8b0b",
+    "content-hash": "2a0592b7338ea37a841366fa91250ebd",
     "packages": [
         {
             "name": "chumper/datatable",
@@ -12,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Chumper/Datatable.git",
-                "reference": "0cea42ea0a5c72f87b4f2e61a13b831f72f7ec07"
+                "reference": "5eceb1aca386f2da98bbe64af44eef51d3660e31"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Chumper/Datatable/zipball/0cea42ea0a5c72f87b4f2e61a13b831f72f7ec07",
-                "reference": "0cea42ea0a5c72f87b4f2e61a13b831f72f7ec07",
+                "url": "https://api.github.com/repos/Chumper/Datatable/zipball/5eceb1aca386f2da98bbe64af44eef51d3660e31",
+                "reference": "5eceb1aca386f2da98bbe64af44eef51d3660e31",
                 "shasum": ""
             },
             "require": {
@@ -57,7 +58,7 @@
                 "jquery",
                 "laravel"
             ],
-            "time": "2015-09-30 03:04:35"
+            "time": "2015-10-12 01:40:01"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -541,12 +542,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "44c9a6bb292e50cf8a1e4b5030c7954c2709c089"
+                "reference": "e6c9cd03d6b2a870e74da03332feeb97d477fc87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/44c9a6bb292e50cf8a1e4b5030c7954c2709c089",
-                "reference": "44c9a6bb292e50cf8a1e4b5030c7954c2709c089",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/e6c9cd03d6b2a870e74da03332feeb97d477fc87",
+                "reference": "e6c9cd03d6b2a870e74da03332feeb97d477fc87",
                 "shasum": ""
             },
             "require": {
@@ -595,7 +596,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-08-30 15:37:50"
+            "time": "2015-10-12 08:42:50"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2969,16 +2970,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.10",
+            "version": "4.8.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "463163747474815c5ccd4ae12b5b355ec12158e8"
+                "reference": "00194eb95989190a73198390ceca081ad3441a7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/463163747474815c5ccd4ae12b5b355ec12158e8",
-                "reference": "463163747474815c5ccd4ae12b5b355ec12158e8",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/00194eb95989190a73198390ceca081ad3441a7f",
+                "reference": "00194eb95989190a73198390ceca081ad3441a7f",
                 "shasum": ""
             },
             "require": {
@@ -3037,7 +3038,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-01 09:14:30"
+            "time": "2015-10-12 03:36:47"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3329,16 +3330,16 @@
         },
         {
             "name": "sebastian/global-state",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/global-state.git",
-                "reference": "23af31f402993cfd94e99cbc4b782e9a78eb0e97"
+                "reference": "bc37d50fea7d017d3d340f230811c9f1d7280af4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/23af31f402993cfd94e99cbc4b782e9a78eb0e97",
-                "reference": "23af31f402993cfd94e99cbc4b782e9a78eb0e97",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/bc37d50fea7d017d3d340f230811c9f1d7280af4",
+                "reference": "bc37d50fea7d017d3d340f230811c9f1d7280af4",
                 "shasum": ""
             },
             "require": {
@@ -3376,7 +3377,7 @@
             "keywords": [
                 "global state"
             ],
-            "time": "2015-06-21 15:11:22"
+            "time": "2015-10-12 03:26:01"
         },
         {
             "name": "sebastian/recursion-context",
