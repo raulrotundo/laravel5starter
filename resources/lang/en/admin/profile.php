@@ -5,18 +5,26 @@ return [
 		'update' => 'Update Profile'
 	],
 	'index' => [
-		'phone'  => 'Phone',
-		'country' => 'Country',
-		'city' => 'City',
-		'zipcode' => 'Zip Code',
+		'go' => 'Go to',
+		'edit' => 'Edit',
 		'status' => [
 			'inactive' => 'Inactive User',
 			'active' => 'Follow',
 		],
 		'tab' => [
 			'userInfo'  => 'User Info',
-			'services'  => 'My Services',
-			'companies' => 'My Companies',
+			'services'  => 'Services',
+			'companies' => 'Companies',
+		],
+		'services' => [
+			'inprocess'  => 'In process services',
+			'completed'  => 'Completed services',
+			'cancelled' => 'Cancelled services',
+		],
+		'companies' => [
+			'country'  => 'Country',
+			'city'  => 'City',
+			'website' => 'Web Site',
 		],
 	],
 ];

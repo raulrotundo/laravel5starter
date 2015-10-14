@@ -1,5 +1,5 @@
 @extends('admin.layouts.master')
-@section('title', trans('admin/roles.title_page.update'))
+@section('title', trans('admin/profile.title_page.update'))
 @section('content')
-	@include('admin.roles.form')			
+	@include('admin.profile.form')
 @endsection

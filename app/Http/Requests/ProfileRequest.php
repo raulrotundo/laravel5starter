@@ -24,7 +24,11 @@ class ProfileRequest extends Request
     public function rules()
     {
         $user_id = $this->route()->getParameter('user');
+
         return [
+            'name'       => 'required|max:255',
+            'email'      => 'required|max:255|email|unique:users,id,'.$user_id,
+            'country_id' => 'required|not_in:0',
         ];
     }
 }

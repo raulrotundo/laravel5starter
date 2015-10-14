@@ -133,7 +133,9 @@
                         <!-- The user image in the menu -->
                         <li class="user-header">
                             @if (Auth::user()->avatar)
-                            <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="{{ Auth::user()->name }}" />
+                                <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" />
+                            @else
+                                <img class="img-circle" src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}">
                             @endif
                             <p>
                                 {!! Auth::user()->name !!}

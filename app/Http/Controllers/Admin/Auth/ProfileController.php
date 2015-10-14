@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Models\Admin\Role;
+use App\Models\Admin\Countries;
 use Session;
 use Datatable;
 use URL;
@@ -30,13 +32,14 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit()
     {
-        $role   = Role::find($id);
-        $list_permissions = $role->listPermissions();
-        $assg_permissions = $role->listPermissionsAssigned();
-        $action = 'admin.roles.update';
-        return View('admin.roles.edit', compact('role','list_permissions','assg_permissions','action'));
+        $user = Auth::user();
+        $action = 'admin.profile.update';
+        $countries = ['0'=>trans('admin/users.form.country.placeholder')];
+        $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
+
+        return View('admin.profile.edit', compact('user','action','countries'));
     }
 
     /**
@@ -46,20 +49,13 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(ProfileRequest $request, $id)
+    public function update(ProfileRequest $request)
     {
-        $input  = $request->all();
-        $role   = Role::find($id);
-        $role->update($input);
+        $input = $request->all();
+        $user  = Auth::user();
+        $user->update($input);
 
-        //Assign permissions to roles
-        if (isset($input['permissions_assg'])){
-            $role->permissions()->sync($input['permissions_assg']);
-        }else{
-            $role->permissions()->sync([]);
-        }
-
-        Session::flash('flash_message', 'Role successfully updated!');
+        Session::flash('flash_message', 'Profile successfully updated!');
         return redirect()->back();
     }
 }

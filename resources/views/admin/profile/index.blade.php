@@ -1,60 +1,33 @@
+<?php
+  $htmlStatus = array(
+    'status' => ($user->active == 1 ) ? 'active'      : 'inactive',
+    'box'    => ($user->active == 1 ) ? 'box-primary' : 'box-default',
+    'btn'    => ($user->active == 1 ) ? ''            : 'disabled',
+  );
+?>
 @extends('admin.layouts.master')
 @section('title', trans('admin/profile.title_page.index'))
 @section('content')
 <div class="row row-profile">
   <div class="col-md-3">
-    <div class="box box-primary">
+    <div class="box {{ $htmlStatus['box'] }}">
       <div class="box-body box-profile">
-        @if ($user->avatar)
-          <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar }}" alt="{{ $user->name }}" />
-        @else
-          <img class="profile-user-img img-responsive img-circle" src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}">
-        @endif
-        <h3 class="profile-username text-center">{{ $user->name }}</h3>
-        <p class="text-muted text-center">{{ $user->email }}</p>
+        <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar ?: asset(config('assets.images.paths.input')."/noavatar.jpg") }}" alt="{{ $user->name ?: '-' }}" />
+        <h3 class="profile-username text-center">{{ $user->name ?: '-' }}</h3>
+        <p class="text-muted text-center">{{ $user->email ?: '-' }}</p>
 
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
-            <b>{{ trans('admin/profile.index.country') }}</b> <a class="pull-right">{{ $user->Countries->name }}</a>
+            <b>{{ trans('admin/users.form.country.title') }}</b> <a class="pull-right">{{ $user->Countries->name ?: '-' }}</a>
           </li>
           <li class="list-group-item">
-            <b>{{ trans('admin/profile.index.city') }}</b> <a class="pull-right">{{ $user->city }}</a>
+            <b>{{ trans('admin/users.form.city.title') }}</b> <a class="pull-right">{{ $user->city ?: '-' }}</a>
           </li>
         </ul>
 
-        <a class="btn btn-primary btn-block" href="#"><b>{{ trans('admin/profile.index.status.active') }}</b></a>
+        <a class="btn btn-primary btn-block {{ $htmlStatus['btn'] }}" href="#"><b>{{ trans('admin/profile.index.status.'.$htmlStatus['status']) }}</b></a>
       </div>
     </div>
-
-    <?php /** ?>
-    <!-- Inactive -->
-    <div class="box box-default">
-      <div class="box-body box-profile">
-        @if ($user->avatar)
-          <img src="{{ $user->avatar }}" class="profile-user-img img-responsive img-circle" alt="{{ $user->name }}" />
-        @endif
-        <h3 class="profile-username text-center">{{ $user->name }}</h3>
-        <p class="text-muted text-center">{{ $user->email }}</p>
-
-        <ul class="list-group list-group-unbordered">
-          <li class="list-group-item">
-            <b>{{ trans('admin/profile.index.phone') }}</b> <a class="pull-right">{{ $user->phone }}</a>
-          </li>
-          <li class="list-group-item">
-            <b>{{ trans('admin/profile.index.country') }}</b> <a class="pull-right">{{ $user->Countries->name }}</a>
-          </li>
-          <li class="list-group-item">
-            <b>{{ trans('admin/profile.index.city') }}</b> <a class="pull-right">{{ $user->city }}</a>
-          </li>
-          <li class="list-group-item">
-            <b>{{ trans('admin/profile.index.zipcode') }}</b> <a class="pull-right">{{ $user->zipcode }}</a>
-          </li>
-        </ul>
-
-        <a class="btn btn-primary btn-block disabled" href="#"><b>{{ trans('admin/profile.index.status.inactive') }}</b></a>
-      </div>
-    </div>
-    <?php /**/ ?>
   </div>
 
   <?php /**/ ?>
@@ -68,146 +41,118 @@
       <div class="tab-content">
         <div id="tab1" class="tab-pane active">
           <div class="row">
-            <div class="col-md-4"><b>{{ trans('admin/users.form.name.title') }}</b> <a class="pull">{{ $user->name }}</a></div>
-            <div class="col-md-4"><b>{{ trans('admin/users.form.email.title') }}</b> <a class="pull">{{ $user->email }}</a></div>
-            <div class="col-md-4"><b>{{ trans('admin/users.form.phone.title') }}</b> <a class="pull">{{ $user->phone }}</a></div>
-            <div class="col-md-4"><b>{{ trans('admin/users.form.country.title') }}</b> <a class="pull">{{ $user->countries->name }}</a></div>
-            <div class="col-md-4"><b>{{ trans('admin/users.form.city.title') }}</b> <a class="pull">{{ $user->city }}</a></div>
-            <div class="col-md-4"><b>{{ trans('admin/users.form.zipcode.title') }}</b> <a class="pull">{{ $user->zipcode }}</a></div>
-            <div class="col-md-12"><b>{{ trans('admin/users.form.address.title') }}</b> <a class="pull">{{ $user->address }}</a></div>
+            <div class="col-md-12">
+              <a class="link-black text-sm pull-right" href="{!! route('admin.profile.edit') !!}"><i class="fa fa-pencil margin-r-5"></i> {{ trans('admin/profile.index.edit') }}</a>
+            </div>
+            <div class="col-md-4" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.name.title') }}</b><br><a class="pull">{{ ($user->name) ?: '-' }}</a>
+            </div>
+            <div class="col-md-4" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.email.title') }}</b><br>
+              <a class="pull">{{ $user->email ?: '-' }}</a>
+            </div>
+            <div class="col-md-4" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.phone.title') }}</b><br>
+              <a class="pull">{{ $user->phone ?: '-' }}</a>
+            </div>
+            <div class="col-md-4" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.country.title') }}</b><br>
+              <a class="pull">{{ $user->countries->name ?: '-' }}</a>
+            </div>
+            <div class="col-md-4" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.city.title') }}</b><br>
+              <a class="pull">{{ $user->city ?: '-' }}</a>
+            </div>
+            <div class="col-md-4" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.zipcode.title') }}</b><br>
+              <a class="pull">{{ $user->zipcode ?: '-' }}</a>
+            </div>
+            <div class="col-md-12" style="margin:10px auto;">
+              <b>{{ trans('admin/users.form.address.title') }}</b><br>
+              <a class="pull">{{ $user->address ?: '-' }}</a>
+            </div>
           </div>
         </div><!-- /.tab-pane -->
 
         <div id="tab2" class="tab-pane">
-          <!-- The timeline -->
-          <ul class="timeline timeline-inverse">
-            <!-- timeline time label -->
-            <li class="time-label">
-              <span class="bg-red">
-                10 Feb. 2014
-              </span>
-            </li>
-            <!-- /.timeline-label -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-envelope bg-blue"></i>
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
-                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-                <div class="timeline-body">
-                  Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                  weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                  jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                  quora plaxo ideeli hulu weebly balihoo...
-                </div>
-                <div class="timeline-footer">
-                  <a class="btn btn-primary btn-xs">Read more</a>
-                  <a class="btn btn-danger btn-xs">Delete</a>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-user bg-aqua"></i>
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request</h3>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-comments bg-yellow"></i>
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-                <div class="timeline-body">
-                  Take me to your leader!
-                  Switzerland is small and neutral!
-                  We are more like Germany, ambitious and misunderstood!
-                </div>
-                <div class="timeline-footer">
-                  <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <!-- timeline time label -->
-            <li class="time-label">
-              <span class="bg-green">
-                3 Jan. 2014
-              </span>
-            </li>
-            <!-- /.timeline-label -->
-            <!-- timeline item -->
-            <li>
-              <i class="fa fa-camera bg-purple"></i>
-              <div class="timeline-item">
-                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-                <div class="timeline-body">
-                  <img class="margin" alt="..." src="http://placehold.it/150x100">
-                  <img class="margin" alt="..." src="http://placehold.it/150x100">
-                  <img class="margin" alt="..." src="http://placehold.it/150x100">
-                  <img class="margin" alt="..." src="http://placehold.it/150x100">
-                </div>
-              </div>
-            </li>
-            <!-- END timeline item -->
-            <li>
-              <i class="fa fa-clock-o bg-gray"></i>
-            </li>
-          </ul>
+          <!-- In process list -->
+          <div class="box box-primary">
+            <div class="box-header with-border">
+              <div class="box-tools pull-right">
+                <span class="badge bg-light-blue" title="" data-toggle="tooltip" data-original-title="3 {{ trans('admin/profile.index.services.inprocess') }}">3</span>
+                <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+              </div><br>
+              <h3 class="box-title">{{ trans('admin/profile.index.services.inprocess') }}</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" style="display: block;">
+              <h2>{{ trans('admin/profile.index.services.inprocess') }} list</h2>
+            </div><!-- /.box-body -->
+          </div>
+
+          <!-- completed list -->
+          <div class="box box-success collapsed-box">
+            <div class="box-header with-border">
+              <div class="box-tools pull-right">
+                <span class="badge bg-green" title="" data-toggle="tooltip" data-original-title="5 {{ trans('admin/profile.index.services.completed') }}">5</span>
+                <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-plus"></i></button>
+              </div><br>
+              <h3 class="box-title">{{ trans('admin/profile.index.services.completed') }}</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" style="display: none;">
+              <h2>{{ trans('admin/profile.index.services.completed') }} list</h2>
+            </div><!-- /.box-body -->
+          </div>
+
+          <!-- cancelled list -->
+          <div class="box box-danger collapsed-box">
+            <div class="box-header with-border">
+              <div class="box-tools pull-right">
+                <span class="badge bg-red" title="" data-toggle="tooltip" data-original-title="1 {{ trans('admin/profile.index.services.cancelled') }}">1</span>
+                <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-plus"></i></button>
+              </div><br>
+              <h3 class="box-title">{{ trans('admin/profile.index.services.cancelled') }}</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body" style="display: none;">
+              <h2>{{ trans('admin/profile.index.services.cancelled') }} list</h2>
+            </div><!-- /.box-body -->
+          </div>
         </div><!-- /.tab-pane -->
 
         <div id="tab3" class="tab-pane">
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label class="col-sm-2 control-label" for="inputName">Name</label>
-              <div class="col-sm-10">
-                <input type="email" placeholder="Name" id="inputName" class="form-control">
+
+            <div class="box box-widget widget-user">
+              <div class="widget-user-header bg-aqua-active">
+                <h3 class="widget-user-username">Company Name</h3>
+                <h5 class="widget-user-desc">company@email.com</h5>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label" for="inputEmail">Email</label>
-              <div class="col-sm-10">
-                <input type="email" placeholder="Email" id="inputEmail" class="form-control">
+              <div class="widget-user-image">
+                <img alt="Company avatar" src="{{ asset(config('assets.images.paths.input')."/noavatar.com.png") }}" class="img-circle">
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label" for="inputName">Name</label>
-              <div class="col-sm-10">
-                <input type="text" placeholder="Name" id="inputName" class="form-control">
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                      <h5 class="description-header">Company Country</h5>
+                      <span class="description-text">{{ trans('admin/profile.index.companies.country') }}</span>
+                    </div><!-- /.description-block -->
+                  </div><!-- /.col -->
+                  <div class="col-sm-4 border-right">
+                    <div class="description-block">
+                      <h5 class="description-header">Company City</h5>
+                      <span class="description-text">{{ trans('admin/profile.index.companies.city') }}</span>
+                    </div><!-- /.description-block -->
+                  </div><!-- /.col -->
+                  <div class="col-sm-4">
+                    <div class="description-block">
+                      <h5 class="description-header">www.companyweb.com</h5>
+                      <span class="description-text">{{ trans('admin/profile.index.companies.website') }}</span>
+                    </div><!-- /.description-block -->
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+                <a class="link-black text-sm pull-right" href="#"><i class="fa fa-share margin-r-5"></i> {{ trans('admin/profile.index.go') }}</a>
               </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label" for="inputExperience">Experience</label>
-              <div class="col-sm-10">
-                <textarea placeholder="Experience" id="inputExperience" class="form-control"></textarea>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="col-sm-2 control-label" for="inputSkills">Skills</label>
-              <div class="col-sm-10">
-                <input type="text" placeholder="Skills" id="inputSkills" class="form-control">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button class="btn btn-danger" type="submit">Submit</button>
-              </div>
-            </div>
-          </form>
+            </div><!-- /.widget-user -->
+
         </div><!-- /.tab-pane -->
       </div><!-- /.tab-content -->
     </div><!-- /.nav-tabs-custom -->

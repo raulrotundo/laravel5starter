@@ -5,13 +5,26 @@ return [
 		'update' => 'Actualizar Perfil'
 	],
 	'index' => [
-		'phone'  => 'Teléfono',
-		'country' => 'País',
-		'city' => 'Ciudad',
-		'zipcode' => 'Código postal',
+		'go' => 'Ir',
+		'edit' => 'Editar',
 		'status' => [
 			'inactive' => 'Usuario Inactivo',
 			'active' => 'Seguir',
+		],
+		'tab' => [
+			'userInfo'  => 'Información de Usuario',
+			'services'  => 'Servicios',
+			'companies' => 'compañias',
+		],
+		'services' => [
+			'inprocess'  => 'Servicios en proceso',
+			'completed'  => 'Servicios completados',
+			'cancelled' => 'Servicios cancelados',
+		],
+		'companies' => [
+			'country'  => 'País',
+			'city'  => 'Ciudad',
+			'website' => 'Sitio Web',
 		],
 	],
 ];
