@@ -28,8 +28,8 @@ return [
         ],
 		'assign_roles_section' => 'Sección de Asignación de Roles',
 		'submit'               => 'Enviar',
-		'create_confirm'       => 'Permission successfully added!',
-		'update_confirm'       => 'Permission successfully updated!',
-		'delete_confirm'       => 'Permission successfully deleted!'
+		'create_confirm'       => 'El permiso fue agreado exitósamente!',
+		'update_confirm'       => 'El permiso fue actualizado exitósamente!',
+		'delete_confirm'       => 'El permiso fue eliminado exitósamente!'
     ]
 ];
