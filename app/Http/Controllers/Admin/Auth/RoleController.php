@@ -54,7 +54,7 @@ class RoleController extends Controller
             $role->permissions()->sync($input['permissions_assg']);
         }
 
-        Session::flash('flash_message', 'Role successfully added!');
+        Session::flash('flash_message', trans('admin/roles.form.create_confirm'));
         return redirect()->back();
     }
 
@@ -113,7 +113,7 @@ class RoleController extends Controller
             $role->permissions()->sync([]);
         }
 
-        Session::flash('flash_message', 'Role successfully updated!');
+        Session::flash('flash_message', trans('admin/roles.form.update_confirm'));
         return redirect()->back();
     }
 
@@ -126,6 +126,6 @@ class RoleController extends Controller
     public function destroy($id)
     {
         Role::find($id)->delete();
-        Session::flash('flash_message', 'Role successfully deleted!');
+        Session::flash('flash_message', trans('admin/roles.form.delete_confirm'));
     }
 }

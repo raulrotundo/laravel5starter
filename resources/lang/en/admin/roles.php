@@ -27,6 +27,9 @@ return [
 			'placeholder' => 'Enter Description'
         ],
 		'assign_roles_section' => 'Permission assignment\'s Section',
-		'submit'               => 'Submit'
+		'submit'               => 'Submit',
+		'create_confirm'       => 'Role successfully added!',
+		'update_confirm'       => 'Role successfully updated!',
+		'delete_confirm'       => 'Role successfully deleted!'
     ]
 ];
