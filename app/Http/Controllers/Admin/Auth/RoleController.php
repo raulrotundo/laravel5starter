@@ -72,8 +72,8 @@ class RoleController extends Controller
         ->searchColumns('id','role_title', 'role_slug')
         ->orderColumns('id','role_title', 'role_slug')
         ->addColumn('Actions',function($model){
-            return '<a href="roles/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> Edit</a>&nbsp;&nbsp;
-                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> Delete</a>';
+            return '<a href="roles/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> '.trans('admin/roles.show.edit').'</a>&nbsp;&nbsp;
+                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> '.trans('admin/roles.show.delete').'</a>';
         })
         ->make();
     }
