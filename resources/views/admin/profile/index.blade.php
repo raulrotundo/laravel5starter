@@ -6,7 +6,9 @@
     <div class="box box-primary">
       <div class="box-body box-profile">
         @if ($user->avatar)
-          <img src="{{ $user->avatar }}" class="profile-user-img img-responsive img-circle" alt="{{ $user->name }}" />
+          <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar }}" alt="{{ $user->name }}" />
+        @else
+          <img class="profile-user-img img-responsive img-circle" src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}">
         @endif
         <h3 class="profile-username text-center">{{ $user->name }}</h3>
         <p class="text-muted text-center">{{ $user->email }}</p>
@@ -24,13 +26,13 @@
       </div>
     </div>
 
+    <?php /** ?>
     <!-- Inactive -->
     <div class="box box-default">
       <div class="box-body box-profile">
         @if ($user->avatar)
           <img src="{{ $user->avatar }}" class="profile-user-img img-responsive img-circle" alt="{{ $user->name }}" />
         @endif
-        <p class="text-muted text-center"> [Inactive version] </p>
         <h3 class="profile-username text-center">{{ $user->name }}</h3>
         <p class="text-muted text-center">{{ $user->email }}</p>
 
@@ -52,113 +54,31 @@
         <a class="btn btn-primary btn-block disabled" href="#"><b>{{ trans('admin/profile.index.status.inactive') }}</b></a>
       </div>
     </div>
+    <?php /**/ ?>
   </div>
-  <?php /** ?>
+
+  <?php /**/ ?>
   <div class="col-md-9">
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#activity" aria-expanded="true">Activity</a></li>
-        <li class=""><a data-toggle="tab" href="#timeline" aria-expanded="false">Timeline</a></li>
-        <li class=""><a data-toggle="tab" href="#settings" aria-expanded="false">Settings</a></li>
+        <li class="active"><a data-toggle="tab" href="#tab1" aria-expanded="true">{{ trans('admin/profile.index.tab.userInfo') }}</a></li>
+        <li class=""><a data-toggle="tab" href="#tab2" aria-expanded="false">{{ trans('admin/profile.index.tab.services') }}</a></li>
+        <li class=""><a data-toggle="tab" href="#tab3" aria-expanded="false">{{ trans('admin/profile.index.tab.companies') }}</a></li>
       </ul>
       <div class="tab-content">
-        <div id="activity" class="tab-pane active">
-          <!-- Post -->
-          <div class="post">
-            <div class="user-block">
-              <img alt="user image" src="../../dist/img/user1-128x128.jpg" class="img-circle img-bordered-sm">
-              <span class="username">
-                <a href="#">Jonathan Burke Jr.</a>
-                <a class="pull-right btn-box-tool" href="#"><i class="fa fa-times"></i></a>
-              </span>
-              <span class="description">Shared publicly - 7:30 PM today</span>
-            </div><!-- /.user-block -->
-            <p>
-              Lorem ipsum represents a long-held tradition for designers,
-              typographers and the like. Some people hate it and argue for
-              its demise, but others ignore the hate as they create awesome
-              tools to help create filler text for everyone from bacon lovers
-              to Charlie Sheen fans.
-            </p>
-            <ul class="list-inline">
-              <li><a class="link-black text-sm" href="#"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-              <li><a class="link-black text-sm" href="#"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-              <li class="pull-right"><a class="link-black text-sm" href="#"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-            </ul>
-
-            <input type="text" placeholder="Type a comment" class="form-control input-sm">
-          </div><!-- /.post -->
-
-          <!-- Post -->
-          <div class="post clearfix">
-            <div class="user-block">
-              <img alt="user image" src="../../dist/img/user7-128x128.jpg" class="img-circle img-bordered-sm">
-              <span class="username">
-                <a href="#">Sarah Ross</a>
-                <a class="pull-right btn-box-tool" href="#"><i class="fa fa-times"></i></a>
-              </span>
-              <span class="description">Sent you a message - 3 days ago</span>
-            </div><!-- /.user-block -->
-            <p>
-              Lorem ipsum represents a long-held tradition for designers,
-              typographers and the like. Some people hate it and argue for
-              its demise, but others ignore the hate as they create awesome
-              tools to help create filler text for everyone from bacon lovers
-              to Charlie Sheen fans.
-            </p>
-
-            <form class="form-horizontal">
-              <div class="form-group margin-bottom-none">
-                <div class="col-sm-9">
-                  <input placeholder="Response" class="form-control input-sm">
-                </div>                          
-                <div class="col-sm-3">
-                  <button class="btn btn-danger pull-right btn-block btn-sm">Send</button>
-                </div>                          
-              </div>                        
-            </form>
-          </div><!-- /.post -->
-
-          <!-- Post -->
-          <div class="post">
-            <div class="user-block">
-              <img alt="user image" src="../../dist/img/user6-128x128.jpg" class="img-circle img-bordered-sm">
-              <span class="username">
-                <a href="#">Adam Jones</a>
-                <a class="pull-right btn-box-tool" href="#"><i class="fa fa-times"></i></a>
-              </span>
-              <span class="description">Posted 5 photos - 5 days ago</span>
-            </div><!-- /.user-block -->
-            <div class="row margin-bottom">
-              <div class="col-sm-6">
-                <img alt="Photo" src="../../dist/img/photo1.png" class="img-responsive">
-              </div><!-- /.col -->
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <img alt="Photo" src="../../dist/img/photo2.png" class="img-responsive">
-                    <br>
-                    <img alt="Photo" src="../../dist/img/photo3.jpg" class="img-responsive">
-                  </div><!-- /.col -->
-                  <div class="col-sm-6">
-                    <img alt="Photo" src="../../dist/img/photo4.jpg" class="img-responsive">
-                    <br>
-                    <img alt="Photo" src="../../dist/img/photo1.png" class="img-responsive">
-                  </div><!-- /.col -->
-                </div><!-- /.row -->
-              </div><!-- /.col -->
-            </div><!-- /.row -->
-
-            <ul class="list-inline">
-              <li><a class="link-black text-sm" href="#"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-              <li><a class="link-black text-sm" href="#"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a></li>
-              <li class="pull-right"><a class="link-black text-sm" href="#"><i class="fa fa-comments-o margin-r-5"></i> Comments (5)</a></li>
-            </ul>
-
-            <input type="text" placeholder="Type a comment" class="form-control input-sm">
-          </div><!-- /.post -->
+        <div id="tab1" class="tab-pane active">
+          <div class="row">
+            <div class="col-md-4"><b>{{ trans('admin/users.form.name.title') }}</b> <a class="pull">{{ $user->name }}</a></div>
+            <div class="col-md-4"><b>{{ trans('admin/users.form.email.title') }}</b> <a class="pull">{{ $user->email }}</a></div>
+            <div class="col-md-4"><b>{{ trans('admin/users.form.phone.title') }}</b> <a class="pull">{{ $user->phone }}</a></div>
+            <div class="col-md-4"><b>{{ trans('admin/users.form.country.title') }}</b> <a class="pull">{{ $user->countries->name }}</a></div>
+            <div class="col-md-4"><b>{{ trans('admin/users.form.city.title') }}</b> <a class="pull">{{ $user->city }}</a></div>
+            <div class="col-md-4"><b>{{ trans('admin/users.form.zipcode.title') }}</b> <a class="pull">{{ $user->zipcode }}</a></div>
+            <div class="col-md-12"><b>{{ trans('admin/users.form.address.title') }}</b> <a class="pull">{{ $user->address }}</a></div>
+          </div>
         </div><!-- /.tab-pane -->
-        <div id="timeline" class="tab-pane">
+
+        <div id="tab2" class="tab-pane">
           <!-- The timeline -->
           <ul class="timeline timeline-inverse">
             <!-- timeline time label -->
@@ -241,7 +161,7 @@
           </ul>
         </div><!-- /.tab-pane -->
 
-        <div id="settings" class="tab-pane">
+        <div id="tab3" class="tab-pane">
           <form class="form-horizontal">
             <div class="form-group">
               <label class="col-sm-2 control-label" for="inputName">Name</label>

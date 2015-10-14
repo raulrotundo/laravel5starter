@@ -13,5 +13,10 @@ return [
 			'inactive' => 'Inactive User',
 			'active' => 'Follow',
 		],
+		'tab' => [
+			'userInfo'  => 'User Info',
+			'services'  => 'My Services',
+			'companies' => 'My Companies',
+		],
 	],
 ];

@@ -143,7 +143,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">{{ trans('admin/dashboard.profile') }}</a>
+                                <a href="{!! route('admin.profile.index') !!}" class="btn btn-default btn-flat">{{ trans('admin/dashboard.profile') }}</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{!! route('admin.logout') !!}" class="btn btn-default btn-flat">{{ trans('admin/dashboard.logout') }}</a>
