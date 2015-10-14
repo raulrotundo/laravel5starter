@@ -1,6 +1,6 @@
 
  @if (isset($action))
-    {!! Form::model($user, ['route' => [$action, $user->id ], 'method'=>'PUT', 'files'=>true]) !!}
+    {!! Form::model($user, ['route' => [$action], 'method'=>'PUT', 'files'=>true]) !!}
 @else
     {!! Form::open(['route' => 'admin.profile.store', 'files'=>true, 'autocomplete' => 'false']) !!}
 @endif 

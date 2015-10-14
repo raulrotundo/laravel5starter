@@ -33,7 +33,9 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		    Route::get('users_show', array('as' => 'show', 'uses' => 'UserController@show'));
 
 		    //Profile routes
-		    Route::resource('profile', 'ProfileController');
+		    Route::get('profile', array('as' => 'admin.profile.index', 'uses' => 'ProfileController@index'));
+		    Route::get('profile/edit', array('as' => 'admin.profile.edit', 'uses' => 'ProfileController@edit'));
+		    Route::put('profile', array('as' => 'admin.profile.update', 'uses' => 'ProfileController@update'));
 	    });
 	});
 });

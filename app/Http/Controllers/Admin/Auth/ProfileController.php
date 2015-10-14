@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Controllers\Controller;
 use Auth;
-use App\Models\Admin\Role;
+use App\Models\Admin\User;
 use App\Models\Admin\Countries;
 use Session;
 use Datatable;
@@ -52,7 +52,7 @@ class ProfileController extends Controller
     public function update(ProfileRequest $request)
     {
         $input = $request->all();
-        $user  = Auth::user();
+        $user  = User::find(Auth::user()->id);
         $user->update($input);
 
         Session::flash('flash_message', 'Profile successfully updated!');
