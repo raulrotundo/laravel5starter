@@ -35,7 +35,8 @@ class AuthController extends Controller
 
     protected $redirectPath = '/admin';
     protected $loginPath = '/login';
-    private $maxLoginAttempts = 10;
+    private $maxLoginAttempts = 5;
+    private $lockoutTime = 300; //5 minutes
 
     /**
      * Create a new authentication controller instance.
