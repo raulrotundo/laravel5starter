@@ -55,6 +55,9 @@ return [
         ],
 		'status'               => 'Status:',
 		'assign_roles_section' => 'Assign Roles Section',
-		'submit'               => 'Submit'
+		'submit'               => 'Submit',
+		'create_confirm'       => 'User successfully added!',
+		'update_confirm'       => 'User successfully updated!',
+		'delete_confirm'       => 'User successfully deleted!'
     ]
 ];
