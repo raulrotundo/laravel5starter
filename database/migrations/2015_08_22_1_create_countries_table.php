@@ -18,7 +18,7 @@ class CreateCountriesTable extends Migration
             $table->string('name');
             $table->integer('currency_id')->unsigned()->index();
             $table->foreign('currency_id')->references('id')->on('currency')->onDelete('cascade');
-            $table->string('iso_code')->unsigned()->index();
+            $table->string('iso_code');
             $table->string('call_prefix');
             $table->integer('active');
         });

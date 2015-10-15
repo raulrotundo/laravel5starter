@@ -16,7 +16,7 @@ class CreateCurrencyTable extends Migration
         {
             $table->increments('id')->unsigned();
             $table->string('name');
-            $table->string('iso_code')->unsigned()->index();
+            $table->string('iso_code');
         });
     }
 
