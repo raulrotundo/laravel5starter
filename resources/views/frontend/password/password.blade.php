@@ -1,6 +1,6 @@
 @extends('admin.layouts.access')
 
-@section('title', 'Login')
+@section('title', trans('passwords.reset_title'))
 
 @section('content')
 

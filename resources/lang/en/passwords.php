@@ -20,5 +20,6 @@ return [
     'reset'         => 'Your password has been reset!',
     'subject_reset' => 'Your Password Reset Link',
     'submit'        => 'Submit',
-    'reset_title'   => 'Reset Password'
+    'reset_title'   => 'Reset Password',
+    'reset_email'   => 'Click here to reset your password:'
 ];

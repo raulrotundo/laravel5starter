@@ -20,5 +20,6 @@ return [
     'reset'         => 'Tu contraseña ha sido restablecida!',
     'subject_reset' => 'Restablecer tu contraseña',
     'submit'        => 'Enviar',
-    'reset_title'   => 'Restablecer Contraseña'
+    'reset_title'   => 'Restablecer Contraseña',
+    'reset_email'   => 'Haga click aqui para recuperar su contraseña:'
 ];

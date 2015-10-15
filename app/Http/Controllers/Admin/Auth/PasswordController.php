@@ -7,6 +7,12 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class PasswordController extends Controller
 {
+    /**
+     * The path to redirect to after submitting the form.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/admin';
     /*
     |--------------------------------------------------------------------------
     | Password Reset Controller
@@ -39,5 +45,16 @@ class PasswordController extends Controller
     public function getEmail()
     {
         return view('frontend.password.password');
+    }
+
+    /**
+     * Display the form to request a password reset form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getReset($token = null)
+    {
+        if (is_null($token)) App::abort(404);
+        return view('frontend.password.reset',compact('token'));
     }
 }
