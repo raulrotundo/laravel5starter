@@ -35,7 +35,11 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		    //Profile routes
 		    Route::get('profile', array('as' => 'admin.profile.index', 'uses' => 'ProfileController@index'));
 		    Route::get('profile/edit', array('as' => 'admin.profile.edit', 'uses' => 'ProfileController@edit'));
-		    Route::put('profile', array('as' => 'admin.profile.update', 'uses' => 'ProfileController@update'));
+		    Route::put('profile/update/info', array('as' => 'admin.profile.updateInfo', 'uses' => 'ProfileController@updateInfo'));
+		    Route::put('profile/update/security', array('as' => 'admin.profile.updateSecurity', 'uses' => 'ProfileController@updateSecurity'));
+		    Route::put('profile/update/privacity', array('as' => 'admin.profile.updatePrivacity', 'uses' => 'ProfileController@updatePrivacity'));
+		    Route::get('profile/editAvatar', array('as' => 'admin.profile.editAvatar', 'uses' => 'ProfileController@editAvatar'));
+		    Route::put('profile/update/avatar', array('as' => 'admin.profile.updateAvatar', 'uses' => 'ProfileController@updateAvatar'));
 	    });
 	});
 });

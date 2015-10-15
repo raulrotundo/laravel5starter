@@ -132,11 +132,9 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            @if (Auth::user()->avatar)
-                                <img class="img-circle" src="{{ Auth::user()->avatar }}" alt="{{ Auth::user()->name }}" />
-                            @else
-                                <img class="img-circle" src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}">
-                            @endif
+                            <a data-toggle="modal" href="{!! route('admin.profile.editAvatar') !!}" data-target="#avatarMdl">
+                                <img class="img-circle" src="{{ Auth::user()->avatar ?: asset(config('assets.images.paths.input')."/noavatar.jpg") }}" alt="{{ Auth::user()->name ?: '-' }}" />
+                            </a>
                             <p>
                                 {!! Auth::user()->name !!}
                                 <small>{{ trans('admin/dashboard.member_since', ['member_date' => Auth::user()->created_at->format('M, Y')]) }}</small>
@@ -157,3 +155,4 @@
         </div>
     </nav>
 </header>
+<div id="avatarMdl" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"></div></div></div>

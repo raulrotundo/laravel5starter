@@ -12,7 +12,9 @@
   <div class="col-md-3">
     <div class="box {{ $htmlStatus['box'] }}">
       <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar ?: asset(config('assets.images.paths.input')."/noavatar.jpg") }}" alt="{{ $user->name ?: '-' }}" />
+        <a data-toggle="modal" href="{!! route('admin.profile.editAvatar') !!}" data-target="#avatarMdl">
+          <img class="profile-user-img img-responsive img-circle" src="{{ $user->avatar ?: asset(config('assets.images.paths.input')."/noavatar.jpg") }}" alt="{{ $user->name ?: '-' }}" />
+        </a>
         <h3 class="profile-username text-center">{{ $user->name ?: '-' }}</h3>
         <p class="text-muted text-center">{{ $user->email ?: '-' }}</p>
 

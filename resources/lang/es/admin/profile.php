@@ -27,4 +27,17 @@ return [
 			'website' => 'Sitio Web',
 		],
 	],
+	'form' => [
+		'not' => 'Ahora, no disponible.',
+		'tab' => [
+			'userInfo'  => 'Información de Usuario',
+			'security'  => 'Seguridad',
+			'privacity' => 'Privacidad',
+		],
+		'avatar' => [
+			'title'  => 'Cambiar Avatar',
+			'close'  => 'Cerrar',
+			'submit' => 'Enviar',
+		],
+	],
 ];
