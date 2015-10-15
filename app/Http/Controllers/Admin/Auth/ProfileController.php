@@ -35,10 +35,12 @@ class ProfileController extends Controller
     public function edit()
     {
         $user = Auth::user();
-        $action = 'admin.profile.updateInfo';
+        $action1 = 'admin.profile.updateInfo';
+        $action2 = 'admin.profile.updateSecurity';
+        $action3 = 'admin.profile.updatePrivacity';
         $countries = ['0'=>trans('admin/users.form.country.placeholder')] + Countries::all()->lists('name','id')->toArray();
 
-        return View('admin.profile.edit', compact('user','action','countries'));
+        return View('admin.profile.edit', compact('user','action1','action2','action3','countries'));
     }
 
     /**
@@ -62,12 +64,15 @@ class ProfileController extends Controller
      *
      * @return Response
      */
-    public function editAvatar()
+    public function editAvatar(Request $request)
     {
-        $user = Auth::user();
-        $action = 'admin.profile.updateAvatar';
-
-        return View('admin.profile.editAvatar', compact('user','action'));
+        if ($request->ajax()){
+            $user = Auth::user();
+            $action = 'admin.profile.updateAvatar';
+            return View('admin.profile.editAvatar', compact('user','action'));
+        }else{
+            return redirect()->back();
+        }
     }
 
     /**

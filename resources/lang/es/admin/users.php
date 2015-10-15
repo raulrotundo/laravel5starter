@@ -28,7 +28,7 @@ return [
 			'placeholder' => 'Ingrese un Correo Electrónico'
         ],
         'avatar' => 'Avatar:',
-        'remove' => 'Remover',
+        'remove_avatar' => 'Remover',
         'phone' => [
 			'title'       => 'Teléfono:',
 			'placeholder' => 'Ingrese un Teléfono'

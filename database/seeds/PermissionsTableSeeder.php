@@ -156,7 +156,42 @@ class PermissionsTableSeeder extends Seeder
 		    	'permission_title' => 'Delete Users',
 		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\UserController@destroy', 
 		    	'permission_description'=>'Delete Users',
-	    	]
+	    	],
+	    	[
+		    	'permission_title' => 'View Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@index', 
+		    	'permission_description'=>'View Profile',
+	    	],
+	    	[
+		    	'permission_title' => 'Edit Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@edit', 
+		    	'permission_description'=>'Edit Profile',
+	    	],
+	    	[
+		    	'permission_title' => 'Update Info Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@updateInfo', 
+		    	'permission_description'=>'Update Info Profile',
+	    	],
+	    	[
+		    	'permission_title' => 'Update Security Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@updateSecurity', 
+		    	'permission_description'=>'Update Security Profile',
+	    	],
+	    	[
+		    	'permission_title' => 'Update Privacity Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@updatePrivacity', 
+		    	'permission_description'=>'Update Privacity Profile',
+	    	],
+	    	[
+		    	'permission_title' => 'Edit Avatar Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@editAvatar', 
+		    	'permission_description'=>'Edit Avatar Profile',
+	    	],
+	    	[
+		    	'permission_title' => 'Update Avatar Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@updateAvatar', 
+		    	'permission_description'=>'Update Avatar Profile',
+	    	],
     	]);
     }
 }

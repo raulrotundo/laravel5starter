@@ -87,7 +87,7 @@
               <h3 class="box-title">{{ trans('admin/profile.index.services.inprocess') }}</h3>
             </div><!-- /.box-header -->
             <div class="box-body" style="display: block;">
-              <h2>{{ trans('admin/profile.index.services.inprocess') }} list</h2>
+              <h3>[ {{ trans('admin/profile.index.services.inprocess') }} ]</h3>
             </div><!-- /.box-body -->
           </div>
 
@@ -101,7 +101,7 @@
               <h3 class="box-title">{{ trans('admin/profile.index.services.completed') }}</h3>
             </div><!-- /.box-header -->
             <div class="box-body" style="display: none;">
-              <h2>{{ trans('admin/profile.index.services.completed') }} list</h2>
+              <h3>[ {{ trans('admin/profile.index.services.completed') }} ]</h3>
             </div><!-- /.box-body -->
           </div>
 
@@ -115,7 +115,7 @@
               <h3 class="box-title">{{ trans('admin/profile.index.services.cancelled') }}</h3>
             </div><!-- /.box-header -->
             <div class="box-body" style="display: none;">
-              <h2>{{ trans('admin/profile.index.services.cancelled') }} list</h2>
+              <h3>[ {{ trans('admin/profile.index.services.cancelled') }} ]</h3>
             </div><!-- /.box-body -->
           </div>
         </div><!-- /.tab-pane -->

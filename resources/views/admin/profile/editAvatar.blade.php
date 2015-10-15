@@ -1,8 +1,4 @@
-@if (isset($action))
-    {!! Form::model($user, ['route' => [$action], 'method'=>'PUT', 'files'=>true]) !!}
-@else
-    {!! Form::open(['route' => 'admin.profile.store', 'files'=>true, 'autocomplete' => 'false']) !!}
-@endif 
+{!! Form::model($user, ['route' => [$action], 'method'=>'PUT', 'files'=>true]) !!}
 <div class="modal-header">
 	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	<h4 class="modal-title">{{ trans('admin/profile.form.avatar.title') }}</h4>
@@ -16,7 +12,7 @@
 				@if ($user->avatar)
 				<img src="{{$user->avatar}}" class="img-circle avatar_input">
 				{!! Form::label('avatar_remove', trans('admin/users.form.remove_avatar')) !!}
-				{!!Form::checkbox('avatar_remove', '1')!!}
+				{!! Form::checkbox('avatar_remove', '1') !!}
 				@else 
 				<img src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}" class="img-circle avatar_input">
 				@endif

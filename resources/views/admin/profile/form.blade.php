@@ -7,11 +7,7 @@
 		</ul>
 		<div class="tab-content">
 			<div id="tab1" class="tab-pane active">
-				@if (isset($action))
-				    {!! Form::model($user, ['route' => [$action], 'method'=>'PUT', 'files'=>true]) !!}
-				@else
-				    {!! Form::open(['route' => 'admin.profile.store', 'files'=>true, 'autocomplete' => 'false']) !!}
-				@endif 
+				{!! Form::model($user, ['route' => [$action1], 'method'=>'PUT', 'files'=>true]) !!}
 					<div class="box-body">
 						<div class="row">
 							<div class="col-md-6">
@@ -65,9 +61,33 @@
 			</div>
 			<div id="tab2" class="tab-pane">
 				<h3>{{ trans('admin/profile.form.not') }}</h3>
+				{!! Form::model($user, ['route' => [$action2], 'method'=>'PUT', 'files'=>true]) !!}
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group"></div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						{!! Form::submit(trans('admin/users.form.submit'), array('class' => 'btn btn-primary')) !!}
+					</div>
+				{!! Form::close() !!}
 			</div>
 			<div id="tab3" class="tab-pane">
 				<h3>{{ trans('admin/profile.form.not') }}</h3>
+				{!! Form::model($user, ['route' => [$action3], 'method'=>'PUT', 'files'=>true]) !!}
+					<div class="box-body">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group"></div>
+							</div>
+						</div>
+					</div>
+					<div class="box-footer">
+						{!! Form::submit(trans('admin/users.form.submit'), array('class' => 'btn btn-primary')) !!}
+					</div>
+				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>

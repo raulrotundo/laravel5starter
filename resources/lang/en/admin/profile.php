@@ -39,5 +39,10 @@ return [
 			'close'  => 'Close',
 			'submit' => 'Submit',
 		],
+		'password' => [
+			'current' => 'Current password: ',
+			'new'     => 'New password: ',
+			'repeat'  => 'Repeat password: ',
+		],
 	],
 ];
