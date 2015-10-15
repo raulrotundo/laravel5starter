@@ -54,7 +54,7 @@ class PermissionController extends Controller
             $permission->roles()->sync($input['roles_assg']);
         }
 
-        Session::flash('flash_message', 'Permission successfully added!');
+        Session::flash('flash_message', trans('admin/permissions.form.create_confirm'));
         return redirect()->back();
     }
 
@@ -72,8 +72,8 @@ class PermissionController extends Controller
         ->searchColumns('id','permission_title', 'permission_slug')
         ->orderColumns('id','permission_title', 'permission_slug')
         ->addColumn('Actions',function($model){
-            return '<a href="permissions/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> Edit</a>&nbsp;&nbsp;
-                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> Delete</a>';
+            return '<a href="permissions/'.$model->id.'/edit" class="btn btn-info pull-left"><span class="glyphicon glyphicon-pencil"></span> '.trans('admin/permissions.show.edit').'</a>&nbsp;&nbsp;
+                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete" id='.$model->id.'><span class="glyphicon glyphicon-trash"></span> '.trans('admin/permissions.show.delete').'</a>';
         })
         ->make();
     }
@@ -113,7 +113,7 @@ class PermissionController extends Controller
             $permission->roles()->sync([]);
         }
 
-        Session::flash('flash_message', 'Permission successfully updated!');
+        Session::flash('flash_message', trans('admin/permissions.form.update_confirm'));
         return redirect()->back();
     }
 
@@ -126,6 +126,6 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         Permission::find($id)->delete();
-        Session::flash('flash_message', 'Permission successfully deleted!');
+        Session::flash('flash_message', trans('admin/permissions.form.delete_confirm'));
     }
 }

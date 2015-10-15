@@ -6,21 +6,21 @@
 @endif 
 	<div class="box-body">
 		<div class="form-group">
-			{!! Form::label('permission_title', 'Permission:', ['class' => 'control-label']) !!}
-			{!! Form::text('permission_title', null, ['class' => 'form-control','placeholder' => 'Enter Title']) !!}
+			{!! Form::label('permission_title', trans('admin/permissions.form.permission.title'), ['class' => 'control-label']) !!}
+			{!! Form::text('permission_title', null, ['class' => 'form-control','placeholder' => trans('admin/permissions.form.permission.placeholder')]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('permission_slug', 'Slug:', ['class' => 'control-label']) !!}
-			{!! Form::text('permission_slug', null, ['class' => 'form-control','placeholder' => 'Enter Slug']) !!}
+			{!! Form::label('permission_slug', trans('admin/permissions.form.slug.title'), ['class' => 'control-label']) !!}
+			{!! Form::text('permission_slug', null, ['class' => 'form-control','placeholder' => trans('admin/permissions.form.slug.placeholder')]) !!}
 		</div>
 		<div class="form-group">
-			{!! Form::label('permission_description', 'Description:', ['class' => 'control-label']) !!}
-			{!! Form::text('permission_description', null, ['class' => 'form-control','placeholder' => 'Enter Description']) !!}
+			{!! Form::label('permission_description', trans('admin/permissions.form.description.title'), ['class' => 'control-label']) !!}
+			{!! Form::text('permission_description', null, ['class' => 'form-control','placeholder' => trans('admin/permissions.form.description.placeholder')]) !!}
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="text-center"><h2 class="page-header">Roles assignment's Section</h2></div>
+		<div class="text-center"><h2 class="page-header">{{trans('admin/permissions.form.assign_roles_section')}}</h2></div>
     	<div class="col-xs-5">
     		{!! Form::select('roles_list[]', $list_roles, null, ['id' => 'search', 'class' => 'form-control', 'size' => '8', 'multiple' => 'multiple']) !!}
     	</div>
@@ -38,7 +38,7 @@
 	</div>
 
 	<div class="box-footer">
-		{!! Form::submit('Submit', array('class' => 'btn btn-primary')) !!}
+		{!! Form::submit(trans('admin/permissions.form.submit'), array('class' => 'btn btn-primary')) !!}
 	</div>
 {!! Form::close() !!}
 @section('javascript')

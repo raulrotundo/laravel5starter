@@ -69,7 +69,7 @@ class UserController extends Controller
                 $user->update(['avatar'=>url($avatar_path)]);    
             }            
         }
-        Session::flash('flash_message', 'User successfully added!');
+        Session::flash('flash_message', trans('admin/users.form.create_confirm'));
         return redirect()->back();
     }
 
@@ -175,7 +175,7 @@ class UserController extends Controller
             $user->roles()->sync($input['roles']); //Assign roles to user    
         }
         
-        Session::flash('flash_message', 'User successfully updated!');
+        Session::flash('flash_message', trans('admin/users.form.update_confirm'));
         return redirect()->back();
     }
 
@@ -197,7 +197,7 @@ class UserController extends Controller
         //Remove user record
         $user->delete();
 
-        Session::flash('flash_message', 'Role successfully deleted!');
+        Session::flash('flash_message', trans('admin/users.form.delete_confirm'));
     }
 
     /**

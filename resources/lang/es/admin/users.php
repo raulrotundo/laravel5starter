@@ -55,6 +55,9 @@ return [
         ],
 		'status'               => 'Estatus:',
 		'assign_roles_section' => 'Sección de Asignación de Roles',
-		'submit'               => 'Enviar'
+		'submit'               => 'Enviar',
+		'create_confirm'       => 'El usuario fue agreado exitósamente!',
+		'update_confirm'       => 'El usuario fue actualizado exitósamente!',
+		'delete_confirm'       => 'El usuario fue eliminado exitósamente!'
     ]
 ];
