@@ -13,10 +13,12 @@ return [
     |
     */
 
-    'password' => 'La contraseña debe tener al menos seis caracteres y coincidir con la contraseña de confirmación.',
-    'user'     => "No se pudo encontrar un usuario con el correo electrónico indicado.",
-    'token'    => 'El token de restablecimiento de contraseña no es válido.',
-    'sent'     => 'Hemos enviado por correo electrónico el enlace para restablecer contraseña!',
-    'reset'    => 'Tu contraseña ha sido restablecida!',
-
+    'password'      => 'La contraseña debe tener al menos seis caracteres y coincidir con la contraseña de confirmación.',
+    'user'          => "No se pudo encontrar un usuario con el correo electrónico indicado.",
+    'token'         => 'El token de restablecimiento de contraseña no es válido.',
+    'sent'          => 'Hemos enviado por correo electrónico el enlace para restablecer tu contraseña!',
+    'reset'         => 'Tu contraseña ha sido restablecida!',
+    'subject_reset' => 'Restablecer tu contraseña',
+    'submit'        => 'Enviar',
+    'reset_title'   => 'Restablecer Contraseña'
 ];
