@@ -40,9 +40,22 @@ return [
 			'submit' => 'Enviar',
 		],
 		'password' => [
-			'current' => 'Contraseña actual: ',
-			'new'     => 'Contraseña nueva: ',
-			'repeat'  => 'Repetir contraseña: ',
+			'current' => [
+				'title' => 'Contraseña actual: ',
+				'placeholder' => 'Ingrese la contraseña actual',
+			],
+			'new' => [
+				'title' => 'Contraseña nueva: ',
+				'placeholder' => 'Ingrese la contraseña nueva',
+			],
+			'repeat' => [
+				'title' => 'Repita contraseña nueva: ',
+				'placeholder' => 'Repita la contraseña nueva',
+			],
+		],
+		'leave_user' => [
+			'check'  => 'Darse de baja',
+			'msg'  => 'Te veremos pronto, puedes reactivar tu cuenta con solo iniciar sesión de nuevo.',
 		],
 	],
 ];

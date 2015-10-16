@@ -40,9 +40,22 @@ return [
 			'submit' => 'Submit',
 		],
 		'password' => [
-			'current' => 'Current password: ',
-			'new'     => 'New password: ',
-			'repeat'  => 'Repeat password: ',
+			'current' => [
+				'title' => 'Current password: ',
+				'placeholder' => 'Enter the current password',
+			],
+			'new' => [
+				'title' => 'New password: ',
+				'placeholder' => 'Enter the new password',
+			],
+			'repeat' => [
+				'title' => 'Repeat new password: ',
+				'placeholder' => 'Repeat the new password',
+			],
+		],
+		'leave_user' => [
+			'check'  => 'Leave User',
+			'msg'  => 'We will see you soon, you can reactivate your account by simply signing in again.',
 		],
 	],
 ];
