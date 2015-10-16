@@ -1,58 +1,50 @@
+@extends('admin.layouts.access')
 
-<div class="container-fluid">
-<div class="row">
- <div class="col-md-8 col-md-offset-2">
- <div class="panel panel-default">
- <div class="panel-heading">Reset Password</div>
- <div class="panel-body">
+@section('title', trans('passwords.reset_title'))
 
- @if (count($errors) > 0)
-    <div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-    <ul>
-        @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-        @endforeach
-         </ul>
-        </div>
-@endif
+@section('content')
 
-<form class="form-horizontal" role="form" method="POST" action="reset">
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
-<input type="hidden" name="token" value="{{ $token }}">
-
-<div class="form-group">
-<label class="col-md-4 control-label">E-Mail Address</label>
-<div class="col-md-6">
-<input type="email" class="form-control" name="email" value="{{ old('email') }}">
+<div class="login-box">
+	<div class="login-logo">
+		{!! link_to('/', $title = 'AdminLTE') !!}
+	</div>
+	<div class="login-box-body">
+		<p class="login-box-msg">{{ trans('passwords.reset_title') }}</p>
+		@if (count($errors) > 0)
+		<div class="alert alert-danger">
+			{{ trans('login.msg_errors') }}
+			<ul>
+				@foreach ($errors->all() as $error)
+				<li>{{ $error }} </li>
+				@endforeach
+			</ul>
+		</div>
+		@endif
+		@if (Session::get('status'))
+		<div class="alert alert-success">
+			{{ Session::get('status') }}
+		</div>
+		@endif
+		{!! Form::open(['url' => 'password/reset']) !!}
+			{!! csrf_field() !!}
+			{!! Form::hidden('token', $token) !!}
+			<div class="form-group has-feedback">
+				{!! Form::text('email', old('email'), ['id'=>'email', 'required', 'class'=>'form-control', 'placeholder'=>trans('login.email')]) !!}
+				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				{!! Form::password('password', ['id'=>'password', 'required', 'class'=>'form-control', 'placeholder'=>trans('register.password')]) !!}
+				<span class="glyphicon glyphicon-lock form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				{!! Form::password('password_confirmation', ['id'=>'password_confirmation', 'required', 'class'=>'form-control', 'placeholder'=>trans('register.confirm_password')]) !!}
+				<span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				{!! Form::submit(trans('passwords.submit'),['class'=>'btn btn-primary btn-block btn-flat']) !!}
+			</div>
+		{!! Form::close() !!}
+	</div>
 </div>
-</div>
 
-<div class="form-group">
-<label class="col-md-4 control-label">Password</label>
-<div class="col-md-6">
-<input type="password" class="form-control" name="password">
-</div>
- </div>
-
- <div class="form-group">
- <label class="col-md-4 control-label">Confirm Password</label>
- <div class="col-md-6">
- <input type="password" class="form-control" name="password_confirmation">
- </div>
-  </div>
-
- <div class="form-group">
- <div class="col-md-6 col-md-offset-4">
- <button type="submit" class="btn btn-primary">
-             Reset Password
- </button>
- </div>
- </div>
- </form>
-
- </div>
- </div>
- </div>
- </div>
-</div>
+@endsection

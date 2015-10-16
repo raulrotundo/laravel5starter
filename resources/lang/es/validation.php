@@ -94,6 +94,9 @@ return [
         'agree' => [
             'required' => 'Debes aceptar los términos y condiciones para usar el servicio.',
         ],
+        'g-recaptcha-response' => [
+            'required' => 'Se requiere la verificación del captcha'
+        ]
     ],
 
     /*

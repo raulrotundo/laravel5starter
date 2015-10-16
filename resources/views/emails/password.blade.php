@@ -1,1 +1,1 @@
-Click here to reset your password: {{ url('/frontend/password/reset/'.$token) }}
+{{ trans('passwords.reset_email') }} <a href="{{ url('/password/reset/'.$token) }}">{{ url('/password/reset/'.$token) }}</a>
