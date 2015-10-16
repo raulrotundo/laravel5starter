@@ -28,8 +28,11 @@
 		{!! Form::open(['url' => 'password/email']) !!}
 			{!! csrf_field() !!}
 			<div class="form-group has-feedback">
-				{!! Form::text('email', old('email'), ['id'=>'email', 'required', 'class'=>'form-control', 'placeholder'=>trans('login.email')]) !!}
+				{!! Form::text('email', old('email'), ['id'=>'email', '', 'class'=>'form-control', 'placeholder'=>trans('login.email')]) !!}
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+			</div>
+			<div class="form-group has-feedback">
+				{!! app('captcha')->display(); !!}
 			</div>
 			<div class="form-group has-feedback">
 				{!! Form::submit(trans('passwords.submit'),['class'=>'btn btn-primary btn-block btn-flat']) !!}
