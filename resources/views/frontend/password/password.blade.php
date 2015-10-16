@@ -32,7 +32,7 @@
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 			</div>
 			<div class="form-group has-feedback">
-				{!! app('captcha')->display(); !!}
+				{!! app('captcha')->display(['data-size' => 'normal'],$lang); !!}
 			</div>
 			<div class="form-group has-feedback">
 				{!! Form::submit(trans('passwords.submit'),['class'=>'btn btn-primary btn-block btn-flat']) !!}

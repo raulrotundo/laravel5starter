@@ -9,6 +9,7 @@ use Password;
 use Illuminate\Mail\Message;
 use Auth;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Lang;
 
 
 class PasswordController extends Controller
@@ -50,7 +51,8 @@ class PasswordController extends Controller
      */
     public function getEmail()
     {
-        return view('frontend.password.password');
+        $lang = Lang::locale();
+        return view('frontend.password.password',compact('lang'));
     }
 
     protected function getEmailSubject()
