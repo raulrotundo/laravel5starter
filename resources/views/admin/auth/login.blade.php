@@ -20,6 +20,11 @@
 			</ul>
 		</div>
 		@endif
+		@if (Session::get('registration-success'))
+		 <div class="alert alert-success">
+		   {{ Session::get('registration-success') }}
+		</div>
+		@endif
 		{!! Form::open(['url' => 'login']) !!}
 			{!! csrf_field() !!}
 			<div class="form-group has-feedback">

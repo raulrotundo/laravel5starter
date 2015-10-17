@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['name', 'avatar', 'email', 'password', 'city', 'country_id', 'active'];
+    protected $fillable = ['name', 'avatar', 'email', 'password', 'address', 'phone', 'zipcod', 'city', 'country_id', 'active', 'activation_code'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -81,7 +81,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Admin\Role');
+        return $this->belongsToMany('App\Models\Admin\Role')->withTimestamps();
     }
 
     /**

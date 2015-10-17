@@ -18,5 +18,10 @@ return [
         'facebook' => 'Facebook',
         'google'   => 'Google'
     ],
-    'social_callback_error' => 'Algo no esta bien'
+    'social_callback_error' => 'Algo no esta bien',
+    'email-registration-subject'      => 'Verificación de su correo electrónico',
+    'email-registration-sent-success' => 'Muchas gracias por registrarse! Por favor revise su correo electrónico.',
+    'registration-success'            => 'Usted ha verificado su cuenta de manera exitosa.',
+    'invalid_registration_code'       => 'Código invalido de verificación.',
+    'activation_code_required'        => 'El código de activación es requerido.'
 ];
