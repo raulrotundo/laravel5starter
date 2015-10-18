@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\ProfileSecurityRequest;
 use App\Http\Requests\AvatarRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Countries;
 use Auth;
+use Hash;
 use Session;
 use Datatable;
 use URL;
@@ -55,7 +57,43 @@ class ProfileController extends Controller
         $user  = Auth::user();
         $user->update($input);
 
-        Session::flash('flash_message', 'Profile successfully updated!');
+        Session::flash('flash_message', trans('admin/profile.form.update_info_confirm') );
+        return redirect()->back();
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function updateSecurity(ProfileSecurityRequest $request)
+    {
+        $input = $request->all();
+        $user  = Auth::user();
+
+        $pwd_c = $input['chg_password']['current'];
+        $pwd_n = $input['chg_password']['new'];
+        $pwd_r = $input['chg_password']['repeat'];
+
+        if(isset($pwd_c)){
+            if(Hash::check($pwd_c, $user->password)){
+                $input['password'] = bcrypt($pwd_n);
+                $user->update($input);
+                Session::flash('flash_message', trans('admin/profile.form.update_password_confirm'));
+            }else{
+                //message
+                Session::flash('flash_message', trans('admin/profile.form.update_password_error'));
+                Session::flash('flash_type', 'alert-danger');
+            }
+        }
+
+        if(isset($input['leave_user'])){
+            $input['active'] = 2;
+            $user->update($input);
+            return redirect('admin/logout');
+        }
+
         return redirect()->back();
     }
 
@@ -110,7 +148,7 @@ class ProfileController extends Controller
 
         $user->update($input);
 
-        Session::flash('flash_message', 'Profile avatar successfully updated!');
+        Session::flash('flash_message', trans('admin/profile.form.update_avatar_confirm'));
         return redirect()->back();
     }
 }

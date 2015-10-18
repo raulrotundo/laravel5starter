@@ -16,6 +16,14 @@ class ProfileRequest extends Request
         return true;
     }
 
+    public function attributes(){
+        return [
+            'name'       => trans('admin/profile.attrs.name'),
+            'email'      => trans('admin/profile.attrs.email'),
+            'country_id' => trans('admin/profile.attrs.country_id'),
+        ];
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

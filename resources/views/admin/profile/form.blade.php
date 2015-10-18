@@ -102,7 +102,6 @@
 						</div>
 					</div>
 					<div class="box-footer">
-						{!! Form::submit(trans('admin/users.form.submit'), array('class' => 'btn btn-primary')) !!}
 					</div>
 				{!! Form::close() !!}
 			</div>

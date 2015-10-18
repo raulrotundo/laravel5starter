@@ -12,6 +12,7 @@ return [
         ]
     ],
     'welcome'      => 'Bienvenido :user!',
+    'welcomeback'  => 'Bienvenido de vuelta :user!',
     'profile'      => 'Ver mi Perfil',
     'logout'       => 'Cerrar Sesión',
     'member_since' => 'Miembro desde :member_date',

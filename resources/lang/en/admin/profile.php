@@ -1,5 +1,15 @@
 <?php
 return [
+	'attrs' => [
+		'name'       => 'name',
+		'email'      => 'email',
+		'country_id' => 'country',
+		'password'   => [
+			'current' => 'current password',
+			'new'     => 'new password',
+			'repeat'  => 'confirmed password',
+		],
+	],
 	'title_page' => [
 		'index'  => 'Profile',
 		'update' => 'Update Profile'
@@ -57,5 +67,9 @@ return [
 			'check'  => 'Leave User',
 			'msg'  => 'We will see you soon, you can reactivate your account by simply signing in again.',
 		],
+		'update_info_confirm'     => 'Profile successfully updated!',
+		'update_password_confirm' => 'Password successfully updated!',
+		'update_password_error'   => 'The password do not match our records',
+		'update_avatar_confirm'   => 'Profile avatar successfully updated!',
 	],
 ];

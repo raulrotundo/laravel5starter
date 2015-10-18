@@ -12,6 +12,7 @@ return [
         ]
     ],
 	'welcome'      => 'Welcome :user!',
+	'welcomeback'  => 'Welcome back :user!',
 	'profile'      => 'Profile',
 	'logout'       => 'Sign out',
 	'member_since' => 'Member since :member_date',

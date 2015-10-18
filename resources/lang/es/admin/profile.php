@@ -1,5 +1,15 @@
 <?php
 return [
+	'attrs' => [
+		'name'       => 'nombre',
+		'email'      => 'correo eléctronico',
+		'country_id' => 'pais',
+		'password'   => [
+			'current' => 'contraseña actual',
+			'new'     => 'contraseña nueva',
+			'repeat'  => 'confirmación de contraseña',
+		],
+	],
 	'title_page' => [
 		'index'  => 'Perfil',
 		'update' => 'Actualizar Perfil'
@@ -57,5 +67,9 @@ return [
 			'check'  => 'Darse de baja',
 			'msg'  => 'Te veremos pronto, puedes reactivar tu cuenta con solo iniciar sesión de nuevo.',
 		],
+		'update_info_confirm'     => 'El perfil fue actualizado exitósamente',
+		'update_password_confirm' => 'La contraseña fue actualizada exitósamente!',
+		'update_password_error'   => 'La contraseña no coincide con nuestros registros',
+		'update_avatar_confirm'   => 'La imagen de perfil fue actualizada exitósamente!',
 	],
 ];
