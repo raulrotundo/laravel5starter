@@ -15,6 +15,7 @@ use App\Models\Admin\Companies;
 use App\Models\Admin\Countries;
 use Input;
 use Session;
+use Mail;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
 
@@ -138,9 +139,20 @@ class AuthController extends Controller
             $this->throwValidationException($request, $validator);
         }
 
-        Auth::login($this->create($request->all()));         
-
-        return redirect($this->redirectPath());
+        $User = $this->create($request->all());
+        if (!$User->active) {
+            $activation_code = array( 'activation_code' => $User->activation_code);
+            //Sending email confirmation
+            Mail::send('emails.register', $activation_code, function($message) {
+                $message->to(Input::get('email'), Input::get('username'))
+                    ->subject(trans('register.email-registration-subject'));
+            });
+            return redirect()->back()->with('email-registration-sent-success', trans('register.email-registration-sent-success'));
+        } else {
+            //Auto-login
+            Auth::login($User);
+            return redirect($this->redirectPath());
+        }
     }
 
     /**
@@ -173,17 +185,20 @@ class AuthController extends Controller
         $provider   = Session::get('provider');
 
         $DataUser = [
-            'name'       => $data['name'],                
-            'email'      => $data['email'],
-            'password'   => bcrypt($data['password']),
-            'country_id' => $data['country_id'],
-            'active'     => 1,
+            'name'            => $data['name'],                
+            'email'           => $data['email'],
+            'password'        => bcrypt($data['password']),
+            'country_id'      => $data['country_id']
         ];
 
         //Add social avatar to the user
         if (isset($socialdata->avatar)){
             $DataUser['avatar'] = $socialdata->avatar;
-        }            
+            $DataUser['active'] = 1;
+        } else {
+            //Activation code is required
+            $DataUser['activation_code'] = str_random(30);
+        }
 
         //User create
         $User = User::create($DataUser);
@@ -230,5 +245,24 @@ class AuthController extends Controller
         Session::flash('socialdata', $user);
         Session::flash('provider', $provider);
         return redirect('register');
+    }
+
+    public function confirmRegistration($activation_code)
+    {
+        if(!$activation_code) {
+            return redirect('login')->withErrors(['credentials'=>trans('register.activation_code_required')]);
+        }
+
+        $user = User::whereActivationCode($activation_code)->first();
+
+        if (!$user) {
+            return redirect('login')->withErrors(['credentials'=>trans('register.invalid_registration_code')]);
+        }
+
+        $user->active          = 1;
+        $user->activation_code = null;
+        $user->save();
+
+        return redirect('login')->with('registration-success', trans('register.registration-success'));
     }
 }

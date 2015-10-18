@@ -18,5 +18,10 @@ return [
 		'facebook' => 'Facebook',
 		'google'   => 'Google'
 	],
-	'social_callback_error' => 'Something went wrong'
+	'social_callback_error'           => 'Something went wrong',
+	'email-registration-subject'      => 'Verify your email address',
+	'email-registration-sent-success' => 'Thanks for signing up! Please check your email.',
+	'registration-success'            => 'You have successfully verified your account.',
+	'invalid_registration_code'       => 'Invalid activation code.',
+	'activation_code_required'        => 'Activation code is required.'
 ];

@@ -65,5 +65,8 @@ Route::group(['namespace' => 'Admin\Auth'], function(){
 		// Password reset routes only as Guest
 		Route::get('password/reset/{token}', 'PasswordController@getReset');
 		Route::post('password/reset', 'PasswordController@postReset');
+
+		// Verification code registration
+		Route::get('register/verify/{confirmationCode}', 'AuthController@confirmRegistration');
 	});	
 });

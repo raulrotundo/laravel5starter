@@ -18,10 +18,10 @@ class CreateUsersTable extends Migration {
             $table->string('name');
             $table->string('email')->unique();
             $table->string('avatar')->nullable();
-            $table->string('address');
-            $table->string('phone');
-            $table->string('zipcode');
-            $table->string('city');
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('zipcode')->nullable();
+            $table->string('city')->nullable();
             $table->integer('country_id')->unsigned()->index();
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade');            
             $table->string('password');            

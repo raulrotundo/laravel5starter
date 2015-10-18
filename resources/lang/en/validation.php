@@ -90,6 +90,12 @@ return [
         'country_id' => [
             'required' => 'The country is required.',
         ],
+        'agree' => [
+            'required' => 'You must accept the terms & conditions.',
+        ],
+        'g-recaptcha-response' => [
+            'required' => 'Captcha requires verification'
+        ]
     ],
 
     /*

@@ -32,6 +32,11 @@
 			</ul>
 		</div>
 		@endif
+		@if (Session::get('email-registration-sent-success'))
+		 <div class="alert alert-success">
+		   {{ Session::get('email-registration-sent-success') }}
+		</div>
+		@endif
 		{!! Form::open(['url' => 'register', 'id' => 'register_form']) !!}
 			{!! csrf_field() !!}
 			<div class="form-group has-feedback">
