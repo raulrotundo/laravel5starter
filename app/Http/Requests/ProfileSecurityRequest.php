@@ -16,14 +16,6 @@ class ProfileSecurityRequest extends Request
         return true;
     }
 
-    public function attributes(){
-        return [
-            'chg_password.current' => trans('admin/profile.attrs.password.current'),
-            'chg_password.new'     => trans('admin/profile.attrs.password.new'),
-            'chg_password.repeat'  => trans('admin/profile.attrs.password.repeat'),
-        ];
-    }
-
     /**
      * Get the validation rules that apply to the request.
      *
