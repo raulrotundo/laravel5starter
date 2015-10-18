@@ -23,7 +23,9 @@ class RoleRequest extends Request
      */
     public function rules()
     {
-        $role_id = $this->route()->getParameter('roles');
+        //PUT refer to the update operation and POST to create
+        $role_id = ($this->method() == 'PUT' ? $this->route()->getParameter('roles') : 'NULL');
+
         return [
             'role_title' => 'required',
             'role_slug' => 'required|unique:roles,role_slug,'.$role_id,
