@@ -1,5 +1,15 @@
 <?php
 return [
+	'attrs' => [
+		'name'       => 'name',
+		'email'      => 'email',
+		'country_id' => 'country',
+		'password'   => [
+			'current' => 'current password',
+			'new'     => 'new password',
+			'repeat'  => 'confirmed password',
+		],
+	],
 	'title_page' => [
 		'index'  => 'Profile',
 		'update' => 'Update Profile'

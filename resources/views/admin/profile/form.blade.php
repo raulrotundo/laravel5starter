@@ -7,7 +7,7 @@
 		</ul>
 		<div class="tab-content">
 			<div id="tab1" class="tab-pane active">
-				{!! Form::model($user, ['route' => [$action1, $user->id], 'method'=>'PUT', 'files'=>true]) !!}
+				{!! Form::model($user, ['route' => [$action1], 'method'=>'PUT', 'files'=>true]) !!}
 					<div class="box-body">
 						<div class="row">
 							<div class="col-md-6">

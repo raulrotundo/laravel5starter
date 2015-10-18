@@ -23,9 +23,7 @@ class PermissionRequest extends Request
      */
     public function rules()
     {
-        //PUT refer to the update operation and POST to create
-        $permission_id = ($this->method() == 'PUT' ? $this->route()->getParameter('permissions') : 'NULL');
-
+        $permission_id = $this->route()->getParameter('permissions');
         return [
             'permission_title' => 'required',
             'permission_slug' => 'required|unique:permissions,permission_slug,'.$permission_id,
