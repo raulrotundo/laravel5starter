@@ -4,8 +4,17 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "hash": "197fb83c11d9a5d5268efa390ffa8b0b",
+=======
+    "hash": "61035a2828b286635854c0f2b26f9533",
+>>>>>>> refs/remotes/origin/master
+    "content-hash": "2a0592b7338ea37a841366fa91250ebd",
+=======
     "hash": "faa64d2b7863749c9b601c890d483a2a",
     "content-hash": "8341097fff833d64feaf4ae8e402e34b",
+>>>>>>> refs/remotes/origin/master
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -3062,6 +3071,18 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
+            "version": "4.8.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "00194eb95989190a73198390ceca081ad3441a7f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/00194eb95989190a73198390ceca081ad3441a7f",
+                "reference": "00194eb95989190a73198390ceca081ad3441a7f",
+=======
             "version": "4.8.13",
             "source": {
                 "type": "git",
@@ -3072,6 +3093,7 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/be067d6105286b74272facefc2697038f8807b77",
                 "reference": "be067d6105286b74272facefc2697038f8807b77",
+>>>>>>> refs/remotes/origin/master
                 "shasum": ""
             },
             "require": {
@@ -3130,7 +3152,11 @@
                 "testing",
                 "xunit"
             ],
+<<<<<<< HEAD
+            "time": "2015-10-12 03:36:47"
+=======
             "time": "2015-10-14 13:49:40"
+>>>>>>> refs/remotes/origin/master
         },
         {
             "name": "phpunit/phpunit-mock-objects",

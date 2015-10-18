@@ -28,7 +28,7 @@ return [
 			'placeholder' => 'Enter an Email'
         ],
         'avatar' => 'Avatar:',
-        'remove' => 'Remove',
+        'remove_avatar' => 'Remove',
         'phone' => [
 			'title'       => 'Phone:',
 			'placeholder' => 'Enter a Phone'

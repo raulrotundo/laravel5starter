@@ -24,6 +24,18 @@ class RoleUserTableSeeder extends Seeder
 		    	'created_at' => new \Carbon\Carbon(),
             	'updated_at' => new \Carbon\Carbon(),
 	    	],
+		    [
+		    	'role_id' => '3',
+		    	'user_id' => '1',
+		    	'created_at' => new \Carbon\Carbon(),
+            	'updated_at' => new \Carbon\Carbon(),
+	    	],
+		    [
+		    	'role_id' => '3',
+		    	'user_id' => '2',
+		    	'created_at' => new \Carbon\Carbon(),
+            	'updated_at' => new \Carbon\Carbon(),
+	    	],
 	    	[
 		    	'role_id' => '3',
 		    	'user_id' => '3',

@@ -9,7 +9,7 @@
     </div>
 @endif
 @if(Session::has('flash_message'))
-    <div class="alert alert-success">
+    <div class="alert {{ Session::get('flash_type') ?: 'alert-success' }}">
         {{ Session::get('flash_message') }}
         <button class="close" data-dismiss="alert">&times;</button>
     </div>

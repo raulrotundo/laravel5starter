@@ -23,8 +23,8 @@
 						@else 
 						<img src="{{asset(config('assets.images.paths.input')."/noavatar.jpg")}}" class="img-circle avatar_input">
 						@endif
-					</div>					
-				</div>								
+					</div>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">

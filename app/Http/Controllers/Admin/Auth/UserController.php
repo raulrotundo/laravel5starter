@@ -107,7 +107,7 @@ class UserController extends Controller
         $user      = User::find($id);
         $action    = 'admin.users.update';
         $countries = ['0'=>trans('admin/users.form.country.placeholder')];
-        $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());        
+        $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
         $roles     = Role::all()->toArray();
         $role_user_array = $user->roles->toArray();
         $col_md = (count($roles) >= 4 ? '3' : '4'); //Number of columns depending of roles
@@ -119,7 +119,7 @@ class UserController extends Controller
             }
         } else {
             $role_user = array();
-        }        
+        }
 
         return View('admin.users.edit', compact('user','action','countries', 'roles', 'role_user', 'col_md'));
     }

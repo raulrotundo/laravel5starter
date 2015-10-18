@@ -132,9 +132,11 @@
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            @if (Auth::user()->avatar)
-                            <img src="{{ Auth::user()->avatar }}" class="img-circle" alt="{{ Auth::user()->name }}" />
-                            @endif
+                            <span>
+                                <a data-toggle="modal" href="{!! route('admin.profile.editAvatar') !!}" data-target="#avatarMdl">
+                                    <img class="img-circle" src="{{ Auth::user()->avatar ?: asset(config('assets.images.paths.input')."/noavatar.jpg") }}" alt="{{ Auth::user()->name ?: '-' }}" />
+                                </a>
+                            </span>
                             <p>
                                 {!! Auth::user()->name !!}
                                 <small>{{ trans('admin/dashboard.member_since', ['member_date' => Auth::user()->created_at->format('M, Y')]) }}</small>
@@ -143,7 +145,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">{{ trans('admin/dashboard.profile') }}</a>
+                                <a href="{!! route('admin.profile.index') !!}" class="btn btn-default btn-flat">{{ trans('admin/dashboard.profile') }}</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{!! route('admin.logout') !!}" class="btn btn-default btn-flat">{{ trans('admin/dashboard.logout') }}</a>
@@ -155,3 +157,4 @@
         </div>
     </nav>
 </header>
+<div id="avatarMdl" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"></div></div></div>
