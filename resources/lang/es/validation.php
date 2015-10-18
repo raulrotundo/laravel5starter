@@ -54,7 +54,7 @@ return [
         'string'  => ':attribute debe contener al menos :min caracteres.',
         'array'   => ':attribute debe tener al menos :min elementos.',
     ],
-    'not_in'           => ':attribute es inválido.',
+    'not_in'           => ':attribute inválido.',
     'numeric'          => ':attribute debe ser numérico.',
     'regex'            => 'El formato de :attribute es inválido.',
     'required'         => 'El campo :attribute es obligatorio.',
@@ -87,10 +87,6 @@ return [
     */
 
     'custom' => [
-        'country_id' => [
-            'required'  => 'El campo país es requerido.',
-            'not_in'    => 'El campo país es requerido.'
-        ],
         'agree' => [
             'required' => 'Debes aceptar los términos y condiciones para usar el servicio.',
         ],
@@ -110,6 +106,21 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name'                   => 'nombre',
+        'email'                  => 'correo eléctronico',
+        'password'               => 'contraseña',
+        'country_id'             => 'pais',
+        'avatar'                 => 'imagen de perfil',
+        'permission_title'       => 'permiso',
+        'permission_slug'        => 'slug',
+        'permission_description' => 'descripción',
+        'role_title'             => 'rol',
+        'role_slug'              => 'slug',
+        'description'            => 'descripción',
+        'chg_password.current'   => 'contraseña actual',
+        'chg_password.new'       => 'contraseña nueva',
+        'chg_password.repeat'    => 'confirmación de contraseña',
+    ],
 
 ];

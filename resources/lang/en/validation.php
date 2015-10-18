@@ -87,9 +87,6 @@ return [
     */
 
     'custom' => [
-        'country_id' => [
-            'required' => 'The country is required.',
-        ],
         'agree' => [
             'required' => 'You must accept the terms & conditions.',
         ],
@@ -109,6 +106,21 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'name'                   => 'name',
+        'email'                  => 'email',
+        'password'               => 'password',
+        'country_id'             => 'country',
+        'avatar'                 => 'avatar',
+        'permission_title'       => 'permission title',
+        'permission_slug'        => 'permission slug',
+        'permission_description' => 'permission description',
+        'role_title'             => 'role title',
+        'role_slug'              => 'role slug',
+        'description'            => 'description',
+        'chg_password.current'   => 'current password',
+        'chg_password.new'       => 'new password',
+        'chg_password.repeat'    => 'confirmed password',
+    ],
 
 ];
