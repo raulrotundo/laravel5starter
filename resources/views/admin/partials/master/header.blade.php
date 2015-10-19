@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{!! url('admin') !!}" class="logo">{{trans('admin/dashboard.app_name')}}</a>
+    <a href="{!! url('admin') !!}" class="logo">{{config('app.app_name')}}</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

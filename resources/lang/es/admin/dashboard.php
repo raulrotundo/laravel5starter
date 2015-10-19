@@ -17,7 +17,6 @@ return [
     'logout'       => 'Cerrar Sesión',
     'member_since' => 'Miembro desde :member_date',
     'select_lang'  => 'Cambie su idioma:',
-    'app_name'     => 'AdminLTE',
     'footer' => [
         'left'  => 'Derechos reservados © 2015.',
         'right' => 'Cualquier texto'
