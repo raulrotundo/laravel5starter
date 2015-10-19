@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Be right back.</title>
+        <title>{{trans('errors.503.title_page')}}</title>
 
         <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -14,7 +14,7 @@
                 margin: 0;
                 padding: 0;
                 width: 100%;
-                color: #B0BEC5;
+                color: #727B80;
                 display: table;
                 font-weight: 100;
                 font-family: 'Lato';
@@ -31,16 +31,13 @@
                 display: inline-block;
             }
 
-            .title {
-                font-size: 72px;
-                margin-bottom: 40px;
-            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <h1>{{trans('errors.503.content.title')}}</h1>
+                <h2>{{trans('errors.503.content.subtitle')}}</h2>
             </div>
         </div>
     </body>
