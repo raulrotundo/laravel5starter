@@ -1,6 +1,6 @@
 @extends('admin.layouts.access')
 
-@section('title', 'Login')
+@section('title', trans('register.signin_title'))
 
 @section('content')
 
