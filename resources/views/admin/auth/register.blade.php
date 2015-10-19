@@ -68,6 +68,9 @@
 			<div class="form-group has-feedback">
 				{!! Form::select('country_id', $countries, old('country_id'), ['class'=>'form-control select2 select2-hidden-accessible']) !!}
 			</div>
+			<div class="form-group has-feedback">
+				{!! app('captcha')->display(['data-size' => 'normal'],$lang); !!}
+			</div>
 			<div class="row">
 				<div class="col-xs-8">
 					<div class="checkbox icheck">
