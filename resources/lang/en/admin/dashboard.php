@@ -20,5 +20,13 @@ return [
 	'footer' => [
 		'left'  => 'Copyright © 2015 Company. All rights reserved.',
 		'right' => 'Anything you want'
+	],
+	'modal' => [
+		'title' => 'Delete Data',
+		'body'  => 'Are you sure want to delete this record?',
+		'button' => [
+			'yes' => 'Yes',
+			'no'  => 'No'
+		]
 	]
 ];

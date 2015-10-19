@@ -20,5 +20,13 @@ return [
     'footer' => [
         'left'  => 'Derechos reservados © 2015.',
         'right' => 'Cualquier texto'
+    ],
+    'modal' => [
+        'title' => 'Eliminar registro',
+        'body'  => '¿Esta seguro que desea eliminar este registro?',
+        'button' => [
+            'yes' => 'Si',
+            'no'  => 'No'
+        ]
     ]
 ];
