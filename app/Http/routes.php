@@ -40,6 +40,7 @@ Route::group(['prefix' => config('admin.prefix'), 'middleware' => ['auth']], fun
 		    Route::put('profile/update/security',    array( 'as' => 'admin.profile.updateSecurity',  'uses' => 'ProfileController@updateSecurity'));
 		    Route::put('profile/update/privacity',   array( 'as' => 'admin.profile.updatePrivacity', 'uses' => 'ProfileController@updatePrivacity'));
 		    Route::put('profile/update/avatar',      array( 'as' => 'admin.profile.updateAvatar',    'uses' => 'ProfileController@updateAvatar'));
+		    Route::get('profile/verify_email/{confirmationCode}', 'ProfileController@confirmEmailRegistration');
 	    });
 	});
 });

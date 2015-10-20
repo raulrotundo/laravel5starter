@@ -18,10 +18,14 @@ return [
 		'facebook' => 'Facebook',
 		'google'   => 'Google'
 	],
-	'social_callback_error'           => 'Something went wrong',
-	'email-registration-subject'      => 'Verify your email address',
-	'email-registration-sent-success' => 'Thanks for signing up! Please check your email.',
-	'registration-success'            => 'You have successfully verified your account.',
-	'invalid_registration_code'       => 'Invalid activation code.',
-	'activation_code_required'        => 'Activation code is required.'
+	'social_callback_error'                 => 'Something went wrong',
+	'email-registration-subject'            => 'Verify your email address',
+	'email-registration-sent-success'       => 'Thanks for signing up! Please check your email.',
+	'registration-success'                  => 'You have successfully verified your account.',
+	'email-email_confirmation-subject'      => 'Verify your email address',
+	'email-email_confirmation-sent-success' => 'Please check your email to confirm it.',
+	'email_confirmation-success'            => 'You have successfully verified your email.',
+	'invalid_registration_code'             => 'Invalid activation code.',
+	'activation_code_required'              => 'Activation code is required.',
+	'missing_session_email'                 => 'The email confirmation link has been expired.',
 ];
