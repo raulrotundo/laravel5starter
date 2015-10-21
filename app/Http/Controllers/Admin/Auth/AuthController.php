@@ -18,6 +18,7 @@ use Session;
 use Mail;
 use App\Http\Requests\AuthRequest;
 use Illuminate\Http\Request;
+use Lang;
 
 
 class AuthController extends Controller
@@ -123,7 +124,8 @@ class AuthController extends Controller
     public function getRegister() {
         $countries = ['0'=>trans('register.country')];
         $countries = array_merge($countries,Countries::all()->lists('name','id')->toArray());
-        return view('admin.auth.register',compact('countries'));
+        $lang      = Lang::locale();
+        return view('admin.auth.register',compact('countries','lang'));
     }
 
     /**

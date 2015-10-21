@@ -2,6 +2,9 @@
 
 return [
 
+    //Application name
+    'app_name' => env('APP_NAME', 'Application Name'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Debug Mode

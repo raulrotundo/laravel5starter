@@ -23,6 +23,6 @@ class AuthRequest extends Request
      */
     public function rules()
     {
-        return [];
+        return ['g-recaptcha-response' => 'required|captcha'];
     }
 }
