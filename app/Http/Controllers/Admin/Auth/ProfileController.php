@@ -66,10 +66,10 @@ class ProfileController extends Controller
                 $input['email']             =  $user->email;
 
             //send
-                /*Mail::send('emails.email_confirmation', array('activation_code' => $activation_code), function($message) {
+                Mail::send('emails.email_confirmation', array('activation_code' => $activation_code), function($message) {
                     $message->to(session('unverified_email'), Auth::user()->name)
                             ->subject(trans('register.email-email_confirmation-subject'));
-                });*/
+                });
                 Session::flash('flash_message', trans('register.email-email_confirmation-sent-success') );
         }
 
