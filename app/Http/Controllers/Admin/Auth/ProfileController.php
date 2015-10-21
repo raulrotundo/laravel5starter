@@ -8,12 +8,14 @@ use App\Http\Requests\ProfileSecurityRequest;
 use App\Http\Requests\AvatarRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Countries;
+use App\Models\Admin\User;
 use Auth;
 use Hash;
 use Session;
 use Datatable;
 use URL;
 use App;
+use Mail;
 
 class ProfileController extends Controller
 {
@@ -55,6 +57,22 @@ class ProfileController extends Controller
     {
         $input = $request->all();
         $user  = Auth::user();
+
+        if (isset($input['email']) AND $input['email']!=$user->email){
+            //set
+                Session(['unverified_email' => $input['email']]);
+                $activation_code            =  str_random(30);
+                $input['activation_code']   =  $activation_code;
+                $input['email']             =  $user->email;
+
+            //send
+                Mail::send('emails.email_confirmation', array('activation_code' => $activation_code), function($message) {
+                    $message->to(session('unverified_email'), Auth::user()->name)
+                            ->subject(trans('register.email-email_confirmation-subject'));
+                });
+                Session::flash('flash_message', trans('register.email-email_confirmation-sent-success') );
+        }
+
         $user->update($input);
 
         Session::flash('flash_message', trans('admin/profile.form.update_info_confirm') );
@@ -95,6 +113,29 @@ class ProfileController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function confirmEmailRegistration($activation_code)
+    {
+        if(!$activation_code) {
+            return redirect('admin')->withErrors(['credentials'=>trans('register.activation_code_required')]);
+        }
+
+        if(!Session::has('unverified_email')) {
+            return redirect('admin')->withErrors(['credentials'=>trans('register.missing_session_email')]);
+        }
+
+        $user = User::whereActivationCode($activation_code)->first();
+
+        if (!$user) {
+            return redirect('admin')->withErrors(['credentials'=>trans('register.invalid_registration_code')]);
+        }
+
+        $user->email           = session('unverified_email');
+        $user->activation_code = null;
+        $user->save();
+
+        return redirect('admin')->with('flash_message', trans('register.registration-success'));
     }
 
     /**
