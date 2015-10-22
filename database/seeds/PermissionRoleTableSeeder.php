@@ -28,7 +28,7 @@ class PermissionRoleTableSeeder extends Seeder
             'created_at' => new \Carbon\Carbon(),
             'updated_at' => new \Carbon\Carbon(),
         ]);
-        foreach(range(30, 36) as $index) {
+        foreach(range(30, 37) as $index) {
             DB::table('permission_role')->insert([
                 'permission_id' => $index,
                 'role_id' => 3, 
