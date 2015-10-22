@@ -71,3 +71,8 @@ Route::group(['namespace' => 'Admin\Auth'], function(){
 		Route::get('register/verify/{confirmationCode}', 'AuthController@confirmRegistration');
 	});	
 });
+
+//APIs routes
+Route::group(['prefix' => 'api', 'namespace' => 'Api'], function(){
+	Route::get('index', 'TestController@index');
+});
