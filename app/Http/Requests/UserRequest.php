@@ -23,9 +23,8 @@ class UserRequest extends Request
      */
     public function rules()
     {
-        $user_id = $this->route()->getParameter('users');
-
         //PUT refer to the update operation and POST to create
+        $user_id       = ($this->method() == 'PUT' ? $this->route()->getParameter('users') : 'NULL');
         $password_rule = ($this->method() == 'PUT' ? 'min:6' : 'required|min:6');
 
         return [
