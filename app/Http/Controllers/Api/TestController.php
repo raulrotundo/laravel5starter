@@ -18,6 +18,7 @@ class TestController extends Controller
      */
     public function index()
     {
+        header('Access-Control-Allow-Origin: *');
         $users['users'] = User::all();
         return response()->json(['status'=>'ok','response'=>$users], 200);
     }
