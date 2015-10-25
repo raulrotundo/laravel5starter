@@ -192,6 +192,11 @@ class PermissionsTableSeeder extends Seeder
 		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@updateAvatar', 
 		    	'permission_description'=>'Update Avatar Profile',
 	    	],
+	    	[
+		    	'permission_title' => 'Confirm Email Profile',
+		    	'permission_slug' => 'App\\Http\\Controllers\\Admin\\Auth\\ProfileController@confirmEmailRegistration', 
+		    	'permission_description'=>'Confirm Email Profile',
+	    	],
     	]);
     }
 }
