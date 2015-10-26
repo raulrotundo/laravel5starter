@@ -25,7 +25,7 @@ class Role extends Model
     * Timestamps fields settings, use true if you need updated_at and create_at
     * @var string
     */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /*
     |--------------------------------------------------------------------------
