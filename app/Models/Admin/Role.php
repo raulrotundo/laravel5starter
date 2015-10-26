@@ -25,7 +25,7 @@ class Role extends Model
     * Timestamps fields settings, use true if you need updated_at and create_at
     * @var string
     */
-    public $timestamps = false;
+    public $timestamps = true;
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ class Role extends Model
 
     public function permissions()
     {
-        return $this->belongsToMany('App\Models\Admin\Permission');
+        return $this->belongsToMany('App\Models\Admin\Permission')->withTimestamps();
     }
 
     public function listPermissions()
