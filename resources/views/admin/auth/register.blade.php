@@ -42,7 +42,7 @@
 			<div class="form-group has-feedback">
 				{!! Form::text('name', isset($name) ? $name : old('name'), ['id'=>'name', 'required', isset($socialdata) ? 'readonly' : '', 'class'=>'form-control', 'placeholder'=>trans('register.name')]) !!}
 				<span class="glyphicon glyphicon-user form-control-feedback"></span>
-			</div>
+			</div>			
 			<div class="form-group has-feedback">
 				{!! Form::text('email', isset($email) ? $email : old('email'), ['id'=>'email', 'required', isset($socialdata) ? 'readonly' : '', 'class'=>'form-control', 'placeholder'=>trans('register.email')]) !!}
 				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -57,6 +57,10 @@
 				<button type="button" class="btn btn-primary btn-block btn-flat" id="socialdata_edit">{!! trans('register.edit_personal_info') !!}</button>
 			</div>
 			@endif
+			<div class="form-group has-feedback">
+				{!! Form::text('username', isset($username) ? $username : old('username'), ['id'=>'username', 'required', old('username'), 'class'=>'form-control', 'placeholder'=>trans('register.username')]) !!}
+				<span class="glyphicon glyphicon-user form-control-feedback"></span>
+			</div>
 			<div class="form-group has-feedback">
 				{!! Form::password('password', ['id'=>'password', 'required', 'class'=>'form-control', 'placeholder'=>trans('register.password')]) !!}
 				<span class="glyphicon glyphicon-lock form-control-feedback"></span>

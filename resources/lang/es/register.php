@@ -3,6 +3,7 @@
 return [
     'name'               => 'Nombre',
     'email'              => 'Correo Electrónico',
+    'username'           => 'Nombre de Usuario',
     'password'           => 'Contraseña',
     'confirm_password'   => 'Confirmar Contraseña',
     'country'            => 'Seleccione su país',

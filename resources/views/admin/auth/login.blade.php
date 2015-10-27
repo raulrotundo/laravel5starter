@@ -29,7 +29,7 @@
 			{!! csrf_field() !!}
 			<div class="form-group has-feedback">
 				{!! Form::text('email', old('email'), ['id'=>'email', 'required', 'class'=>'form-control', 'placeholder'=>trans('login.email')]) !!}
-				<span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+				<span class="glyphicon glyphicon-user form-control-feedback"></span>
 			</div>
 			<div class="form-group has-feedback">
 				{!! Form::password('password', ['id'=>'password', 'required', 'class'=>'form-control', 'placeholder'=>trans('login.password')]) !!}

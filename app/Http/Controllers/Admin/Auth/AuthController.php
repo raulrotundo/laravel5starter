@@ -16,7 +16,7 @@ use App\Models\Admin\Countries;
 use Input;
 use Session;
 use Mail;
-use App\Http\Requests\AuthRequest;
+use App\Http\Requests\RegistrationRequest;
 use Illuminate\Http\Request;
 use Lang;
 
@@ -84,9 +84,11 @@ class AuthController extends Controller
                 ->withErrors(trans('auth.inactive'));
         }
 
-        $credentials = $this->getCredentials($request);
+        //Validate whether the input is email, if yes Auth::attempt using email, else attempt using username
+        $field = filter_var($request->input('email'), FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $request->merge([$field => $request->input('email')]);
 
-        if (Auth::attempt($credentials, $request->has('remember'))) {
+        if (Auth::attempt($request->only($field, 'password'), $request->has('remember'))) {
             //validate if is an active '2' user
             $user= Auth::user();
             if($user->active==2){
@@ -134,13 +136,8 @@ class AuthController extends Controller
     * @param  \Illuminate\Http\Request  $request
     * @return \Illuminate\Http\Response
     */
-    public function postRegister(AuthRequest $request) {
-        $validator = $this->validator($request->all());
-
-        if ($validator->fails()) {
-            $this->throwValidationException($request, $validator);
-        }
-
+    public function postRegister(RegistrationRequest $request) 
+    {
         $User = $this->create($request->all());
         if (!$User->active) {
             $activation_code = array( 'activation_code' => $User->activation_code);
@@ -158,23 +155,6 @@ class AuthController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {        
-        return Validator::make($data, [
-            'name'       => 'required|max:255',
-            'email'      => 'required|email|max:255|unique:users',
-            'password'   => 'required|confirmed|min:6',
-            'country_id' => 'required|not_in:0',
-            'agree'      => 'required'
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
@@ -189,6 +169,7 @@ class AuthController extends Controller
         $DataUser = [
             'name'            => $data['name'],                
             'email'           => $data['email'],
+            'username'        => $data['username'],
             'password'        => bcrypt($data['password']),
             'country_id'      => $data['country_id']
         ];

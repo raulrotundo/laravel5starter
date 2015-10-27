@@ -83,9 +83,9 @@ class UserController extends Controller
     {       
 
         return Datatable::collection(User::all())
-        ->showColumns('id','name','email','active')
-        ->searchColumns('id','name','email','active')
-        ->orderColumns('id','name','email','active')
+        ->showColumns('id','name','email','username','active')
+        ->searchColumns('id','name','email','username','active')
+        ->orderColumns('id','name','email','username','active')
         ->addColumn('active',function($model){
             return ($model->active == 1 ? '<p class="text-green">'.trans('admin/users.show.status.enable').'</p>' : '<p class="text-red">'.trans('admin/users.show.status.disable').'</p>');
         })

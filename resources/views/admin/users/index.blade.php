@@ -8,6 +8,7 @@
 					<th>{{ trans('admin/users.show.id') }}</th>
 					<th>{{ trans('admin/users.show.name') }}</th>
 					<th>{{ trans('admin/users.show.email') }}</th>
+					<th>{{ trans('admin/users.show.username') }}</th>
 					<th>{{ trans('admin/users.show.status_title') }}</th>
 					<th>{{ trans('admin/users.show.actions') }}</th>
 				</tr>

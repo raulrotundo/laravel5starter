@@ -3,7 +3,7 @@
 return [
 	'signin_title'      => 'Conectese para ingresar en su sesión',
 	'signin_subtitle'   => 'Conectese con sus cuentas sociales',
-	'email'             => 'Correo Electrónico',
+	'email'             => 'Correo Electrónico o Nombre de Usuario',
 	'password'          => 'Contraseña',
 	'forgot_password'   => 'Olvidé mi contraseña',
 	'register_link'     => 'Registrar una nueva cuenta',

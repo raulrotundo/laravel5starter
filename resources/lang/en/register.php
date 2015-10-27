@@ -3,6 +3,7 @@
 return [
 	'name'               => 'Name',
 	'email'              => 'E-Mail Address',
+	'username'           => 'Username',
 	'password'           => 'Password',
 	'confirm_password'   => 'Confirm Password',
 	'country'            => 'Select your country',
