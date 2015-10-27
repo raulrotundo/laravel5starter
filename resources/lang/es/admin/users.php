@@ -9,6 +9,7 @@ return [
 		'id'           => 'Id',
 		'name'         => 'Nombre',
 		'email'        => 'Correo Electrónico',
+		'username'     => 'Nombre de Usuario',
 		'status_title' => 'Estatus',
         'status' => [
 			'enable'  => 'Habilitado',
@@ -26,6 +27,10 @@ return [
         'email' => [
 			'title'       => 'Correo Electrónico:',
 			'placeholder' => 'Ingrese un Correo Electrónico'
+        ],
+        'username' => [
+			'title'       => 'Nombre de Usuario:',
+			'placeholder' => 'Ingrese un Nombre de Usuario'
         ],
         'avatar' => 'Avatar:',
         'remove_avatar' => 'Remover',

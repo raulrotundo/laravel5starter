@@ -15,6 +15,7 @@ class UserTableSeeder extends Seeder
 		    [	
 		    	'name' => 'Raul Rotundo',
 		    	'email'=>'rrotundo@albortech.com',
+		    	'username'=>'rrotundo',
 		    	'address'=>'San Martin 991',
 		    	'phone'=>'1537711976',
 		    	'zipcode'=>'1004',
@@ -29,6 +30,7 @@ class UserTableSeeder extends Seeder
 			[	
 		    	'name' => 'Leonardo Rotundo',
 		    	'email'=>'lrotundo@albortech.com',
+		    	'username'=>'lrotundo',
 		    	'address'=>'San Martin 991',
 		    	'phone'=>'584262587411',
 		    	'zipcode'=>'1004',
@@ -43,6 +45,7 @@ class UserTableSeeder extends Seeder
 	    	[	
 		    	'name' => 'Marcos Colina',
 		    	'email'=>'mcolina@albortech.com',
+		    	'username'=>'mcolina',
 		    	'address'=>'San Martin 991',
 		    	'phone'=>'584562415874',
 		    	'zipcode'=>'1004',
