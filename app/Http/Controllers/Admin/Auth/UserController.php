@@ -167,7 +167,10 @@ class UserController extends Controller
             $input['password'] = bcrypt($input['password']);
         } else {
             unset($input['password']);
-        } 
+        }
+
+        //Disable username update from User form
+        unset($input['username']);
 
         $user->update($input);
 

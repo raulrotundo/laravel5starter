@@ -29,7 +29,7 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					{!! Form::label('username', trans('admin/users.form.username.title'), ['class' => 'control-label']) !!}
-					{!! Form::text('username', null, ['class' => 'form-control','placeholder' => trans('admin/users.form.username.placeholder')]) !!}
+					{!! Form::text('username', null, ['class' => 'form-control','placeholder' => trans('admin/users.form.username.placeholder'), isset($user->username)?'readonly':'']) !!}
 				</div>
 				<div class="form-group">
 					{!! Form::label('email', trans('admin/users.form.email.title'), ['class' => 'control-label']) !!}
