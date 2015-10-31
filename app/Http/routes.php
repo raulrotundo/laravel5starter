@@ -75,4 +75,5 @@ Route::group(['namespace' => 'Admin\Auth'], function(){
 //APIs routes
 Route::group(['prefix' => 'api', 'namespace' => 'Api'], function(){
 	Route::get('index', 'TestController@index');
+	Route::get('login', 'TestController@login');
 });
