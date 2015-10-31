@@ -4,13 +4,54 @@ namespace App\Http\Controllers\Api;
 
 use Auth;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Illuminate\Routing\Controller;
 use App\Models\Admin\User;
+use Validator;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Models\Admin\Role;
+use App\Models\Admin\SocialData;
+use App\Models\Admin\Companies;
+use App\Models\Admin\Countries;
+use Input;
+use Session;
+use Mail;
+use App\Http\Requests\RegistrationRequest;
+use Lang;
+use Illuminate\Cache\RateLimiter;
+
 
 class TestController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | Registration & Login Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users, as well as the
+    | authentication of existing users. By default, this controller uses
+    | a simple trait to add these behaviors. Why don't you explore it?
+    |
+    */
+
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
+    /*protected $redirectPath = '/admin';
+    protected $loginPath = '/login';*/
+    private $maxLoginAttempts = 5;
+    private $lockoutTime = 5; //5 minutes
+
+    /**
+     * Create a new authentication controller instance.
+     *
+     * @return void
+     */
+    public function __construct(Socialite $socialite)
+    {
+        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->socialite = $socialite;
+    }
     /**
      * Display a listing of the resource.
      *
